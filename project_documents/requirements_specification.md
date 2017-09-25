@@ -70,24 +70,29 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.3.1.17 The cases table CSU should have the highest priority cases on top
 - 5.3.1.18 The cases table CSU entries will be large and legible
 - 5.3.1.19 The cases table CSU should have an edit button next to each entry if the user has write access
-- 5.3.1.20 The cases table CSU entries should link to each corresponding detailed case info page for each entry
-- 5.3.1.21 The search cases form CSU shall use some combination of text fields and buttons
-- 5.3.1.22 The search cases form CSU shall include options necessary to enter any amount of search criteria needed to find murder cases
-- 5.3.1.23 The login page CSU shall have a username input field
-- 5.3.1.24 The login page CSU shall have a password input field
-- 5.3.1.25 The login page shall have a login button
-- 5.3.1.26 The login page shall redirect to another page if the user is successfully authenticated
-- 5.3.1.27 The login page shall not appear if the user is currently logged in
-- 5.3.1.28 The detailed case info page CSU shall display all information that has been entered for that case
-- 5.3.1.29 The detailed case info page shall include empty headings for information not entered
-- 5.3.1.30 The detailed case info page shall include edit buttons next to each entry if the user has write access
-- 5.3.1.31 Each case will have a unique detailed case info page URL
-- 5.3.1.32 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
-- 5.3.1.33 The navigation bar shall have a link to the dashboard
-- 5.3.1.34 The navigation bar will have a link to the add cases page
-- 5.3.1.35 The navigation bar will have a link to the current user's profile page
-- 5.3.1.36 The navigation bar will have a link to logout and back to the login page
-- 5.3.1.37 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
+- 5.3.1.20 The cases table CSU should have an upload CSV file button
+- 5.3.1.21 The GUI subsystem shall display a modal window for user to confirm changes that will be made
+- 5.3.1.22 The cases table CSU entries should link to each corresponding detailed case info page for each entry
+- 5.3.1.23 The search cases form CSU shall use some combination of text fields and buttons
+- 5.3.1.24 The search cases form CSU shall include options necessary to enter any amount of search criteria needed to find murder cases
+- 5.3.1.25 The login page CSU shall have a username input field
+- 5.3.1.26 The login page CSU shall have a password input field
+- 5.3.1.27 The login page shall have a login button
+- 5.3.1.28 The login page shall redirect to another page if the user is successfully authenticated
+- 5.3.1.29 The login page shall not appear if the user is currently logged in
+- 5.3.1.30 *If* the user remains inactive for some time, the GUI subsystem shall log the user out
+- 5.3.1.31 The detailed case info page CSU shall display all information that has been entered for that case
+- 5.3.1.32 The detailed case info page shall include empty headings for information not entered
+- 5.3.1.33 The detailed case info page shall include edit buttons next to each entry if the user has write access
+- 5.3.1.34 The detailed case info page shall include a history log button for each entry
+- 5.3.1.35 The history log button shall retrieve a list of changes made to entry and by whom
+- 5.3.1.36 Each case will have a unique detailed case info page URL
+- 5.3.1.37 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
+- 5.3.1.38 The navigation bar shall have a link to the dashboard
+- 5.3.1.39 The navigation bar will have a link to the add cases page
+- 5.3.1.40 The navigation bar will have a link to the current user's profile page
+- 5.3.1.41 The navigation bar will have a link to logout and back to the login page
+- 5.3.1.42 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
 
 #### 5.3.2	QR Code System CSC
 Note: The entire barcode system CSC is **not** a mandatory provision; therefore, all functional requirements will say 'should' or 'will'
@@ -109,6 +114,7 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 - 5.3.3.2 The backend server will serve present time data from the database given conditionals on the Frontend
 - 5.3.3.3 The backend server will send changes to the database if a case entry is edited
 - 5.3.3.4 The backend server will send a case entry to the database if a case entry is added
+- 5.3.3.5 The backend server will update history when a change occurs in the database
 
 ### 5.4	Performance Requirements
 
