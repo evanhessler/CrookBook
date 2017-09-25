@@ -29,13 +29,29 @@ CSCI CrookBook is composed of the following CSCs:
 - 1.2.1		**GUI Client CSC**:  Web based portal to CrookBook
 - 1.2.1.1	**Client Main Screen CSU**:  Dashboard for CrookBook
 - 1.2.1.1.1	**Cases Table module**: Displays list of the top priority cases
-- 1.2.1.1.2	**Add New Case Form module**: Form used to add new case to CrookBook
-- 1.2.1.1.3	**Search Cases Form module**: Form used to search existing CrookBook cases
+- 1.2.1.1.2	**Search Cases Form module**: Form used to search existing CrookBook cases
+- 1.2.2		**Add New Case Page CSU**: Form used to add new case to CrookBook
+- 1.2.3		**Login Page CSU**: Webpage containing login form
+- 1.2.4		**Detailed Case Info Page CSU**: Page for each entry in CrookBook database that displays all case information
 
 1.2.2		DESCRIBE BACKEND CSC HERE
 
 1.2.3		DESCRIBE DATABASE CSC HERE
 ### 1.3	Functional Requirements
+#### 1.3.1  GUI Client CSC
+- 1.3.1.1 The GUI subsystem shall display a window for the main application.
+- 1.3.1.2 The GUI subsystem shall react to mouse clicks on displayed buttons.
+- 1.3.1.3 The GUI subsystem shall react to typing within displayed text fields.
+- 1.3.1.4 The GUI subsystem shall react to typing within displayed text fields.
+- 1.3.1.5 The GUI subsystem shall react to typing within displayed text fields.
+- 1.3.1.5 The GUI subsystem shall display both the cases table module and search form module on one webpage
+- 1.3.1.6 The cases table module should display the most commonly used information on cases
+- 1.3.1.7 The cases table module should have the highest priority cases on top
+- 1.3.1.8 The cases table module will be large and legible
+- 1.3.1.9 The search cases form module shall use some combination of text fields and buttons
+- 1.3.1.10 The search cases form module shall include options necessary to enter any amount of case information needed for murder cases
+#### 1.3.1  BACKEND CSC FUNCTIONAL REQUIREMENTS HERE
+
 
 ### 1.4	Performance Requirements
 
