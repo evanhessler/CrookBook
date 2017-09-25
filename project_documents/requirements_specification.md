@@ -84,9 +84,9 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.3.1.31 Each case will have a unique detailed case info page URL
 - 5.3.1.32 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
 - 5.3.1.33 The navigation bar shall have a link to the dashboard
-- 5.3.1.34 The navigation bar will have a link to the add cases page
-- 5.3.1.35 The navigation bar will have a link to the current user's profile page
-- 5.3.1.36 The navigation bar will have a link to logout and back to the login page
+- 5.3.1.34 The navigation bar shall have a link to the add cases page
+- 5.3.1.35 The navigation bar shall have a link to the current user's profile page
+- 5.3.1.36 The navigation bar shall have a link to logout and back to the login page
 - 5.3.1.37 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
 
 #### 5.3.2	QR Code System CSC
@@ -101,14 +101,31 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 - 5.3.2.7 The murder book info page will contain info about where the murder book was last checked out
 - 5.3.2.8 The murder book info page will contain info about when the murder book is due to be returned
 - 5.3.2.9 The murder book info page will contain info about who checked out the murder book
-- 5.3.2.9 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case)
-- 5.3.2.10 The murder book info page will contain info from the corresponding detailed case info page
+- 5.3.2.10 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case)
+- 5.3.2.11 The murder book info page will contain info from the corresponding detailed case info page
 
 #### 5.3.3 Backend Server CSC
-- 5.3.3.1 The backend server will serve the correct page from an HTTP request made on the Frontend
-- 5.3.3.2 The backend server will serve present time data from the database given conditionals on the Frontend
-- 5.3.3.3 The backend server will send changes to the database if a case entry is edited
-- 5.3.3.4 The backend server will send a case entry to the database if a case entry is added
+- 5.3.3.1 The backend server shall serve the correct page from an HTTP request made on the Frontend
+- 5.3.3.2 The backend server shall serve present time data from the database given conditionals on the Frontend
+- 5.3.3.3 The backend server shall send changes to the database if a case entry is edited
+- 5.3.3.4 The backend server shall send a case entry to the database if a case entry is added
+- 5.3.3.5 The backend shall handle concurrent requests to the database up to 15 users
+- 5.3.3.6 The backend shall send a 404 error code when a page is not found
+- 5.3.3.7 The backend shall send a 500 error code when there is an issue with the server
+- 5.3.3.8 The backend will notify the Frontend if the database is being backed up
+
+#### 5.3.4 Database CSC
+- 5.3.4.1 The Database shall accept queries on stored data
+- 5.3.4.2 The Database shall only be accessible through LAPD personnel and the LAPD CrookBook Web App
+- 5.3.4.3 The Database shall have transactions to back up the data
+- 5.3.4.4 The Database shall provide snapshots of previous data to only the Database Administrator
+- 5.3.4.5 The Database shall prevent concurrent data modification between two or more users
+- 5.3.4.6 The Database shall provide a unique key for every case entry
+- 5.3.4.7 The Database will perform minimum operations on queried data
+- 5.3.4.8 The Database will perform maximum operations on queried data
+- 5.3.4.9 The Database will perform arithmetic operations on queried data
+- 5.3.4.10 *If* the QR Code System CSC is implemented, the Database will provide a unique key for
+every murder book
 
 ### 5.4	Performance Requirements
 
