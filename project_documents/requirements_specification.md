@@ -47,6 +47,7 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.2.4 **Database CSC**: Database that stores all the case information
 	- 5.2.4.1 **Querying CSU**: package that allow querying all existing data
 	- 5.2.4.2 **Indexing CSU**: package that indexes the data
+	- 5.2.4.3 **History CSU**: package that backs up the database periodically (Need to decide how this is done. By month, week etc.)
 
 ### 5.3	Functional Requirements
 #### 5.3.1	GUI Client CSC
@@ -55,34 +56,38 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.3.1.3 The GUI subsystem shall react to typing within displayed text fields.
 - 5.3.1.4 The GUI subsystem shall display both the cases table module and search form module on one webpage
 - 5.3.1.5 The GUI subsystem shall use Hyper Text Markup Language (HTML)
-- 5.3.1.6 The GUI subsystem should include 4 seperate pages
-- 5.3.1.7 The GUI subsystem should include instructions for use when needed
-- 5.3.1.8 One GUI subsystem page shall contain the cases table CSU, search cases form CSU, and navigation bar CSU (aka the dashboard)
-- 5.3.1.9 The second GUI subsystem page shall contain exclusively the login page CSU and navigation bar CSU
-- 5.3.1.10 If the user is not authenticated, the login page will always appear
-- 5.3.1.11 The third GUI subsystem page shall contain the detailed case info page CSU and navigation bar CSU
-- 5.3.1.12 The fourth GUI subsystem page will display the current users profile
-- 5.3.1.13 The fourth GUI subsystem page will have an option to give another user write access if the current user is an administrator
-- 5.3.1.14 The cases table CSU should display the most commonly used information on cases
-- 5.3.1.15 The cases table CSU should have the highest priority cases on top
-- 5.3.1.16 The cases table CSU entries will be large and legible
-- 5.3.1.17 The cases table CSU should have an edit button next to each entry if the user has write access
-- 5.3.1.18 The cases table CSU entries should link to each corresponding detailed case info page for each entry
-- 5.3.1.19 The search cases form CSU shall use some combination of text fields and buttons
-- 5.3.1.20 The search cases form CSU shall include options necessary to enter any amount of search criteria needed to find murder cases
-- 5.3.1.21 The login page CSU shall have a username input field
-- 5.3.1.22 The login page CSU shall have a password input field
-- 5.3.1.23 The login page shall have a login button
-- 5.3.1.24 The login page shall redirect to another page if the user is successfully authenticated
-- 5.3.1.25 The login page shall not appear if the user is currently logged in
-- 5.3.1.26 The detailed case info page CSU shall display all information that has been entered for that case
-- 5.3.1.27 The detailed case info page shall include empty headings for information not entered
-- 5.3.1.28 The detailed case info page shall include edit buttons next to each entry if the user has write access
-- 5.3.1.29 Each case will have a unique detailed case info page URL
-- 5.3.1.30 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
-- 5.3.1.31 The navigation bar shall have a link to the dashboard
-- 5.3.1.32 The navigation bar will have a link to the add cases page
-- 5.3.1.33 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
+- 5.3.1.6 The GUI subsystem shall allow an Administrator and Detectives read and write access
+- The GUI subsystem shall allow normal users read access
+- 5.3.1.7 The GUI subsystem should include 4 separate pages
+- 5.3.1.8 The GUI subsystem should include instructions for use when needed
+- 5.3.1.9 One GUI subsystem page shall contain the cases table CSU, search cases form CSU, and navigation bar CSU (aka the dashboard)
+- 5.3.1.10 The second GUI subsystem page shall contain exclusively the login page CSU and navigation bar CSU
+- 5.3.1.11 If the user is not authenticated, the login page will always appear
+- 5.3.1.12 The third GUI subsystem page shall contain the detailed case info page CSU and navigation bar CSU
+- 5.3.1.13 The fourth GUI subsystem page will display the current user's profile and permissions (read, write)
+- 5.3.1.14 The fourth GUI subsystem page will have an option to give another user write access if the current user is an administrator
+- 5.3.1.15 The cases table CSU should display the most commonly used information on cases
+- 5.3.1.16 The cases table CSU should have the highest priority cases on top
+- 5.3.1.17 The cases table CSU entries will be large and legible
+- 5.3.1.18 The cases table CSU should have an edit button next to each entry if the user has write access
+- 5.3.1.19 The cases table CSU entries should link to each corresponding detailed case info page for each entry
+- 5.3.1.20 The search cases form CSU shall use some combination of text fields and buttons
+- 5.3.1.21 The search cases form CSU shall include options necessary to enter any amount of search criteria needed to find murder cases
+- 5.3.1.22 The login page CSU shall have a username input field
+- 5.3.1.23 The login page CSU shall have a password input field
+- 5.3.1.24 The login page shall have a login button
+- 5.3.1.25 The login page shall redirect to another page if the user is successfully authenticated
+- 5.3.1.26 The login page shall not appear if the user is currently logged in
+- 5.3.1.27 The detailed case info page CSU shall display all information that has been entered for that case
+- 5.3.1.28 The detailed case info page shall include empty headings for information not entered
+- 5.3.1.29 The detailed case info page shall include edit buttons next to each entry if the user has write access
+- 5.3.1.30 Each case will have a unique detailed case info page URL
+- 5.3.1.31 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
+- 5.3.1.32 The navigation bar shall have a link to the dashboard
+- 5.3.1.33 The navigation bar will have a link to the add cases page
+- 5.3.1.34 The navigation bar will have a link to the current user's profile page
+- 5.3.1.35 The navigation bar will have a link to logout and back to the login page
+- 5.3.1.36 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
 
 #### 5.3.2	QR Code System CSC
 Note: The entire barcode system CSC is **not** a mandatory provision; therefore, all functional requirements will say 'should' or 'will'
@@ -98,6 +103,12 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 - 5.3.2.9 The murder book info page will contain info about who checked out the murder book
 - 5.3.2.9 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case)
 - 5.3.2.10 The murder book info page will contain info from the corresponding detailed case info page
+
+#### 5.3.3 Backend Server CSC
+- 5.3.3.1 The backend server will serve the correct page from an HTTP request made on the Frontend
+- 5.3.3.2 The backend server will serve present time data from the database given conditionals on the Frontend
+- 5.3.3.3 The backend server will send changes to the database if a case entry is edited
+- 5.3.3.4 The backend server will send a case entry to the database if a case entry is added
 
 ### 5.4	Performance Requirements
 
