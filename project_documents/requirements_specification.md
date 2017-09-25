@@ -26,11 +26,11 @@ DESCRIBE APPLICATION SERVER OR WEB SERVER(BACKEND) -> DESCRIBE DATABASE SERVER
 ### 1.2 	CSCI Component Breakdown
 CSCI CrookBook is composed of the following CSCs:
 
-1.2.1		**GUI Client CSC**:  Web based portal to CrookBook
-1.2.1.1		**Client Main Screen CSU**:  Dashboard for CrookBook
-1.2.1.1.1	**Cases Table module**: Displays list of the top priority cases
-1.2.1.1.2	**Add New Case Form module**: Form used to add new case to CrookBook
-1.2.1.1.3	**Search Cases Form module**: Form used to search existing CrookBook cases
+- 1.2.1		**GUI Client CSC**:  Web based portal to CrookBook
+- 1.2.1.1	**Client Main Screen CSU**:  Dashboard for CrookBook
+- 1.2.1.1.1	**Cases Table module**: Displays list of the top priority cases
+- 1.2.1.1.2	**Add New Case Form module**: Form used to add new case to CrookBook
+- 1.2.1.1.3	**Search Cases Form module**: Form used to search existing CrookBook cases
 
 1.2.2		DESCRIBE BACKEND CSC HERE
 
