@@ -30,16 +30,19 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.2.1.1	**Cases Table CSU**: Displays list of the top priority cases
 - 5.2.1.2	**Search Cases Form CSU**: Form used to search existing CrookBook cases
 - 5.2.1.3	**Add New Case Page CSU**: Form used to add new case to CrookBook
-- 5.2.1.4	**Login Page CSU**: Webpage containing login form
-- 5.2.1.5	**Detailed Case Info Page CSU**: Page for each entry in CrookBook database that displays all case information
-- 5.2.1.6	**Navigation Bar CSU**: Navigation bar used on every page in CrookBook
+- 5.2.1.4 **Edit Existing Case Page CSU**: Ability to edit an existing case in CrookBook
+- 5.2.1.5	**Login Page CSU**: Webpage containing login form
+- 5.2.1.6 **User Profile Page CSU**: Webpage containing user status permissions
+- 5.2.1.7	**Detailed Case Info Page CSU**: Page for each entry in CrookBook database that displays all case information
+- 5.2.1.8	**Navigation Bar CSU**: Navigation bar used on every page in CrookBook
 
 - 5.2.2		**QR System CSC**: QR system used for each physical case binder
 - 5.2.2.1	**QR Code Printer CSU**: Small QR code printer
 - 5.2.2.2	**QR Code Reader CSU**: Mobile QR code reader
 - 5.2.2.3	**Murder Book Info Page CSU**: Displays information about each physical case binder
 
-5.2.3		DESCRIBE BACKEND CSC HERE
+- 5.2.3		**Backend Server CSC**: Server that maintains the GUI Client
+- 5.2.3.1 **NodeJS modules CSU**: modules for handling requests to serve Frontend middleware static files
 
 5.2.4		DESCRIBE DATABASE CSC HERE
 ### 5.3	Functional Requirements
