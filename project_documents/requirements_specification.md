@@ -147,7 +147,7 @@ Authenticated users should be able to quickly navigate through every page the Cr
 - 5.4.3 Quick search results<br>
 The Frontend shall communicate search results within 5 seconds.
 
-- 5.4.4 Quick edit and update
+- 5.4.4 Quick edit and update<br>
 Authenticated users should be able to update database and case table quickly after saving any changes that were made
 
 
