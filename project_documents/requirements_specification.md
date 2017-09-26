@@ -3,7 +3,11 @@
 ## 5.1	Introduction
 This Software Requirements Specification (SRS) documents the requirements for the Los Angeles Police Department (LAPD) Database Web Application called
 CrookBook. The CrookBook Database is a relational database that will allow LAPD
-to enter in and find police case data with ease. The procedure will be done across the Internet from a desktop computer or laptop and the application is built and tailored for the needs of LAPD. The application is meant to provide authorized LAPD personnel data reports that indicate cases that are worthwhile investigating. The Web Application will be built with a three-tier client/server architecture. So at a high level, the user will be interacting with a Graphical User Interface completed by a frontend framework.
+to enter in and find police case data with ease. The procedure will be done across the Internet from a desktop computer or laptop and the application is built and tailored for the needs of LAPD. The application is meant to provide authorized LAPD personnel data reports that indicate cases that are worthwhile investigating. The Web Application will be built with a three-tier client/server architecture. So at a high level, the user will be interacting with a Graphical User Interface completed by a frontend framework. The backend will be the connection that brings together the frontend and the database. It will handle all server requests from the frontend and be able to distinguish if accessing the database is needed. The relational database used will store all case entries and will be fully reliable to work with concurrent access between two or more users.
+
+<p align="center">
+	<img src="/images/architecture_flowchart.png" alt="Architecture Design">
+</p>
 
 The following table defines the language used in specifying requirements in this document. Only 'shall' statements are explicit requirements for this project.
 
@@ -12,8 +16,6 @@ The following table defines the language used in specifying requirements in this
 | Shall  | Expresses mandatory provision.                |
 | Should | Expresses non-mandatory provision.            |
 | Will   | Declaration of purpose such as a design goal. |
-
-DESCRIBE APPLICATION SERVER OR WEB SERVER(BACKEND) -> DESCRIBE DATABASE SERVER
 
 ## Document Outline
 - 5.2	CSCI Component Breakdown
