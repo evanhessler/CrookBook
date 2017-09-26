@@ -113,6 +113,7 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 - 5.3.3.6 The backend shall send a 404 error code when a page is not found
 - 5.3.3.7 The backend shall send a 500 error code when there is an issue with the server
 - 5.3.3.8 The backend will notify the Frontend if the database is being backed up
+- 5.3.3.9 The backend shall log out a user if they are idle for more than 10 minutes
 
 #### 5.3.4 Database CSC
 - 5.3.4.1 The Database shall accept queries on stored data
@@ -128,6 +129,14 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 every murder book
 
 ### 5.4	Performance Requirements
+- 5.4.1 Immediate login<br>
+Authenticated users should be able to login and see the home dashboard quickly and with ease.
+
+- 5.4.2 Immediate navigation<br>
+Authenticated users should be able to quickly navigate through every page the CrookBook Web App provides.
+
+- 5.4.3 Quick search results<br>
+The Frontend shall communicate search results within 5 seconds.
 
 ### 5.5	Project Environment Requirements
 
