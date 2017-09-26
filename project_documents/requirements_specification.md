@@ -3,7 +3,11 @@
 ## 5.1	Introduction
 This Software Requirements Specification (SRS) documents the requirements for the Los Angeles Police Department (LAPD) Database Web Application called
 CrookBook. The CrookBook Database is a relational database that will allow LAPD
-to enter in and find police case data with ease. The procedure will be done across the Internet from a desktop computer or laptop and the application is built and tailored for the needs of LAPD. The application is meant to provide authorized LAPD personnel data reports that indicate cases that are worthwhile investigating. The Web Application will be built with a three-tier client/server architecture. So at a high level, the user will be interacting with a Graphical User Interface completed by a frontend framework.
+to enter in and find police case data with ease. The procedure will be done across the Internet from a desktop computer or laptop and the application is built and tailored for the needs of LAPD. The application is meant to provide authorized LAPD personnel data reports that indicate cases that are worthwhile investigating. The Web Application will be built with a three-tier client/server architecture. So at a high level, the user will be interacting with a Graphical User Interface completed by a frontend framework. The backend will be the connection that brings together the frontend and the database. It will handle all server requests from the frontend and be able to distinguish if accessing the database is needed. The relational database used will store all case entries and will be fully reliable to work with concurrent access between two or more users.
+
+<p align="center">
+	<img src="./images/architecture_flowchart.png" alt="Architecture Design">
+</p>
 
 The following table defines the language used in specifying requirements in this document. Only 'shall' statements are explicit requirements for this project.
 
@@ -12,8 +16,6 @@ The following table defines the language used in specifying requirements in this
 | Shall  | Expresses mandatory provision.                |
 | Should | Expresses non-mandatory provision.            |
 | Will   | Declaration of purpose such as a design goal. |
-
-DESCRIBE APPLICATION SERVER OR WEB SERVER(BACKEND) -> DESCRIBE DATABASE SERVER
 
 ## Document Outline
 - 5.2	CSCI Component Breakdown
@@ -106,17 +108,42 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 - 5.3.2.7 The murder book info page will contain info about where the murder book was last checked out
 - 5.3.2.8 The murder book info page will contain info about when the murder book is due to be returned
 - 5.3.2.9 The murder book info page will contain info about who checked out the murder book
-- 5.3.2.9 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case)
-- 5.3.2.10 The murder book info page will contain info from the corresponding detailed case info page
+- 5.3.2.10 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case)
+- 5.3.2.11 The murder book info page will contain info from the corresponding detailed case info page
 
 #### 5.3.3 Backend Server CSC
-- 5.3.3.1 The backend server will serve the correct page from an HTTP request made on the Frontend
-- 5.3.3.2 The backend server will serve present time data from the database given conditionals on the Frontend
-- 5.3.3.3 The backend server will send changes to the database if a case entry is edited
-- 5.3.3.4 The backend server will send a case entry to the database if a case entry is added
-- 5.3.3.5 The backend server will update history when a change occurs in the database
+- 5.3.3.1 The backend server shall serve the correct page from an HTTP request made on the Frontend
+- 5.3.3.2 The backend server shall serve present time data from the database given conditionals on the Frontend
+- 5.3.3.3 The backend server shall send changes to the database if a case entry is edited
+- 5.3.3.4 The backend server shall send a case entry to the database if a case entry is added
+- 5.3.3.5 The backend shall handle concurrent requests to the database up to 15 users
+- 5.3.3.6 The backend shall send a 404 error code when a page is not found
+- 5.3.3.7 The backend shall send a 500 error code when there is an issue with the server
+- 5.3.3.8 The backend will notify the Frontend if the database is being backed up
+- 5.3.3.9 The backend shall log out a user if they are idle for more than 10 minutes
+
+#### 5.3.4 Database CSC
+- 5.3.4.1 The Database shall accept queries on stored data
+- 5.3.4.2 The Database shall only be accessible through LAPD personnel and the LAPD CrookBook Web App
+- 5.3.4.3 The Database shall have transactions to back up the data
+- 5.3.4.4 The Database shall provide snapshots of previous data to only the Database Administrator
+- 5.3.4.5 The Database shall prevent concurrent data modification between two or more users
+- 5.3.4.6 The Database shall provide a unique key for every case entry
+- 5.3.4.7 The Database will perform minimum operations on queried data
+- 5.3.4.8 The Database will perform maximum operations on queried data
+- 5.3.4.9 The Database will perform arithmetic operations on queried data
+- 5.3.4.10 *If* the QR Code System CSC is implemented, the Database will provide a unique key for
+every murder book
 
 ### 5.4	Performance Requirements
+- 5.4.1 Immediate login<br>
+Authenticated users should be able to login and see the home dashboard quickly and with ease.
+
+- 5.4.2 Immediate navigation<br>
+Authenticated users should be able to quickly navigate through every page the CrookBook Web App provides.
+
+- 5.4.3 Quick search results<br>
+The Frontend shall communicate search results within 5 seconds.
 
 ### 5.5	Project Environment Requirements
 
