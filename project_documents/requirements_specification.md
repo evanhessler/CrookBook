@@ -84,19 +84,19 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.3.1.29 The login page shall redirect to another page if the user is successfully authenticated
 - 5.3.1.30 The login page shall display an error message if user inputted incorrect credentials
 - 5.3.1.31 The login page shall not appear if the user is currently logged in
-- 5.3.1.32 *If* the user remains inactive for some time, the GUI subsystem shall log the user out
-- 5.3.1.33 The detailed case info page CSU shall display all information that has been entered for that case
-- 5.3.1.34 The detailed case info page shall include empty headings for information not entered
-- 5.3.1.35 The detailed case info page shall include edit buttons next to each entry if the user has write access
-- 5.3.1.36 The detailed case info page shall include a history log button for each entry
-- 5.3.1.37 The history log button shall retrieve a list of changes made to entry and by whom
-- 5.3.1.38 Each case will have a unique detailed case info page URL
-- 5.3.1.39 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
-- 5.3.1.40 The navigation bar shall have a link to the dashboard
-- 5.3.1.41 The navigation bar will have a link to the add cases page
-- 5.3.1.42 The navigation bar will have a link to the current user's profile page
-- 5.3.1.43 The navigation bar will have a link to logout and back to the login page
-- 5.3.1.44 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
+- 5.3.1.32 There should be a logout button in every page when a user is logged in
+- 5.3.1.32 The detailed case info page CSU shall display all information that has been entered for that case
+- 5.3.1.33 The detailed case info page shall include empty headings for information not entered
+- 5.3.1.34 The detailed case info page shall include edit buttons next to each entry if the user has write access
+- 5.3.1.35 The detailed case info page shall include a history log button for each entry
+- 5.3.1.36 The history log button shall retrieve a list of changes made to entry and by whom
+- 5.3.1.37 Each case will have a unique detailed case info page URL
+- 5.3.1.38 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
+- 5.3.1.39 The navigation bar shall have a link to the dashboard
+- 5.3.1.40 The navigation bar will have a link to the add cases page
+- 5.3.1.41 The navigation bar will have a link to the current user's profile page
+- 5.3.1.42 The navigation bar will have a link to logout and back to the login page
+- 5.3.1.43 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
 
 #### 5.3.2	QR Code System CSC
 Note: The entire barcode system CSC is **not** a mandatory provision; therefore, all functional requirements will say 'should' or 'will'
@@ -112,6 +112,7 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 - 5.3.2.9 The murder book info page will contain info about who checked out the murder book
 - 5.3.2.10 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case)
 - 5.3.2.11 The murder book info page will contain info from the corresponding detailed case info page
+- 5.3.2.12 The murder book info page will display the index or id of the murder book
 
 #### 5.3.3 Backend Server CSC
 - 5.3.3.1 The backend server shall serve the correct page from an HTTP request made on the Frontend
