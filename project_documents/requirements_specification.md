@@ -54,100 +54,92 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.3.1.1 The GUI subsystem shall display a window for the main application.
 - 5.3.1.2 The GUI subsystem shall react to mouse clicks on displayed buttons.
 - 5.3.1.3 The GUI subsystem shall react to typing within displayed text fields.
-- 5.3.1.4 The GUI subsystem shall display both the cases table module and search form module on one webpage
-- 5.3.1.5 The GUI subsystem shall use Hyper Text Markup Language (HTML)
-- 5.3.1.6 The GUI subsystem shall allow an Administrator and Detectives read and write access
-- 5.3.1.7 The GUI subsystem shall allow normal users read access
-- 5.3.1.8 The GUI subsystem should include 4 separate pages
-- 5.3.1.9 The GUI subsystem should include instructions for use when needed
-- 5.3.1.10 One GUI subsystem page shall contain the cases table CSU, search cases form CSU, and navigation bar CSU (aka the dashboard)
-- 5.3.1.11 The second GUI subsystem page shall contain exclusively the login page CSU and navigation bar CSU
-- 5.3.1.12 If the user is not authenticated, the login page will always appear
-- 5.3.1.13 The third GUI subsystem page shall contain the detailed case info page CSU and navigation bar CSU
-- 5.3.1.14 The fourth GUI subsystem page will display the current user's profile and permissions (read, write)
-- 5.3.1.15 The fourth GUI subsystem page will have an option to give another user write access if the current user is an administrator
-- 5.3.1.16 The cases table CSU should display the most commonly used information on cases
-- 5.3.1.17 The cases table CSU should have the highest priority cases on top
-- 5.3.1.18 The cases table CSU entries will be large and legible
-- 5.3.1.19 The cases table CSU should have an edit button next to each entry if the user has write access
-- 5.3.1.20 The cases table CSU should have a sort dropdown menu
-- 5.3.1.21 The cases table CSU should have an upload CSV file
-- 5.3.1.22 The GUI subsystem shall display a modal window for user to confirm changes that will be made
-- 5.3.1.23 The cases table CSU entries should link to each corresponding detailed case info page for each entry
-- 5.3.1.24 The search cases form CSU shall use some combination of text fields and buttons
-- 5.3.1.25 The search cases form CSU shall include options necessary to enter any amount of search criteria needed to find murder cases
-- 5.3.1.26 The login page CSU shall have a username input field
-- 5.3.1.27 The login page CSU shall have a password input field
-- 5.3.1.28 The login page shall have a login button
-- 5.3.1.29 The login page shall redirect to another page if the user is successfully authenticated
-- 5.3.1.30 The login page shall display an error message if user inputted incorrect credentials
-- 5.3.1.31 The login page shall not appear if the user is currently logged in
-- 5.3.1.32 There should be a logout button in every page when a user is logged in
-- 5.3.1.32 The detailed case info page CSU shall display all information that has been entered for that case
-- 5.3.1.33 The detailed case info page shall include empty headings for information not entered
-- 5.3.1.34 The detailed case info page shall include edit buttons next to each entry if the user has write access
-- 5.3.1.35 The detailed case info page shall include a history log button for each entry
-- 5.3.1.36 The history log button shall retrieve a list of changes made to entry and by whom
-- 5.3.1.37 Each case will have a unique detailed case info page URL
-- 5.3.1.38 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the Barcode system
-- 5.3.1.39 The navigation bar shall have a link to the dashboard
-- 5.3.1.40 The navigation bar will have a link to the add cases page
-- 5.3.1.41 The navigation bar will have a link to the current user's profile page
-- 5.3.1.42 The navigation bar will have a link to logout and back to the login page
-- 5.3.1.43 *If* the Barcode Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
+- 5.3.1.4 The GUI subsystem shall display both the case table component and the search form component on separate webpages.
+- 5.3.1.5 The GUI subsystem shall use Hyper Text Markup Language (HTML).
+- 5.3.1.6 The GUI subsystem shall allow an Administrators and Detectives read and write access.
+- 5.3.1.7 The GUI subsystem shall allow normal users only read access.
+- 5.3.1.8 The GUI subsystem should include four separate pages.
+- 5.3.1.9 The GUI subsystem should include instructions for new users.
+- 5.3.1.10 One GUI subsystem page shall contain the cases table CSU, search cases form CSU, and navigation bar CSU (aka the dashboard).
+- 5.3.1.11 The second GUI subsystem page shall contain exclusively the login page CSU and navigation bar CSU.
+- 5.3.1.12 If the user is not authenticated, the login page shall always appear.
+- 5.3.1.13 The third GUI subsystem page shall contain the detailed case info page CSU and navigation bar CSU.
+- 5.3.1.14 The fourth GUI subsystem page will display the current user's profile and permissions (read, write).
+- 5.3.1.15 The fourth GUI subsystem page will have an option to give another user write access if the current user is an administrator.
+- 5.3.1.16 The cases table CSU should display the most commonly used information on cases.
+- 5.3.1.17 The cases table CSU should have the highest priority cases on top.
+- 5.3.1.18 The cases table CSU entries will be large and legible.
+- 5.3.1.19 The cases table CSU should have an edit button next to each entry if the user has write access.
+- 5.3.1.20 The cases table CSU should have a sort dropdown menu.
+- 5.3.1.21 The cases table CSU should have an upload CSV file.
+- 5.3.1.22 The GUI subsystem shall display a modal window for user to confirm changes that will be made.
+- 5.3.1.23 The cases table CSU entries should link to each corresponding detailed case info page for each entry.
+- 5.3.1.24 The search cases form CSU shall use some combination of text fields and buttons.
+- 5.3.1.25 The search cases form CSU shall include options necessary to enter any amount of search criteria needed to find murder cases.
+- 5.3.1.26 The login page CSU shall have a username input field.
+- 5.3.1.27 The login page CSU shall have a password input field.
+- 5.3.1.28 The login page shall have a login button.
+- 5.3.1.29 The login page shall redirect to another page if the user is successfully authenticated.
+- 5.3.1.30 The login page shall display an error message if user inputted incorrect credentials.
+- 5.3.1.31 The login page shall not appear if the user is currently logged in.
+- 5.3.1.32 There should be a logout button in every page when a user is logged in.
+- 5.3.1.32 The detailed case info page CSU shall display all information that has been entered for that case.
+- 5.3.1.33 The detailed case info page shall include empty headings for information not entered.
+- 5.3.1.34 The detailed case info page should include edit buttons next to each entry if the user has write access.
+- 5.3.1.35 The detailed case info page should include a history log button for each entry.
+- 5.3.1.36 The history log button shall retrieve a list of changes made to entry and by whom.
+- 5.3.1.37 Each case will have a unique URL for its detailed info page.
+- 5.3.1.38 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the Barcode system.
+- 5.3.1.39 The navigation bar shall have a link to the dashboard.
+- 5.3.1.40 The navigation bar will have a link to the add cases page.
+- 5.3.1.41 The navigation bar will have a link to the current user's profile page.
+- 5.3.1.42 The navigation bar will have a link to logout and back to the login page.
+- 5.3.1.43 *If* the Barcode Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU.
 
 #### 5.3.2	Barcode Code System CSC
-Note: The entire barcode system CSC is **not** a mandatory provision; therefore, all functional requirements will say 'should' or 'will'
+Note: The entire barcode system CSC is **not** a mandatory provision; therefore, all functional requirements will say 'should' or 'will'.
 
-- 5.3.2.1 The Barcode code printer CSU should be small enough to comfortably carry around
-- 5.3.2.2 The Barcode code printer will be able to print a unique Barcode Code for each murder book
-- 5.3.2.3 The Barcode code reader will be able to work on any iPhone or android cell phone
-- 5.3.2.4 The Barcode code reader will be an application downloaded from some external source
-- 5.3.2.5 The Barcode code reader will link to the corresponding detailed case info page
-- 5.3.2.6 The murder book info page will contain info about when the murder book was last checked out
-- 5.3.2.7 The murder book info page will contain info about where the murder book was last checked out
-- 5.3.2.8 The murder book info page will contain info about when the murder book is due to be returned
-- 5.3.2.9 The murder book info page will contain info about who checked out the murder book
-- 5.3.2.10 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case)
-- 5.3.2.11 The murder book info page will contain info from the corresponding detailed case info page
-- 5.3.2.12 The murder book info page will display the index or id of the murder book
+- 5.3.2.1 The Barcode code printer CSU should be small enough to comfortably carry around.
+- 5.3.2.2 The Barcode code printer will be able to print a unique Barcode Code for each murder book.
+- 5.3.2.3 The Barcode code reader will provide an unique murder book number.
+- 5.3.2.4 The murder book info page will contain info about when the murder book was last checked out.
+- 5.3.2.5 The murder book info page will contain info about where the murder book was last checked out.
+- 5.3.2.6 The murder book info page will contain info about when the murder book is due to be returned.
+- 5.3.2.7 The murder book info page will contain info about who checked out the murder book.
+- 5.3.2.8 The murder book info page will contain links to or info from other murder book info pages (if there are multiple volumes for one case).
+- 5.3.2.9 The murder book info page will contain info from the corresponding detailed case info page.
+- 5.3.2.10 The murder book info page will display the index or id of the murder book.
 
 #### 5.3.3 Backend Server CSC
-- 5.3.3.1 The backend server shall serve the correct page from an HTTP request made on the Frontend
-- 5.3.3.2 The backend server shall serve present time data from the database given conditionals on the Frontend
-- 5.3.3.3 The backend server shall send changes to the database if a case entry is edited
-- 5.3.3.4 The backend server shall send a case entry to the database if a case entry is added
-- 5.3.3.5 The backend shall handle concurrent requests to the database up to 15 users
-- 5.3.3.6 The backend shall send a 404 error code when a page is not found
-- 5.3.3.7 The backend shall send a 500 error code when there is an issue with the server
-- 5.3.3.8 The backend will notify the Frontend if the database is being backed up
-- 5.3.3.9 The backend shall log out a user if they are idle for more than 10 minutes
+- 5.3.3.1 The backend server shall serve the correct page from an HTTP request made on the Frontend.
+- 5.3.3.2 The backend server shall serve present time data from the database given conditionals on the Frontend.
+- 5.3.3.3 The backend server shall send changes to the database if a case entry edit request is received.
+- 5.3.3.4 The backend server shall send a case entry to the database if a case entry request is received.
+- 5.3.3.5 The backend shall handle concurrent requests to the database up to 100 users.
+- 5.3.3.6 The backend shall send a 404 error code when a page is not found.
+- 5.3.3.7 The backend shall send a 500 error code when there is an issue with the server.
+- 5.3.3.8 The backend will notify the Frontend if the database is being backed up.
+- 5.3.3.9 The backend shall log out a user if they are idle for more than 10 minutes.
 
 #### 5.3.4 Database CSC
-- 5.3.4.1 The Database shall accept queries on stored data
-- 5.3.4.2 The Database shall only be accessible through LAPD personnel and the LAPD CrookBook Web App
-- 5.3.4.3 The Database shall have transactions to back up the data
-- 5.3.4.4 The Database shall provide snapshots of previous data to only the Database Administrator
-- 5.3.4.5 The Database shall prevent concurrent data modification between two or more users
-- 5.3.4.6 The Database shall provide a unique key for every case entry
-- 5.3.4.7 The Database will perform minimum operations on queried data
-- 5.3.4.8 The Database will perform maximum operations on queried data
-- 5.3.4.9 The Database will perform arithmetic operations on queried data
+- 5.3.4.1 The Database shall accept queries on stored data.
+- 5.3.4.2 The Database shall only be accessible through LAPD personnel and the LAPD CrookBook Web App.
+- 5.3.4.3 The Database shall have transactions to back up the data.
+- 5.3.4.4 The Database shall provide snapshots of previous data to only the Database Administrator.
+- 5.3.4.5 The Database shall prevent concurrent data modification between two or more users.
+- 5.3.4.6 The Database shall provide a unique key for every case entry.
+- 5.3.4.7 The Database will perform minimum comparison operations on queried data.
+- 5.3.4.8 The Database will perform maximum comparison operations on queried data.
+- 5.3.4.9 The Database will perform arithmetic operations on queried data.
 - 5.3.4.10 *If* the Barcode Code System CSC is implemented, the Database will provide a unique key for
-every murder book
+every murder book.
 
 ### 5.4	Performance Requirements
-- 5.4.1 Immediate login<br>
-Authenticated users should be able to login and see the home dashboard quickly and with ease.
 
-- 5.4.2 Immediate navigation<br>
-Authenticated users should be able to quickly navigate through every page the CrookBook Web App provides.
-
-- 5.4.3 Quick search results<br>
-The Frontend shall communicate search results within 5 seconds.
-
-- 5.4.4 Quick edit and update<br>
-Authenticated users should be able to update database and case table quickly after saving any changes that were made
+- 5.4.1 Authenticated users should be able to login and see the home dashboard quickly and with ease.
+- 5.4.2 Authenticated users should be able to quickly navigate through every page the CrookBook Web App provides.
+- 5.4.3 The Frontend shall communicate search results within 5 seconds.
+- 5.4.4 Authenticated users should be able to update database and case table quickly after saving any changes that were made
 
 
 
