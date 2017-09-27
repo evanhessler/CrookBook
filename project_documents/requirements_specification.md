@@ -156,11 +156,17 @@ Authenticated users should be able to update database and case table quickly aft
 ### 5.5	Project Environment Requirements
 
 #### 5.5.1	Development Environment Requirements
-
+- 5.5.1.1 Developing the Front End shall require Bootstrap
+- 5.5.1.2 Developing the Front End will require Materialize
+- 5.5.1.3 Developing the Backend server shall require fullstack web framework
+- 5.5.1.4 Developing the Database shall require an existing DBMS
 #### 5.5.2	Execution Environment Requirements
-- 5.5.2.1 The CrookBook web application shall be accessible through the following web browsers:
+- 5.5.2.1 Hardware requirements
+	- The application shall not require any special computer hardware. A computer from a trusted supplier is enough.
+#### 5.5.3 Software Requirements
+- 5.5.3.1 The CrookBook web application shall be accessible through the following web browsers:
 	- Google Chrome
 	- Firefox
 	- Safari
 	- Microsoft Edge
-- 5.5.2.2 The CrookBook web application shall be accessible on both iOS and Android devices
+- 5.5.3.1 The CrookBook web application shall be accessible through the web browser on both iOS and Android devices
