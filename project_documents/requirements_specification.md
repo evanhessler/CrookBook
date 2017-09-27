@@ -11,9 +11,9 @@ The following table defines the language used in specifying requirements in this
 
 | Type   | Definition                                    |
 |--------|-----------------------------------------------|
-| Shall  | Expresses mandatory provision.                |
-| Should | Expresses non-mandatory provision.            |
-| Will   | Declaration of purpose such as a design goal. |
+| Shall  | Expresses mandatory provision                 |
+| Should | Expresses non-mandatory provision             |
+| Will   | Declaration of intent such as a design goal   |
 
 ## Document Outline
 - 5.2	CSCI Component Breakdown
@@ -27,27 +27,27 @@ The following table defines the language used in specifying requirements in this
 CSCI CrookBook is composed of the following CSCs:
 
 - 5.2.1	**GUI Client CSC**:  Web based portal to CrookBook
-  - 5.2.1.1	**Cases Table CSU**: Displays list of the top priority cases
+  - 5.2.1.1	**Cases Table CSU**: Displays sortable list all cases
   - 5.2.1.2	**Search Cases Form CSU**: Form used to search existing CrookBook cases
   - 5.2.1.3	**Add New Case Page CSU**: Form used to add new case to CrookBook
   - 5.2.1.4 **Edit Existing Case Page CSU**: Ability to edit an existing case in CrookBook
   - 5.2.1.5	**Login Page CSU**: Webpage containing login form
-  - 5.2.1.6 **User Profile Page CSU**: Webpage containing user status permissions
+  - 5.2.1.6 **User Profile Page CSU**: Webpage containing user settings, and permissions
   - 5.2.1.7	**Detailed Case Info Page CSU**: Page for each entry in CrookBook database that displays all case information
   - 5.2.1.8	**Navigation Bar CSU**: Navigation bar used on every page in CrookBook
 
-- 5.2.2 **QR System CSC**: QR system used for each physical case binder
-  - 5.2.2.1	**QR Code Printer CSU**: Small QR code printer
-  - 5.2.2.2	**QR Code Reader CSU**: Mobile QR code reader
+- 5.2.2 **Barcode System CSC**: Barcode system used for each physical case binder
+  - 5.2.2.1	**Barcode Code Printer CSU**: Small Barcode code printer
+  - 5.2.2.2	**Barcode Code Reader CSU**: Mobile Barcode code reader
   - 5.2.2.3	**Murder Book Info Page CSU**: Displays information about each physical case binder
 
 - 5.2.3 **Backend Server CSC**: Server that maintains the GUI Client
-  - 5.2.3.1 **NodeJS modules CSU**: package that handle requests to connect Frontend middleware static files (CSS and Scripts)
+  - 5.2.3.1 **Webserver CSU**: Package that handles requests to server frontend files and data from the database
 
 - 5.2.4 **Database CSC**: Database that stores all the case information
-	- 5.2.4.1 **Querying CSU**: package that allow querying all existing data
-	- 5.2.4.2 **Indexing CSU**: package that indexes the data
-	- 5.2.4.3 **History CSU**: package that backs up the database periodically (Need to decide how this is done. By month, week etc.)
+	- 5.2.4.1 **Querying CSU**: Package that allow querying all existing data
+	- 5.2.4.2 **Indexing CSU**: Package that indexes the data
+	- 5.2.4.3 **History CSU**: Package that backs up the database periodically (Need to decide how this is done. By month, week etc.)
 
 ### 5.3	Functional Requirements
 #### 5.3.1	GUI Client CSC
@@ -89,21 +89,21 @@ CSCI CrookBook is composed of the following CSCs:
 - 5.3.1.35 The detailed case info page shall include a history log button for each entry
 - 5.3.1.36 The history log button shall retrieve a list of changes made to entry and by whom
 - 5.3.1.37 Each case will have a unique detailed case info page URL
-- 5.3.1.38 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the QR system
+- 5.3.1.38 The detailed case info page will contain links to the corresponding murder book info page(s) if the murder book has been entered into the Barcode system
 - 5.3.1.39 The navigation bar shall have a link to the dashboard
 - 5.3.1.40 The navigation bar will have a link to the add cases page
 - 5.3.1.41 The navigation bar will have a link to the current user's profile page
 - 5.3.1.42 The navigation bar will have a link to logout and back to the login page
-- 5.3.1.43 *If* the QR Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
+- 5.3.1.43 *If* the Barcode Code System CSC is implemented, the GUI subsystem will include the murder book info page CSU
 
-#### 5.3.2	QR Code System CSC
+#### 5.3.2	Barcode Code System CSC
 Note: The entire barcode system CSC is **not** a mandatory provision; therefore, all functional requirements will say 'should' or 'will'
 
-- 5.3.2.1 The QR code printer CSU should be small enough to comfortably carry around
-- 5.3.2.2 The QR code printer will be able to print a unique QR Code for each murder book
-- 5.3.2.3 The QR code reader will be able to work on any iPhone or android cell phone
-- 5.3.2.4 The QR code reader will be an application downloaded from some external source
-- 5.3.2.5 The QR code reader will link to the corresponding detailed case info page
+- 5.3.2.1 The Barcode code printer CSU should be small enough to comfortably carry around
+- 5.3.2.2 The Barcode code printer will be able to print a unique Barcode Code for each murder book
+- 5.3.2.3 The Barcode code reader will be able to work on any iPhone or android cell phone
+- 5.3.2.4 The Barcode code reader will be an application downloaded from some external source
+- 5.3.2.5 The Barcode code reader will link to the corresponding detailed case info page
 - 5.3.2.6 The murder book info page will contain info about when the murder book was last checked out
 - 5.3.2.7 The murder book info page will contain info about where the murder book was last checked out
 - 5.3.2.8 The murder book info page will contain info about when the murder book is due to be returned
@@ -133,7 +133,7 @@ Note: The entire barcode system CSC is **not** a mandatory provision; therefore,
 - 5.3.4.7 The Database will perform minimum operations on queried data
 - 5.3.4.8 The Database will perform maximum operations on queried data
 - 5.3.4.9 The Database will perform arithmetic operations on queried data
-- 5.3.4.10 *If* the QR Code System CSC is implemented, the Database will provide a unique key for
+- 5.3.4.10 *If* the Barcode Code System CSC is implemented, the Database will provide a unique key for
 every murder book
 
 ### 5.4	Performance Requirements
