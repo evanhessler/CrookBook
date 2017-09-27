@@ -1,6 +1,6 @@
 ## 4.4 Schedule
 
-This section provides schedule information for the CrookBook project.
+This section provides schedule information for the CrookBook project. Our GANTT chart will serve as our preliminary schedule.
 
 ### 4.4.1 GANTT Chart
 <p style="text-align:center">
