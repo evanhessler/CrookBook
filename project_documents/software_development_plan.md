@@ -57,12 +57,12 @@ The following items are to be delivered to the client:
 |:----------------:|-------------- |----------------|---------------|--------------------|
 | OSX              | Intel Core i5 | 4 Cores        | 4 GB          | Development/Testing|
 
-
 ### 4.2.2 Software Resources
 | Layer      | Software Used             |
 |:-----------|---------------------------|
 | Front-End  | Bootstrap, jQuery         |
 | Back-End   | Django, Node.js, Postgres |
+| Development| Atom, Git, Slack          |
 ## 4.3 Project Organization
 
 ## 4.4 Project Schedule
@@ -71,4 +71,4 @@ The following items are to be delivered to the client:
 ![GAANT Chart](./images/CrookBookGaant.png)
 ### 4.4.2 Task/Resource Table
 
-### 4.4.3 Class Schedule
+### 4.4.3 Class Schedule (Optional..per BJ's website for now)
