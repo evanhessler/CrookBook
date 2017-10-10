@@ -1,6 +1,38 @@
 # 4.0 Software Development Plan
 
 ## 4.1 Plan Introduction
+CrookBook is a web application that is meant to help LAPD detectives a better
+opportunity to find criminals. It is meant to be a search engine for all of
+LAPD's case files along with them having the ability to add or edit a case.
+Within the application, it adopts a Google-like search style. Users will be able
+to search for cases based on keywords or even use an advanced search, too. The
+user will be able to perform sub-searches from the previous search as well.
+Every entry will have a unique details page in which all users can view.
+Only authorized users will be able to add entries into the database. Throughout
+the process of development, each project member will be required to be familiar
+with the database (i.e., Postgres) for storing and retrieving data about case
+files. Web development calls upon our skills in Python and Django for backend
+purposes, and HTML, CSS and JavaScript for the user interface.
+
+With the implementation of Postgres, the team should accomplish the following
+tasks by the following date:
+- Reading documentation (10/13)
+- Post-request (10/16)
+- Get-request (10/16)
+- Adding a new case (Overlaps with frontend. Keep this?)
+- Editing a pre-existing case (Same as adding. Keep this?)
+
+Developing the user interface should be accomplished by the following deadlines:
+- Hub Page (10/08)
+- Adding a new case file (10/20)
+- Editing a pre-existing case file (10/23)
+- Basic case file search (11/03)
+- Advanced case file search (11/15)
+- Red Robin Review (11/16)
+
+Testing the product should be accomplished by the following date:
+- Beta Testing (12/13)
+- MVP User Interface (12/13)
 
 ### 4.1.1 Project Deliverables
 The following items are to be delivered to the client:
