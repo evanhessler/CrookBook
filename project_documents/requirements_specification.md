@@ -171,7 +171,7 @@ Authenticated users should be able to update database and case table quickly aft
 ## 5.1	Introduction
 This Software Requirements Specification (SRS) documents the requirements for the Los Angeles Police Department (LAPD) Database Web Application called CrookBook. The CrookBook database is a relational database that will allow LAPD to enter in and find police case data with ease. The users will interact with the application through the Internet from a desktop computer or laptop, and the application will be built and tailored for the needs of the LAPD. The application is meant to provide authorized LAPD personnel data reports that indicate which cases are worthwhile investigating. The Web Application will be built with a three-tier client/server architecture. At the application's high level, the user will interact with a Graphical User Interface (GUI) constructed using q frontend framework. The backend webserver will be the connection that brings together the frontend and the database. It will handle all requests from the frontend and be able to provide authentication and authorization. The relational database will store all case entries and will be fully reliable and guaranteed to work with 2-100 concurrent users.
 
-![Architecture Flowchart](./images/architecture_flowchart.png)
+![Architecture Flowchart](https://imgur.com/kNYP0uI.png)
 
 The following table defines the language used in specifying requirements in this document. Only 'shall' statements are explicit requirements for this project.
 
