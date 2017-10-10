@@ -21,9 +21,16 @@ The following items are to be delivered to the client:
 ## 4.2 Project Resources
 
 ### 4.2.1 Hardware Resources
+| Operating System | CPU Name      | # of CPU Cores | Amount of Ram | Purpose            |
+|:----------------:|-------------- |----------------|---------------|--------------------|
+| OSX              | Intel Core i5 | 4 Cores        | 4 GB          | Development/Testing|
+
 
 ### 4.2.2 Software Resources
-
+| Component? | Software Used             |
+|:-----------|---------------------------|
+| Front-End  | Bootstrap, jQuery         |
+| Back-End   | Django, Node.js, Postgres |
 ## 4.3 Project Organization
 
 ## 4.4 Project Schedule
