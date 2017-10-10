@@ -59,7 +59,7 @@ The following items are to be delivered to the client:
 
 
 ### 4.2.2 Software Resources
-| Component? | Software Used             |
+| Layer      | Software Used             |
 |:-----------|---------------------------|
 | Front-End  | Bootstrap, jQuery         |
 | Back-End   | Django, Node.js, Postgres |
