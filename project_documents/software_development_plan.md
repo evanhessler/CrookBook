@@ -70,5 +70,13 @@ The following items are to be delivered to the client:
 ### 4.4.1 PERT/GANTT Chart
 ![GAANT Chart](./images/CrookBookGaant.png)
 ### 4.4.2 Task/Resource Table
+| Task                             | People                               | Software Needed                      | Hardware Needed    |
+|----------------------------------|--------------------------------------|--------------------------------------|--------------------|
+| Database Design                  | Anthony, Evan, Max, Nick, Alex, Rony | Draw.io, PostgreSQL, Django          | Dell XPS 13 or Mac |
+| Add new entry (FE/BE)            | Anthony, Rony                        | Django, HTML, CSS, Bootstrap, Chrome | Dell XPS 13 or Mac |
+| View/Edit Existing Entry (FE/BE) | Evan, Max                            | Django, HTML, CSS, Bootstrap, Chrome | Dell XPS 13 or Mac |
+| List all entries (FE/BE)         | Nick, Anthony                        | Django, HTML, CSS, Bootstrap, Chrome | Dell XPS 13 or Mac |
+| Design Front End Style           | Nick, Evan                           | Django, HTML, CSS, Bootstrap, Chrome | Dell XPS 13 or Mac |
+| Deployment                       | Max                                  | UWSGI, Nginx, PostgreSQL, Django     | Dell XPS 13 or Mac |
 
 ### 4.4.3 Class Schedule (Optional..per BJ's website for now)
