@@ -64,6 +64,7 @@ The following items are to be delivered to the client:
 | Back-End   | Django, Node.js, Postgres |
 | Development| Atom, Git, Slack          |
 ## 4.3 Project Organization
+We will have two teams: one for the back end of the project and one for the front end of the project. Each team will have a specific team leader which will be in charge of committing all changes for each aspect of the project. Of course, other members of each team will be able to commit to the project, but it is the team leader's job to ensure that the proper tasks are completed. However, the teams will be flexible enough so that team members may switch between the two teams so all team members can learn both aspects of the project. Both team leaders may also switch between teams, but they will still be responsible for ensuring that tasks are met for their particular team. We will also be using waffle.io to assign and manage the completion of github issues.
 
 ## 4.4 Project Schedule
 This section provides schedule information for the CrookBook project.
