@@ -66,6 +66,7 @@ The following items are to be delivered to the client:
 ## 4.3 Project Organization
 
 ## 4.4 Project Schedule
+This section provides schedule information for the CrookBook project.
 
 ### 4.4.1 PERT/GANTT Chart
 ![GAANT Chart](./images/CrookBookGaant.png)
