@@ -19,8 +19,8 @@ tasks by the following date:
 - Reading documentation (10/13)
 - Post-request (10/16)
 - Get-request (10/16)
-- Adding a new case (Overlaps with frontend. Keep this?)
-- Editing a pre-existing case (Same as adding. Keep this?)
+- Adding a new case (10/18)
+- Editing a pre-existing case (10/18)
 
 Developing the user interface should be accomplished by the following deadlines:
 - Hub Page (10/08)
