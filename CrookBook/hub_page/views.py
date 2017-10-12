@@ -5,4 +5,4 @@ from django.template import loader
 # Create your views here.
 def index(request):
     #return HttpResponse('Hello!')
-    return render(request, 'cases/index.html', {})
+    return render(request, 'hub_page/index.html', {})

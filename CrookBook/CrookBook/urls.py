@@ -17,6 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^cases/', include('cases.urls')),
+    url(r'^hub_page/', include('hub_page.urls')),
     url(r'^admin/', admin.site.urls),
 ]

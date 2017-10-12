@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'cases',
+    'hub_page',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,9 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '../cases/static/',
-    '../cases/static/'
+    '../hub_page/static/',
+    '../hub_page/static/'
 
 ]
 STATIC_URL = '/static/'
-print "base dir path", BASE_DIR
