@@ -1,0 +1,57 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6.3
+    environment:
+      POSTGRES_DB: crookbook
+      #POSTGRESS_USER: root
+      #POSTGRES_PASSWORD: hobbes
+
+  app:
+    build:
+      context: .
+    image: crook_book
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    command: uwsgi uwsgi_dev.ini
+    depends_on:
+      - db
+
+  manage:
+    image: crook_book
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    entrypoint: python3 manage.py
+    depends_on:
+      - db
+      - app
+
+  makemigrations:
+    image: crook_book
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    command: python3 manage.py makemigrations
+    depends_on:
+      - db
+      - app
+
+  migrate:
+    image: crook_book
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    command: python3 manage.py migrate
+    depends_on:
+      - makemigrations
+      - db
+      - app

@@ -25,7 +25,9 @@ SECRET_KEY = '7w@hh$j853%1qv+k6c+uj$-av56jkk99*y&&0no@pehn_z4sct'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    os.environ['HOST']
+]
 
 
 # Application definition
@@ -75,8 +77,11 @@ WSGI_APPLICATION = 'CrookBook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'crookbook',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
