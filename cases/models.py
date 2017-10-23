@@ -1,39 +1,128 @@
 from django.db import models
 
-class Person(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    age = models.IntegerField()
-    sex = models.BooleanField()
-
-class Event(models.Model):
-	crime_committed = models.CharField(max_length=30)
-	date_occurred = models.DateTimeField()
-	date_reported = models.DateTimeField()
-	weapon = models.CharField(max_length=30)
-	address = models.CharField(max_length=50)
-
-class History(models.Model):
-	date_edited = models.DateTimeField()
-	edited_by = models.CharField(max_length=30)
+SEX = (
+    ('M', 'Male'),
+    ('F', 'Female'),
+)
 
 class Office(models.Model):
-	division = models.CharField(max_length=30)
-	bureau = models.CharField(max_length=30)
+    id = models.AutoField(
+        primary_key=True,
+    )
+    division = models.CharField(
+        max_length=30,
+        null = False,
+    )
+    bureau = models.CharField(
+        max_length=30,
+        null = False,
+    )
 
 class Case(models.Model):
-	dr_nbr = models.CharField(max_length=30)
-	volumes = models.IntegerField()
-	date_fully_reviewed = models.DateTimeField()
-	crime_committed = models.CharField(max_length=30)
-	motive = models.TextField()
-	court_case_number = models.IntegerField()
-	coroner_case_number = models.IntegerField()
-	notes = models.TextField()
-	related_cases = models.ForeignKey('self')
-	office = models.ForeignKey(Office)
-	history = models.ForeignKey(History)
-	event = models.ForeignKey(Event)
-	# How do we store a list of victims/suspects?
-	victim = models.ForeignKey(Person)
-	suspect = models.ForeignKey(Person)
+    dr_nbr = models.CharField(
+        primary_key = True,
+        max_length = 32,
+    )
+    volumes = models.IntegerField(
+        null = False,
+        default = 1,
+    )
+    date_reviewed = models.DateTimeField(
+        null = True,
+    )
+    crime_committed = models.CharField(
+        max_length = 32,
+        null = False,
+    )
+    motive = models.CharField(
+        max_length = 32,
+        null = False,
+    )
+    court_case_number = models.CharField(
+        max_length = 32,
+        null = True,
+    )
+    coroner_case_number = models.CharField(
+        max_length = 32,
+        null = True,
+    )
+    notes = models.TextField(
+        null = True,
+    )
+    related_cases = models.ForeignKey(
+        'self',
+        null = True,
+    )
+    office = models.ForeignKey(
+        Office,
+        null = False,
+    )
+
+class Event(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+    # Already in Case, what to do?
+    # crime_committed = models.CharField(
+    #     max_length = 30,
+    #     null = False,
+    # )
+    date_occurred = models.DateTimeField(
+        null = False,
+    )
+    date_reported = models.DateTimeField(
+        null = False,
+    )
+    address = models.CharField(
+        max_length = 50,
+        null = False,
+    )
+    weapon = models.CharField(
+        max_length = 30,
+        null = True,
+    )
+    case = models.ForeignKey(
+        Case,
+        null = False,
+    )
+
+class Person(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+    first_name = models.CharField(
+        max_length = 30,
+        null = True,
+    )
+    last_name = models.CharField(
+        max_length = 30,
+        null = True,
+    )
+    age = models.IntegerField(
+        null = True,
+    )
+    sex = models.CharField(
+        max_length = 32,
+        choices = SEX,
+        null = True,
+    )
+    case = models.ForeignKey(
+        Case,
+        null = False,
+    )
+
+class History(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+    date_edited = models.DateTimeField(
+        null = False,
+    )
+    edited_by = models.CharField(
+        max_length = 30,
+        null = False,
+    )
+    case = models.ForeignKey(
+        Case,
+        null = False,
+    )
