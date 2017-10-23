@@ -5,6 +5,10 @@ SEX = (
     ('F', 'Female'),
 )
 
+CRIME = (
+    ('M', 'Murder'),
+)
+
 class Office(models.Model):
     id = models.AutoField(
         primary_key=True,
@@ -30,19 +34,11 @@ class Case(models.Model):
     date_reviewed = models.DateTimeField(
         null = True,
     )
-    crime_committed = models.CharField(
-        max_length = 32,
-        null = False,
-    )
     motive = models.CharField(
         max_length = 32,
         null = False,
     )
     court_case_number = models.CharField(
-        max_length = 32,
-        null = True,
-    )
-    coroner_case_number = models.CharField(
         max_length = 32,
         null = True,
     )
@@ -79,6 +75,16 @@ class Event(models.Model):
     )
     weapon = models.CharField(
         max_length = 30,
+        null = True,
+    )
+    crime_committed = models.CharField(
+        max_length = 1,
+        choices = CRIME,
+        default = 'M',
+        null = False,
+    )
+    coroner_case_number = models.CharField(
+        max_length = 32,
         null = True,
     )
     case = models.ForeignKey(
