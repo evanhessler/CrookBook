@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+  <title>CrookBook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  {% include 'snippets/css.html' %}
+</head>
+
+<body>
+  <div id="nav-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4">
+          <a class="anchor-pts"><img src="{% static "images/logo.svg" %}" width="150px"></a>
+        </div>
+        <div class="col-xs-8 alignment navlinks">
+          <a class="anchor-pts">Advanced Search</a>
+          <a class="anchor-pts">Add Entry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block content %}
+
+  {% endblock %}
+  {% include 'snippets/js.html' %}
+ </body>
