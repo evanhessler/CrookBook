@@ -88,7 +88,6 @@ class Case(models.Model):
 
     related_cases = models.ManyToManyField(
         'self',
-        null = True,
     )
     district = models.ForeignKey(
         District,
