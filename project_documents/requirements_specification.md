@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## 5.0	Requirements Specification
 
 ## 5.1	Introduction
@@ -326,4 +325,3 @@ every murder book.
 	- Safari
 	- Microsoft Edge
 - 5.5.3.1 The CrookBook web application shall be accessible through the web browser on both iOS and Android devices
->>>>>>> d5c43d1e3c97c2a1e794b5de3f745c0320f693f1
