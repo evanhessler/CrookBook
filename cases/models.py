@@ -9,16 +9,40 @@ CRIME = (
     ('M', 'Murder'),
 )
 
-class Office(models.Model):
+CASE_STATUS = (
+    ('AA', 'Adult Arrest'),
+    ('JA', 'Juvenile Arrest'),
+    ('AO', 'Adult Other'),
+    ('JO', 'Juvenile Other'),
+    ('IC', 'Investigation Continued'),
+)
+
+ETHNICITIES = (
+    # TODO: What do 'K' and 'S' mean (from spreadsheet)?
+    ('W', 'White'),
+    ('H', 'Hispanic'),
+    ('B', 'Black or African American'),
+    ('A', 'Asian'),
+    ('AI', 'American Indian or Alaska Native'),
+    ('ME', 'Middle Eastern'),
+    ('PI', 'Pacific Islander'),
+    ('O', 'Other'),
+)
+
+class District(models.Model):
     id = models.AutoField(
         primary_key=True,
     )
-    division = models.CharField(
-        max_length=30,
+    bureau = models.CharField(
+        max_length = 32,
         null = False,
     )
-    bureau = models.CharField(
-        max_length=30,
+    division = models.CharField(
+        max_length = 32,
+        null = False,
+    )
+    reporting_district = models.CharField(
+        max_length = 32,
         null = False,
     )
 
@@ -27,17 +51,30 @@ class Case(models.Model):
         primary_key = True,
         max_length = 32,
     )
-    volumes = models.IntegerField(
-        null = False,
-        default = 1,
-    )
-    date_reviewed = models.DateTimeField(
+    date_fully_reviewed = models.DateTimeField(
         null = True,
     )
     motive = models.CharField(
         max_length = 32,
         null = False,
     )
+    adjudication = models.CharField(
+        max_length = 32,
+        null = True,
+    )
+    evidence_destroyed = models.BooleanField(
+        null = False,
+        default = False,
+    )
+    status = models.CharField(
+        max_length = 2,
+        choices =  CASE_STATUS,
+        null = True,
+    )
+    status_date = models.DateTimeField(
+        null = True,
+    )
+    # Should this be part of Event?
     court_case_number = models.CharField(
         max_length = 32,
         null = True,
@@ -45,24 +82,22 @@ class Case(models.Model):
     notes = models.TextField(
         null = True,
     )
-    related_cases = models.ForeignKey(
+
+    # TODO: What type should solvability_factor be?
+    # solvability_factor = models.
+
+    related_cases = models.ManyToManyField(
         'self',
         null = True,
     )
-    office = models.ForeignKey(
-        Office,
+    district = models.ForeignKey(
+        District,
         null = False,
     )
-
 class Event(models.Model):
     id = models.AutoField(
         primary_key=True
     )
-    # Already in Case, what to do?
-    # crime_committed = models.CharField(
-    #     max_length = 30,
-    #     null = False,
-    # )
     date_occurred = models.DateTimeField(
         null = False,
     )
@@ -74,7 +109,7 @@ class Event(models.Model):
         null = False,
     )
     weapon = models.CharField(
-        max_length = 30,
+        max_length = 32,
         null = True,
     )
     crime_committed = models.CharField(
@@ -97,11 +132,11 @@ class Person(models.Model):
         primary_key=True
     )
     first_name = models.CharField(
-        max_length = 30,
+        max_length = 32,
         null = True,
     )
     last_name = models.CharField(
-        max_length = 30,
+        max_length = 32,
         null = True,
     )
     age = models.IntegerField(
@@ -112,9 +147,29 @@ class Person(models.Model):
         choices = SEX,
         null = True,
     )
+    ethnicity = models.CharField(
+        max_length  = 1,
+        choices = ETHNICITIES,
+        # TODO: Add ETHNICITIES choices
+        null = True,
+    )
+    description = models.CharField(
+        max_length = 64,
+        null = True,
+    )
     case = models.ForeignKey(
         Case,
         null = False,
+    )
+
+class Binder(models.Model):
+    # TODO: Expand this entity to track more binder info
+    master_dr = models.CharField(
+        primary_key = True,
+        max_length = 16,
+    )
+    check_out_date = models.DateTimeField(
+        null = True,
     )
 
 class History(models.Model):
@@ -125,9 +180,10 @@ class History(models.Model):
         null = False,
     )
     edited_by = models.CharField(
-        max_length = 30,
+        max_length = 32,
         null = False,
     )
+    # TODO: Add traking for what was changed
     case = models.ForeignKey(
         Case,
         null = False,
