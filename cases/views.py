@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Office
+from .models import District
 
 def homepage(request):
     return render(request, 'homepage.html', {})
 
-def office_detail(request, office_id):
-    office = get_object_or_404(Office, id=office_id)
-    return render(request, 'office/detail.html', {'office': office})
+def district_detail(request, district_id):
+    office = get_object_or_404(District, id=district_id)
+    return render(request, 'district/detail.html', {'district': district})
