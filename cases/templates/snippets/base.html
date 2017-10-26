@@ -3,7 +3,11 @@
   <title>CrookBook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% load static %}
-  {% include 'snippets/css.html' %}
+  <!-- Styles -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static "styles/styles.css" %}">
+  <link rel="stylesheet" href= "{% static "styles/bootstrap.min.css" %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 </head>
 
 <body>
@@ -23,5 +27,6 @@
   {% block content %}
 
   {% endblock %}
-  {% include 'snippets/js.html' %}
- </body>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
