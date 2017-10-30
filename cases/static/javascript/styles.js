@@ -1,3 +1,3 @@
 $(document).ready(function () {
-	console.log("HERE")
-}
+	console.log("In styles.js");
+});
