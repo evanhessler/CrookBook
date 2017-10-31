@@ -32,6 +32,14 @@ interface for a small section of LAPD detectives. These detectives require a dat
 
 ### 6.2.1 Major Software Components
 
+We have two major software components in our system:
+
+#### Cases Database
+Our Crookbook database will track all information related to the murder cases, binders, suspects, victims, etc. It will be developed in PostgreSQL and should allow detectives to perform all the basic CRUD (Create, Read, Update, and Delete) operations on the database.
+
+#### GUI Web Interface
+The GUI web interface is what the detectives will use to perform the CRUD operations on the Crookbook database. Through a system of forms and tables detectives will be able to easily extract the information they need from the database.
+
 ### 6.2.2 Major Software Interactions
 CrookBook is built on two main software engines: Django and Postgres. We developed CrookBook using Django to easily develop under a Model-View-Controller framework. With Django we are able to implement our URLs and determine what type of data should be captured and evaluated in our backend to provide the appropriate response. Django also has built-in models and administrative capabilities so we can easily design and maintain our database. Our web application interacts with our Postgres database by allowing users with certain permissions to add, delete or edit case entries. We provide these users with categorical forms to make inputting new data more straightforward. All users have read permissions so that they can search for a case and read details about that record.
  
