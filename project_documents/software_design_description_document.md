@@ -23,12 +23,27 @@ opportunity to gain some experience in freelance work, as members of the team ar
 coordinating with the LAPD in order to produce a presentable and usable product.
 
 The objective of CrookBook as an application is to provide a simple and tailored
-interface for a small section of LAPD detectives. These detectives require a database system that can speed up and simplify their search for their murder cases and murder case books. CrookBook will allow the detectives easy access to relevant information on their cases based off of their search. Should the detectives wish to access more information on a particular case within the database, they can also click on entries to provide all the information the database has on that particular entry. The keywords that can be searched are Master DR, Victims, Suspects and Date Occured.
+interface for a small section of LAPD detectives. These detectives require a database system that can speed up and simplify their search for their murder cases and murder case books. CrookBook will allow the detectives easy access to relevant information on their cases based off of their search. Should the detectives wish to access more information on a particular case within the database, they can also click on entries to provide all the information the database has on that particular entry. The keywords that can be searched are Master DR, Victims, Suspects and Date Occurred.
 
 ### 6.1.2 Hardware, Software, and Human Interfaces
-
+- 6.1.2.1 **Human Interface: Mouse and Keyboard**
+  - Users will use a basic mouse and keyboard to navigate their way through CrookBook's interface. The mouse and keyboard act as they would for any other web application, being able to click and type on specified fields.
+-6.1.2.2 **Human Interface: Touch**
+  - Users that are accessing the CrookBook application on modern smartphones will be able to use the application like they would on a personal computer, except that the phones are touch based rather than mouse and keyboard based.
+- 6.1.2.3 **Human Interface: Monitor**
+  - Users will need a typical modern day computer monitor in order to view CrookBook's interface. If the user is using a tower computer, then they will need a monitor that is able to display given that computer's output capabilities (i.e. VGA or HDMI). If the user has a laptop then it should already be equipped with an adequate monitor. CrookBook's interface can also be used on mobile so any modern smartphone display will be adequate.
+- 6.1.2.4 **Software Interface: GUI**
+  - Users will interact with CrookBook's Graphic User Interface. The user interface includes things like buttons, drop down menus and text fields that users can interact with. Buttons lead users to separate pages within the application to access a particular keyword or action such as, settings or login menus. Drop down menus are used to give the users a selection of options to choose from which then act like buttons that lead the user to new pages. Text fields allow the user to specify which pages they are looking for within the application using their own search.
+- 6.1.2.5 **Software Interface: Database**
+  - The database holds all the data from the LAPD murder case books. The user interface interacts with the database in order to give the user the proper information they are searching for.
+- 6.1.2.6 **Software Interface: Server**
+  - The server hosts the CrookBook web application as well as all the information stored within the database.
+- 6.1.2.7 **Hardware Interface: Wireless/Wired Networking**
+  - Since CrookBook is a web based application, a wired or wireless connection will be needed in order to access the application.
+//B.J. wants us to add a picture of what our interface looks like
 
 ## 6.2 Architectural Design
+LAPD detectives will interact with CrookBook's user interface which is being created using CSS, HTML and JavaScript. The user interface will access the database once the user makes a request for a search. From here, the database will access the relevant information using Postgres and Django. The database will then send this information back to the user to be displayed on the user interface. Users can then choose to do a new search or another search based on their current search.
 
 ### 6.2.1 Major Software Components
 
