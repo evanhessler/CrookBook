@@ -1,0 +1,42 @@
+{% extends 'snippets/nav.html'%}
+  {% block content %}
+  <div class="container page-content">
+    <div id="add-entry-nav" class="row">
+      <center id="info-buttons">
+        <div class="col-xs-2 nav-selected" id="case-info-button">
+          Case Info
+        </div>
+        <div class="col-xs-2" id="binder-info-button">
+          Binder Info
+        </div>
+        <div class="col-xs-2" id="district-info-button">
+          District Info
+        </div>
+        <div class="col-xs-2" id="victims-info-button">
+          Victims
+        </div>
+        <div class="col-xs-2" id="suspects-info-button">
+          Suspects
+        </div>
+        <div class="col-xs-2" id="crime-info-button">
+          Crime Info
+        </div>
+      </center>
+    </div>
+    <div class="add-entry-block block-selected" id="case-info-entry">
+    </div>
+    <div class="add-entry-block" id="case-info-entry">
+    </div>
+    <div class="add-entry-block" id="case-info-entry">
+    </div>
+    <div class="add-entry-block" id="case-info-entry">
+    </div>
+    <div class="add-entry-block" id="case-info-entry">
+    </div>
+    <div class="add-entry-block" id="case-info-entry">
+    </div>
+    <center id="button-container">
+      <div class="button inline-block">Search</div>
+    </center>
+  </div>
+  {% endblock %}
