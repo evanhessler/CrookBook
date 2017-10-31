@@ -105,6 +105,8 @@ input[type="submit"]:hover {
   padding-bottom: 5px;
   padding-left: 15px;
   padding-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 input[type="text"] {
@@ -121,6 +123,56 @@ input[type="text"] {
 }
 
 .database-table {
-  height: 500px;
+  height: 60vh;
   overflow-y: scroll;
+}
+
+.add-entry-nav {
+  display: inline;
+}
+
+#add-entry-nav div {
+  background: #bcbcbc;
+  border-top: 10px solid #bcbcbc;
+  border-bottom: 10px solid #bcbcbc;
+  color: white;
+}
+
+#add-entry-nav .nav-selected {
+  background: black;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  color: white;
+}
+
+#add-entry-nav div:hover {
+  background: #999999;
+  border-top: 10px solid #999999;
+  border-bottom: 10px solid #999999;
+  color: white;
+}
+
+#add-entry-nav .nav-selected:hover {
+  background: black;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  color: white;
+}
+
+.add-entry-block {
+  border: 1px solid #bcbcbc;
+  height: 60vh;
+  margin-top: 30px;
+  margin-left: -15px;
+  margin-right: -15px;
+  overflow: scroll;
+  display: none;
+}
+
+.block-selected {
+  display: block;
+}
+
+#button-container {
+  margin-top: 2vh;
 }
