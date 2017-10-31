@@ -23,7 +23,7 @@ opportunity to gain some experience in freelance work, as members of the team ar
 coordinating with the LAPD in order to produce a presentable and usable product.
 
 The objective of CrookBook as an application is to provide a simple and tailored
-interface for a small section of LAPD detectives. These detectives require a database system that can speed up and simplify their search for their murder cases and murder case books. CrookBook will allow the detectives easy access to relevant information on their cases based off of their search. Should the detectives wish to access more information on a particular case within the database, they can also click on entries to provide all the information the database has on that particular entry. // list all the keywords they can search here.
+interface for a small section of LAPD detectives. These detectives require a database system that can speed up and simplify their search for their murder cases and murder case books. CrookBook will allow the detectives easy access to relevant information on their cases based off of their search. Should the detectives wish to access more information on a particular case within the database, they can also click on entries to provide all the information the database has on that particular entry. The keywords that can be searched are Master DR, Victims, Suspects and Date Occured.
 
 ### 6.1.2 Hardware, Software, and Human Interfaces
 
