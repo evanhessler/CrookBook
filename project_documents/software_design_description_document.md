@@ -40,7 +40,8 @@ The objective of CrookBook as an application is to provide a simple and tailored
 - 6.1.2.7 **Hardware Interface: Wireless/Wired Networking**
   - Since CrookBook is a web based application, a wired or wireless connection will be needed in order to access the application.
 
-TODO: B.J. wants us to add a picture of what our interface looks like
+#### Interface Home Page
+![Interface Home Page](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/home_page.png)
 
 ## 6.2 Architectural Design
 CrookBook implements a well designed Model-View-Controller architecture. LAPD detectives will interact with CrookBook's user interface which is being created using CSS, HTML and JavaScript. The user interface will access the database and its models once the user makes a request for a search. From here, the database will access the relevant information using Postgres and Django. The database will then send this information back to controllers and onto the user's view to be displayed on the user interface. Users can then choose to do a new search or another search based on their current search.
@@ -83,4 +84,4 @@ CrookBook is built on two main software engines: Django and Postgres. We develop
 ![Architectural Diagrams](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/Architectural-Diagrams.png)
 
 #### UML Use Case Diagram
-![ERD](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/uml_use_case.png)
+![UML Use Case](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/uml_use_case.png)
