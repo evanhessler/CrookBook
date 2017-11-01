@@ -81,3 +81,6 @@ CrookBook is built on two main software engines: Django and Postgres. We develop
 
 #### Top-level Class Diagram
 ![Architectural Diagrams](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/Architectural-Diagrams.png)
+
+#### UML Use Case Diagram
+![ERD](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/uml_use_case.png)
