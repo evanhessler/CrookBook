@@ -54,8 +54,15 @@ Our CrookBook database will track all information related to the murder cases, b
 
 #### GUI Web Interface
 The GUI web interface is what the detectives will use to perform the CRUD operations on the CrookBook database. Through a system of forms and tables detectives will be able to easily extract and edit the information they need from the database.
-CrookBook offers a basic search for detectives to work quick and on the go, and an advanced search for a more tailored
-and descriptive option.
+- **Home Page**
+  - CrookBook offers a basic search for detectives to work quick and on the go. Here, they can search for cases by Master DR, DR Number, Victim name, Suspect name, and by date.
+- **Advanced Search**
+  - CrookBook also allows for a more tailored and descriptive search. Here, they can fill out a form consisting of case related fields.
+- **Add Cases**
+  - CrookBook allows detectives to add a new case into the database. Like the advanced search, they will be filling out a form consisting of case related fields.
+
+##### Detailed Case Page
+CrookBook has a unique view page for every case. Here, a case file's data is presented in an elegant and clear way for LAPD personnel to see.
 
 ### 6.2.2 Major Software Interactions
 CrookBook is built on two main software engines: Django and Postgres. We developed CrookBook using Django to easily develop under a Model-View-Controller framework. With Django we are able to implement our URLs and determine what type of data should be captured and evaluated in our backend to provide the appropriate response. Django also has built-in models and administrative capabilities so we can easily design and maintain our database. Our web application interacts with our Postgres database by allowing users with certain permissions to add, delete or edit case entries. We provide these users with categorical forms to make inputting new data more straightforward. All users have read permissions so that they can search for a case and read details about that record.
