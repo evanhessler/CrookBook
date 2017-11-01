@@ -6,6 +6,13 @@ body {
 td, p {
   font-family: sans-serif;
 }
+
+form {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #bcbcbc;
+}
 #nav-bar {
   background-color: black;
   width: 100vw;
