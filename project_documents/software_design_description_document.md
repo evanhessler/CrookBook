@@ -28,7 +28,7 @@ interface for a small section of LAPD detectives. These detectives require a dat
 ### 6.1.2 Hardware, Software, and Human Interfaces
 - 6.1.2.1 **Human Interface: Mouse and Keyboard**
   - Users will use a basic mouse and keyboard to navigate their way through CrookBook's interface. The mouse and keyboard act as they would for any other web application, being able to click and type on specified fields.
--6.1.2.2 **Human Interface: Touch**
+- 6.1.2.2 **Human Interface: Touch**
   - Users that are accessing the CrookBook application on modern smartphones will be able to use the application like they would on a personal computer, except that the phones are touch based rather than mouse and keyboard based.
 - 6.1.2.3 **Human Interface: Monitor**
   - Users will need a typical modern day computer monitor in order to view CrookBook's interface. If the user is using a tower computer, then they will need a monitor that is able to display given that computer's output capabilities (i.e. VGA or HDMI). If the user has a laptop then it should already be equipped with an adequate monitor. CrookBook's interface can also be used on mobile so any modern smartphone display will be adequate.
@@ -43,19 +43,21 @@ interface for a small section of LAPD detectives. These detectives require a dat
 //B.J. wants us to add a picture of what our interface looks like
 
 ## 6.2 Architectural Design
-LAPD detectives will interact with CrookBook's user interface which is being created using CSS, HTML and JavaScript. The user interface will access the database once the user makes a request for a search. From here, the database will access the relevant information using Postgres and Django. The database will then send this information back to the user to be displayed on the user interface. Users can then choose to do a new search or another search based on their current search.
+CrookBook implements a well designed Model-View-Controller architecture. LAPD detectives will interact with CrookBook's user interface which is being created using CSS, HTML and JavaScript. The user interface will access the database and its models once the user makes a request for a search. From here, the database will access the relevant information using Postgres and Django. The database will then send this information back to controllers and onto the user's view to be displayed on the user interface. Users can then choose to do a new search or another search based on their current search.
 
 ### 6.2.1 Major Software Components
 
 We have two major software components in our system:
 
 #### Cases Database
-Our Crookbook database will track all information related to the murder cases, binders, suspects, victims, etc. It will be developed in PostgreSQL and should allow detectives to perform all the basic CRUD (Create, Read, Update, and Delete) operations on the database.
+Our CrookBook database will track all information related to the murder cases, binders, suspects, victims, etc. It will be developed in PostgreSQL and should allow detectives to perform all the basic CRUD (Create, Read, Update, and Delete) operations on the database. To follow up with database design, it will also implement the standard rules of having ACID: the four characteristics being Atomicity, Consistency, Isolation, and Durability.
 
 #### GUI Web Interface
-The GUI web interface is what the detectives will use to perform the CRUD operations on the Crookbook database. Through a system of forms and tables detectives will be able to easily extract the information they need from the database.
+The GUI web interface is what the detectives will use to perform the CRUD operations on the CrookBook database. Through a system of forms and tables detectives will be able to easily extract and edit the information they need from the database.
+CrookBook offers a basic search for detectives to work quick and on the go, and an advanced search for a more tailored
+and descriptive option.
 
 ### 6.2.2 Major Software Interactions
 CrookBook is built on two main software engines: Django and Postgres. We developed CrookBook using Django to easily develop under a Model-View-Controller framework. With Django we are able to implement our URLs and determine what type of data should be captured and evaluated in our backend to provide the appropriate response. Django also has built-in models and administrative capabilities so we can easily design and maintain our database. Our web application interacts with our Postgres database by allowing users with certain permissions to add, delete or edit case entries. We provide these users with categorical forms to make inputting new data more straightforward. All users have read permissions so that they can search for a case and read details about that record.
- 
+
 ### 6.2.3 Architectural Design Diagrams
