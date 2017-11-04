@@ -180,6 +180,6 @@ input[type="text"] {
   display: block;
 }
 
-#button-container {
+.button-container {
   margin-top: 2vh;
 }
