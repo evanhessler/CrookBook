@@ -2,52 +2,14 @@ body {
   font-family: 'Space Mono', monospace;
   background: #f2f2f2;
 }
-
 td, p {
   font-family: sans-serif;
 }
-
 form {
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
   color: #bcbcbc;
-}
-#nav-bar {
-  background-color: black;
-  width: 100vw;
-  position: fixed;
-}
-#nav-bar > .container {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-}
-#welcome-page {
-  text-align: center;
-  height: 100vh;
-}
-#database > .container {
-  margin-top: 5vh;
-}
-.page-content {
-  padding-top: 14vh;
-}
-#add-lookup-page {
-  height: 100vh;
-  display: flex;
-  text-align: center;
-  background-color: #fafafa;
-}
-#add-lookup-page > .container {
-  padding-top: 50vh;
-}
-.alignment {
-  text-align: right;
-}
-.anchor-pts {
-  color: white;
-  letter-spacing: 2px;
-  text-decoration: none;
 }
 a.anchor-pts:hover {
   color: white;
@@ -86,25 +48,88 @@ input[type="submit"]:hover {
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   color: #222;
 }
+input[type="text"] {
+  height: 30px;
+}
 
+#info-buttons > div {
+  cursor: pointer;
+}
+#nav-bar {
+  background-color: black;
+  width: 100vw;
+  position: fixed;
+}
+#nav-bar > .container {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+#welcome-page {
+  text-align: center;
+  height: 100vh;
+}
+#database > .container {
+  margin-top: 5vh;
+}
+.page-content {
+  padding-top: 14vh;
+}
+#add-lookup-page {
+  height: 100vh;
+  display: flex;
+  text-align: center;
+  background-color: #fafafa;
+}
+#add-lookup-page > .container {
+  padding-top: 50vh;
+}
+#add-entry-nav div {
+  background: #bcbcbc;
+  border-top: 10px solid #bcbcbc;
+  border-bottom: 10px solid #bcbcbc;
+  color: white;
+}
+#add-entry-nav .nav-selected {
+  background: black;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  color: white;
+}
+#add-entry-nav div:hover {
+  background: #999999;
+  border-top: 10px solid #999999;
+  border-bottom: 10px solid #999999;
+  color: white;
+}
+#add-entry-nav .nav-selected:hover {
+  background: black;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  color: white;
+}
+
+.alignment {
+  text-align: right;
+}
+.anchor-pts {
+  color: white;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
 .navlinks {
   margin-top: 4px;
 }
-
 .navlinks a{
   margin-left: 30px;
   font-size: 12px;
   text-transform: uppercase;
 }
-
 .inline-block {
   display: inline-block;
 }
-
 .basic-search {
   text-align: center;
 }
-
 .button {
   background: black;
   color: white;
@@ -115,57 +140,20 @@ input[type="submit"]:hover {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-input[type="text"] {
-  height: 30px;
-}
-
 .container-wide {
   width: 94% !important;
 }
-
 .table {
   background: white;
   overflow-y: auto;
 }
-
 .database-table {
   height: 60vh;
   overflow-y: scroll;
 }
-
 .add-entry-nav {
   display: inline;
 }
-
-#add-entry-nav div {
-  background: #bcbcbc;
-  border-top: 10px solid #bcbcbc;
-  border-bottom: 10px solid #bcbcbc;
-  color: white;
-}
-
-#add-entry-nav .nav-selected {
-  background: black;
-  border-top: 10px solid black;
-  border-bottom: 10px solid black;
-  color: white;
-}
-
-#add-entry-nav div:hover {
-  background: #999999;
-  border-top: 10px solid #999999;
-  border-bottom: 10px solid #999999;
-  color: white;
-}
-
-#add-entry-nav .nav-selected:hover {
-  background: black;
-  border-top: 10px solid black;
-  border-bottom: 10px solid black;
-  color: white;
-}
-
 .add-entry-block {
   border: 1px solid #bcbcbc;
   height: 60vh;
@@ -175,11 +163,9 @@ input[type="text"] {
   overflow: scroll;
   display: none;
 }
-
 .block-selected {
   display: block;
 }
-
 .button-container {
   margin-top: 2vh;
 }
