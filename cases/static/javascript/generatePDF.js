@@ -18,8 +18,8 @@ function generatePDF(table) {
     margins = {
         top: 80,
         bottom: 60,
-        left: 10,
-        width: 700
+        left: 75,
+        width: 850
     };
     // all coords and widths are in jsPDF instance's declared units
     // 'inches' in this case
