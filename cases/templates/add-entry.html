@@ -25,7 +25,7 @@
     </div>
     <form id="form-info">
       <div class="add-entry-block block-selected" id="case-info-entry">
-        <div class='col-sm-12 col-md-4'>
+        <div class='col-sm-12 col-md-6'>
           <label>DR Number</label>
           <input type='text'>
 
@@ -44,8 +44,11 @@
           <label>Motive</label>
           <input type='text'>
 
+          <label>Case Adjudication</label>
+          <input type='text'>
+
         </div>
-        <div class='col-sm-12 col-md-4'>
+        <div class='col-sm-12 col-md-6'>
           <label>Date Fully Reviewed</label>
           <input type='text'>
 
@@ -54,10 +57,6 @@
 
           <label>Solvability Factor</label>
           <input type='number'>
-        </div>
-        <div class='col-sm-12 col-md-4'>
-          <label>Case Adjudication</label>
-          <input type='text'>
 
           <label>Evidence Destroyed</label>
           <input type='radio'> Yes
@@ -65,24 +64,87 @@
 
           <label>Notes</label>
           <textarea></textarea>
-
         </div>
       </div>
       <div class="add-entry-block row" id="binder-info-entry">
-        Binder Info
+        <div class='col-sm-12 col-md-6'>
+          <label>Master DR</label>
+          <input type='text'>
+        </div>
+        <div class='col-sm-12 col-md-6'>
+          <label>Check Out Date</label>
+          <input type='date'>
+        </div>
       </div>
       <div class="add-entry-block row" id="district-info-entry">
-        District Info
+        <div class='col-sm-12 col-md-6'>
+          <label>Division</label>
+          <input type='text'>
+          <label>Reporting District</label>
+          <input type='text'>
+        </div>
+        <div class='col-sm-12 col-md-6'>
+          <label>Bureau</label>
+          <input type='date'>
+        </div>
       </div>
       <div class="add-entry-block row" id="victims-info-entry">
-        Victims Info
+        <div class='col-sm-12 col-md-6'>
+          <label>First Name</label>
+          <input type='text'>
+
+          <label>Age</label>
+          <input type='number'>
+
+          <label>Ethnicity</label>
+          <select>
+            <option value="AA">White</option>
+            <option value="AA">Hispanic</option>
+            <option value="AA">Black or African American</option>
+            <option value="AA">Asian</option>
+            <option value="AA">American Indian or Alaska Native</option>
+            <option value="AA">Middle Eastern</option>
+            <option value="AA">Pacific Islander</option>
+            <option value="AA">Other</option>
+          </select>
+        </div>
+        <div class='col-sm-12 col-md-6'>
+          <label>Last Name</label>
+          <input type='text'>
+
+          <label>Sex</label>
+          <input type='radio'>Male
+          <input type='radio'>Female
+
+          <label>Description</label>
+          <textarea></textarea>
+        </div>
       </div>
+
       <div class="add-entry-block row" id="suspects-info-entry">
         Suspects Info
       </div>
       <div class="add-entry-block row" id="crime-info-entry">
-        Crime Info
->>>>>>> Stashed changes
+        <div class='col-sm-12 col-md-6'>
+          <label>Coroner Case Number</label>
+          <input type='text'>
+
+          <label>Crime Address</label>
+          <input type='text'>
+
+          <label>Date Reported</label>
+          <input type='date'>
+        </div>
+        <div class='col-sm-12 col-md-6'>
+          <label>Weapon</label>
+          <input type='text'>
+
+          <label>Crime Committed</label>
+          <input type='text' placeholder="Default: Murder">
+
+          <label>Date Occurred</label>
+          <input type='date'>
+        </div>
       </div>
     </form>
     <center class="button-container" id="add-entry-button">

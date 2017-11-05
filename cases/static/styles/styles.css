@@ -84,7 +84,7 @@ input[type="submit"]:hover {
   color: #222;
 }
 
-input[type="text"], input[type="date"], input[type="number"], textarea {
+input[type="text"], input[type="date"], input[type="number"], select, textarea {
   width: 100%;
 }
 
