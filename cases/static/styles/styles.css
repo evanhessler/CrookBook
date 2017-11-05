@@ -2,58 +2,9 @@ body {
   font-family: 'Space Mono', monospace;
   background: #f2f2f2;
 }
+
 td, p {
   font-family: sans-serif;
-}
-form {
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  color: #bcbcbc;
-}
-a.anchor-pts:hover {
-  color: white;
-}
-input {
-  border: none;
-  padding: 10px;
-  margin: 10px;
-  height: 20px;
-  width: 500px;
-  border:1px solid #eaeaea;
-  outline:none;
-}
-input:hover {
-  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
-}
-input:focus {
-  border-color:#4d90fe;
-}
-input[type="submit"] {
-  border-radius: 2px;
-  background: #f2f2f2;
-  border: 1px solid #f2f2f2;
-  color: #757575;
-  cursor: default;
-  font-size: 14px;
-  font-weight: bold;
-  width: 100px;
-  padding: 0 16px;
-  height:36px;
-}
-input[type="submit"]:hover {
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  background: #f8f8f8;
-  border: 1px solid #c6c6c6;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  color: #222;
-}
-input[type="text"] {
-  height: 30px;
-}
-
-#info-buttons > div {
-  cursor: pointer;
 }
 #nav-bar {
   background-color: black;
@@ -83,31 +34,6 @@ input[type="text"] {
 #add-lookup-page > .container {
   padding-top: 50vh;
 }
-#add-entry-nav div {
-  background: #bcbcbc;
-  border-top: 10px solid #bcbcbc;
-  border-bottom: 10px solid #bcbcbc;
-  color: white;
-}
-#add-entry-nav .nav-selected {
-  background: black;
-  border-top: 10px solid black;
-  border-bottom: 10px solid black;
-  color: white;
-}
-#add-entry-nav div:hover {
-  background: #999999;
-  border-top: 10px solid #999999;
-  border-bottom: 10px solid #999999;
-  color: white;
-}
-#add-entry-nav .nav-selected:hover {
-  background: black;
-  border-top: 10px solid black;
-  border-bottom: 10px solid black;
-  color: white;
-}
-
 .alignment {
   text-align: right;
 }
@@ -116,20 +42,79 @@ input[type="text"] {
   letter-spacing: 2px;
   text-decoration: none;
 }
+a.anchor-pts:hover {
+  color: white;
+}
+
+.basic-search-input {
+  width: 500px !important;
+}
+
+input {
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  height: 20px;
+  border:1px solid #eaeaea;
+  outline:none;
+}
+input:hover {
+  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+input:focus {
+  border-color:#4d90fe;
+}
+input[type="submit"] {
+  border-radius: 2px;
+  background: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  color: #757575;
+  cursor: default;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100px;
+  padding: 0 16px;
+  height:36px;
+}
+input[type="submit"]:hover {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  background: #f8f8f8;
+  border: 1px solid #c6c6c6;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  color: #222;
+}
+
+input[type="text"], input[type="date"], input[type="number"], textarea {
+  width: 100%;
+}
+
+input[type="date"], input[type="number"], select {
+  height: 30px;
+}
+
+label {
+  display: block !important;
+  margin-top: 20px;
+}
+
 .navlinks {
   margin-top: 4px;
 }
+
 .navlinks a{
   margin-left: 30px;
   font-size: 12px;
   text-transform: uppercase;
 }
+
 .inline-block {
   display: inline-block;
 }
+
 .basic-search {
   text-align: center;
 }
+
 .button {
   background: black;
   color: white;
@@ -140,20 +125,57 @@ input[type="text"] {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+input[type="text"] {
+  height: 30px;
+}
+
 .container-wide {
   width: 94% !important;
 }
+
 .table {
   background: white;
   overflow-y: auto;
 }
+
 .database-table {
   height: 60vh;
   overflow-y: scroll;
 }
+
 .add-entry-nav {
   display: inline;
 }
+
+#add-entry-nav div {
+  background: #bcbcbc;
+  border-top: 10px solid #bcbcbc;
+  border-bottom: 10px solid #bcbcbc;
+  color: white;
+}
+
+#add-entry-nav .nav-selected {
+  background: black;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  color: white;
+}
+
+#add-entry-nav div:hover {
+  background: #999999;
+  border-top: 10px solid #999999;
+  border-bottom: 10px solid #999999;
+  color: white;
+}
+
+#add-entry-nav .nav-selected:hover {
+  background: black;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  color: white;
+}
+
 .add-entry-block {
   border: 1px solid #bcbcbc;
   height: 60vh;
@@ -163,9 +185,11 @@ input[type="text"] {
   overflow: scroll;
   display: none;
 }
+
 .block-selected {
   display: block;
 }
-.button-container {
+
+#button-container {
   margin-top: 2vh;
 }

@@ -25,189 +25,64 @@
     </div>
     <form id="form-info">
       <div class="add-entry-block block-selected" id="case-info-entry">
-        <form>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>DR Number</label>
-              <input class="form-control" id="case-dr-input" placeholder="Enter DR#">
-            </div>
-            <div class="form-group">
-              <label>Court Case#</label>
-              <input class="form-control" id="case-ccn-input" placeholder="Enter Court Case#">
-            </div>
-            <div class="form-group">
-              <label>Date Fully Reviewed</label>
-              <input class="form-control" id="case-date-rev-input" placeholder="Enter Date Reviewed">
-            </div>
-            <div class="form-group">
-              <label>Case Adjudication</label>
-              <input class="form-control" id="case-adj-input" placeholder="Enter Case Adjudication">
-            </div>
-            <div class="form-group">
-              <label>Evidence Destroyed</label>
-              <input class="form-control" id="case-evid-input" placeholder="Enter if Evidence Destroyed">
-            </div>
-          </div>
+        <div class='col-sm-12 col-md-4'>
+          <label>DR Number</label>
+          <input type='text'>
 
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>Status</label>
-              <input class="form-control" id="case-status-input" placeholder="Enter Status">
-            </div>
-            <div class="form-group">
-              <label>Status Date</label>
-              <input class="form-control" id="case-st-date-input" placeholder="Enter Status Date">
-            </div>
-            <div class="form-group">
-              <label>Motive</label>
-              <input class="form-control" id="case-motive-input" placeholder="Enter Motive">
-            </div>
-            <div class="form-group">
-              <label>Solvability Factor</label>
-              <input class="form-control" id="case-solvability-input" placeholder="Enter Solvability Factor">
-            </div>
-            <div class="form-group">
-              <label>Notes</label>
-              <input class="form-control" id="case-notes-input" placeholder="Enter Notes">
-            </div>
-          </div>
-        </form>
+          <label>Court Case Number</label>
+          <input type='text'>
+
+          <label>Case Status</label>
+          <select>
+            <option value="AA">Adult Arrest</option>
+            <option value="JA">Juvenile Arrest</option>
+            <option value="AO">Adult Other</option>
+            <option value="JA">Juvenile Arrest</option>
+            <option value="IC">Investigation Continued</option>
+          </select>
+
+          <label>Motive</label>
+          <input type='text'>
+
+        </div>
+        <div class='col-sm-12 col-md-4'>
+          <label>Date Fully Reviewed</label>
+          <input type='text'>
+
+          <label>Status Date</label>
+          <input type='date'>
+
+          <label>Solvability Factor</label>
+          <input type='number'>
+        </div>
+        <div class='col-sm-12 col-md-4'>
+          <label>Case Adjudication</label>
+          <input type='text'>
+
+          <label>Evidence Destroyed</label>
+          <input type='radio'> Yes
+          <input type='radio'> No
+
+          <label>Notes</label>
+          <textarea></textarea>
+
+        </div>
       </div>
-
-      <div class="add-entry-block" id="binder-info-entry">
-        <form>
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label>Master DR#</label>
-              <input class="form-control" id="binder-mdr-input" placeholder="Enter Master DR#">
-            </div>
-            <div class="form-group">
-              <label>Check Out Date</label>
-              <input class="form-control" id="binder-check-out-input" placeholder="Enter Check Out Date">
-            </div>
-          </div>
-        </form>
+      <div class="add-entry-block row" id="binder-info-entry">
+        Binder Info
       </div>
-
-      <div class="add-entry-block" id="district-info-entry">
-        <form>
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label>Division </label>
-              <input class="form-control" id="dist-division-input" placeholder="Enter Division">
-            </div>
-            <div class="form-group">
-              <label>Bureau</label>
-              <input class="form-control" id="dist-bureau-input" placeholder="Enter Bureau">
-            </div>
-            <div class="form-group">
-              <label>Reporting District</label>
-              <input class="form-control" id="dist-rd-input" placeholder="Enter Reporting District">
-            </div>
-          </div>
-        </form>
+      <div class="add-entry-block row" id="district-info-entry">
+        District Info
       </div>
-
-      <div class="add-entry-block" id="victims-info-entry">
-        <form>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>First Name </label>
-              <input class="form-control" id="vict-fn-input" placeholder="Enter First Name">
-            </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input class="form-control" id="vict-ln-input" placeholder="Enter Last Name">
-            </div>
-            <div class="form-group">
-              <label>Ethnicity</label>
-              <input class="form-control" id="vict-ethn-input" placeholder="Enter Ethnicity">
-            </div>
-          </div>
-
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>Description</label>
-              <input class="form-control" id="vict-desc-input" placeholder="Enter Discription">
-            </div>
-            <div class="form-group">
-              <label>Sex</label>
-              <input class="form-control" id="vict-sex-input" placeholder="Enter Sex(lol)">
-            </div>
-            <div class="form-group">
-              <label>Age</label>
-              <input class="form-control" id="vict-age-input" placeholder="Enter Age">
-            </div>
-          </div>
-        </form>
+      <div class="add-entry-block row" id="victims-info-entry">
+        Victims Info
       </div>
-
-      <div class="add-entry-block" id="suspects-info-entry">
-        <form>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>First Name </label>
-              <input class="form-control" id="susp-fn-input" placeholder="Enter First Name">
-            </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input class="form-control" id="susp-ln-input" placeholder="Enter Last Name">
-            </div>
-            <div class="form-group">
-              <label>Ethnicity</label>
-              <input class="form-control" id="susp-ethn-input" placeholder="Enter Ethnicity">
-            </div>
-          </div>
-
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>Description</label>
-              <input class="form-control" id="susp-desc-input" placeholder="Enter Discription">
-            </div>
-            <div class="form-group">
-              <label>Sex</label>
-              <input class="form-control" id="susp-sex-input" placeholder="Enter Sex(lol)">
-            </div>
-            <div class="form-group">
-              <label>Age</label>
-              <input class="form-control" id="susp-age-input" placeholder="Enter Age">
-            </div>
-          </div>
-        </form>
+      <div class="add-entry-block row" id="suspects-info-entry">
+        Suspects Info
       </div>
-
-      <div class="add-entry-block" id="crime-info-entry">
-        <form>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>Crime Committed</label>
-              <input class="form-control" id="crime-committed-input" placeholder="Enter Crime Committed">
-            </div>
-            <div class="form-group">
-              <label>Weapon and/or Method</label>
-              <input class="form-control" id="crime-weapon-input" placeholder="Enter Weapon and/or Method">
-            </div>
-            <div class="form-group">
-              <label>Coroner Case Number</label>
-              <input class="form-control" id="crim-ccn-input" placeholder="Enter Coroner Case Number">
-            </div>
-          </div>
-
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label>Address</label>
-              <input class="form-control" id="crime-address-input" placeholder="Enter Address">
-            </div>
-            <div class="form-group">
-              <label>Date Occurred</label>
-              <input class="form-control" id="crime-date-occ-input" placeholder="Enter Date Occurred">
-            </div>
-            <div class="form-group">
-              <label>Date Reported</label>
-              <input class="form-control" id="crime-date-rep-input" placeholder="Enter Date Reported">
-            </div>
-          </div>
-        </form>
+      <div class="add-entry-block row" id="crime-info-entry">
+        Crime Info
+>>>>>>> Stashed changes
       </div>
     </form>
     <center class="button-container" id="add-entry-button">
