@@ -126,6 +126,10 @@ label {
   margin-bottom: 10px;
 }
 
+.gray-background {
+  background: #898989;
+}
+
 input[type="text"] {
   height: 30px;
 }
@@ -192,4 +196,16 @@ input[type="text"] {
 
 #button-container {
   margin-top: 2vh;
+}
+
+.add-another-button {
+  margin-top: 30px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #bcbcbc;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }

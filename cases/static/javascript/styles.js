@@ -61,4 +61,10 @@ $(document).ready(function () {
 		});
 		$('#crime-info-entry').addClass('block-selected');
 	});
+
+	var addAnotherBlock = $('.add-another-block').html()
+
+	$(".add-another-button").click(function() {
+		$(this).parent().parent().find('.add-another-block').append('<div class="col-xs-12 divider"></div>' + addAnotherBlock);
+	})
 });
