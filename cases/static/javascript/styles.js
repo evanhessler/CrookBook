@@ -67,4 +67,8 @@ $(document).ready(function () {
 	$(".add-another-button").click(function() {
 		$(this).parent().parent().find('.add-another-block').append('<div class="col-xs-12 divider"></div>' + addAnotherBlock);
 	})
+
+	$('#generate-report-button').click(function() {
+		generatePDF($(document).find('table'));
+	})
 });

@@ -124,6 +124,7 @@ label {
   padding-right: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .gray-background {
@@ -208,4 +209,17 @@ input[type="text"] {
   background: #bcbcbc;
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+h4 {
+  margin-top: 0;
+}
+
+.home-table {
+  margin-top: 15px !important;
+}
+
+
+#generate-report-button {
+  margin-top: 30px;
 }
