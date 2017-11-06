@@ -123,11 +123,15 @@ textarea {
   text-align: right;
 }
 .anchor-pts {
-  color: white;
+  color: #bcbcbc;
   letter-spacing: 2px;
   text-decoration: none;
 }
-a.anchor-pts:hover {
+.anchor-pts:hover {
+  color: white;
+  text-decoration: none;
+}
+.active > a {
   color: white;
 }
 .basic-search-input {
