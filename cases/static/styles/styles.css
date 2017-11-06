@@ -200,3 +200,10 @@ a.anchor-pts:hover {
 .home-table {
   margin-top: 15px !important;
 }
+
+.radio-input span {
+    bottom: 4px;
+    position: relative;
+    left: 10px;
+    margin-right: 20px;
+}
