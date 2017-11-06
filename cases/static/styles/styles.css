@@ -142,7 +142,7 @@ a.anchor-pts:hover {
   text-transform: uppercase;
 }
 .inline-block {
-  display: inline-block;
+  display: inline-block !important;
 }
 .basic-search {
   text-align: center;
