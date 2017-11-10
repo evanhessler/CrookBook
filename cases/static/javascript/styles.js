@@ -61,4 +61,26 @@ $(document).ready(function () {
 		});
 		$('#crime-info-entry').addClass('block-selected');
 	});
+
+	var addAnotherBlock = $('.add-another-block').html()
+
+	$(".add-another-button").click(function() {
+		$(this).parent().parent().find('.add-another-block').append('<div class="col-xs-12 divider"></div>' + addAnotherBlock);
+	});
+
+	$('#generate-report-button').click(function() {
+		generatePDF($(document).find('table'));
+	});
 });
+
+// If we wait for the DOM to load, theres a delay in highlighting the anchors
+const highlightNavAnchor = function() {
+	if (window.location.pathname == '/advancedSearch') {
+		$('#adv-search-nav').css("color", "white");
+		console.log($('#adv-search-nav'));
+	} else if (window.location.pathname == '/add') {
+		$('#add-entry-nav').css("color", "white");
+	}
+};
+
+highlightNavAnchor();
