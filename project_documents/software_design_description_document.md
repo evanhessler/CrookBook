@@ -77,8 +77,6 @@ The web API endpoints will serve as entry-points into the crookbook application 
 CrookBook is built on two main software engines: Django and Postgres. We developed CrookBook using Django to easily develop under a Model-View-Controller framework. With Django we are able to implement our URLs and determine what type of data should be captured and evaluated in our backend to provide the appropriate response. Django also has built-in models and administrative capabilities so we can easily design and maintain our database. Our web application interacts with our Postgres database by allowing users with certain permissions to add, delete or edit case entries. We provide these users with categorical forms to make inputting new data more straightforward. All users have read permissions so that they can search for a case and read details about that record.
 
 ### 6.2.3 Architectural Design Diagrams
-#### ERD
-![ERD](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/ERD.png)
 
 #### Top-level Class Diagram
 ![Architectural Diagrams](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/Architectural-Diagrams.png)
@@ -252,3 +250,8 @@ The edit case controller CSU sends a Django.forms.form object to the view and ta
 The create case controller CSU sends a Django.forms.form object to the view and takes the same object back.
 
 ### 6.3.4  Detailed Design Diagrams
+#### ERD
+![ERD](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/ERD.png)
+
+#### State Diagram
+![State Diagram](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/StateDiagram.png)
