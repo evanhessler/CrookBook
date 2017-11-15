@@ -152,18 +152,32 @@ Methods: searchCases(request) where request is the form data from the advanced s
 #### 6.3.2.4 Person Model CSU
 #### 6.3.2.5 Binder Model CSU
 #### 6.3.2.6 History Model CSU
-#### 6.3.2.7 Homepage View
+#### 6.3.2.7 Homepage View CSU
 The Homepage View interfaces with our controller CSC through the viewAllCases() function, which displays the entire database in a table.
 
-#### 6.3.2.8 Create Case View
+#### 6.3.2.8 Create Case View CSU
 The Create Case View interfaces with our controller CSC through the addEntry(request) function, which takes the request (of type Django.forms.Form).
 
-#### 6.3.2.9 Edit Case View
+#### 6.3.2.9 Edit Case View CSU
 The Edit Case View interfaces with our controller CSC through the editEntry(requst, master_dr) function, which takes the request (of type Django.forms.Form) and replaces the entry with the matching master_dr with it.
 
-#### 6.3.2.10 Search Cases View
+#### 6.3.2.10 Search Cases View CSU
 The Search Cases View interfaces with our controller CS through the searchCases(request) which takes the request (of type Django.forms.Form) and finds all matching cases.
 
 ### 6.3.3  Detailed Data Structure Descriptions
+#### 6.3.3.1 District Model CSU
+#### 6.3.3.2 Case Model CSU
+#### 6.3.3.3 Event Model CSU
+#### 6.3.3.4 Person Model CSU
+#### 6.3.3.5 Binder Model CSU
+#### 6.3.3.6 History Model CSU
+#### 6.3.3.7 Homepage View CSU
+The Homepage View CSU takes accepts a JSON array of all cases which it gets from the viewAllCases() function.
+#### 6.3.3.8 Create Case View CSU
+The Create Case View CSU sends a Django.forms.Form request to the Controller which inputs the form in the CrookBook database.
+#### 6.3.3.9 Edit Case View CSU
+The Edit Case View CSU sends a Django.forms.Form request (and a master_dr) to the controller.
+#### 6.3.3.10 Search Cases View CSU
+The Search Cases View CSU sends a Django.forms.Form object to the controller.
 
 ### 6.3.4  Detailed Design Diagrams
