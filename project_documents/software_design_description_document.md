@@ -178,11 +178,40 @@ The Search Cases View interfaces with our controller CS through the searchCases(
 
 ### 6.3.3  Detailed Data Structure Descriptions
 #### 6.3.3.1 District Model CSU
+- Division: LAPD division that signifies where the case is being handled. This is an alphabetic string.
+- Bureau: LAPD bureau that signifies where the binder should be held. This is an alphabetic string.
+- Reporting District: LAPD reporting districts, where as a whole, represent the Division. This is an integer.
 #### 6.3.3.2 Case Model CSU
+- DR Number: This is the primary key associated with every case. This is an alphanumeric string.
+- Court Case Number: Court number for every case. This is an integer.
+- Date Fully Reviewed: Date mm/dd/yyyy that signifies when the case was adjudicated. This is a date value.
+- Case Adjudication: Overall case adjudication. This is an alphanumeric string.
+- Evidence Destroyed: Yes or no value that indicates if evidence is destroyed. This is a character: either 'y' or 'n'.
+- Status: Signifies the crime committed for the case. This is a string value.
+- Status Date: Date mm/dd/yyyy that signifies when the status for a case was last edited. This is a date value.
+- Motive: This is a string that signifies the suspect(s) motive in a case.
+- Solvability factor: This is an integer that signifies the magnitude of solvability. The higher it is, the better it is to case completion.
+- Notes: String value to enter case notes.
 #### 6.3.3.3 Event Model CSU
+- Weapon: Weapon used in a case. This is a string value.
+- Date Occurred: Date mm/dd/yyyy that signifies when the case happened. This is a date value.
+- Date Reported: Date mm/dd/yyyy that signifies when the case was reported. This is a date value.
+- Coroner Case Number: This is an integer that signifies a Coroner Case Number.
+- Crime Committed: Signifies the crime committed in a case. This is an alphanumeric string.
+- Address: Signifies street location of the crime. This is an alphanumeric string.
 #### 6.3.3.4 Person Model CSU
+- Age: Victim or suspect age. This is an integer.
+- Sex: Victim or suspect sex. This is a character: either 'm', 'f'.
+- Description: General notes on the victim or suspect. This is an alphanumeric string.
+- Ethnicity: Victim or suspect ethnicity. This is an alphabetic string.
+- First Name: Victim or suspect first name. This is an alphabetic string.
+- Last Name: Victim or suspect last name. This is an alphabetic string.
 #### 6.3.3.5 Binder Model CSU
+- Master DR: This is a primary key that signifies a case's binder, and the number of cases associated with said binder.
+- Check Out Date: Date mm/dd/yyyy that signifies the last check out date. This is a date value.
 #### 6.3.3.6 History Model CSU
+- Date Edited: This is a date-timestamp value that signifies when the case was last edited.
+- Edited By: This is a string value that signifies who last edited the case
 #### 6.3.3.7 Homepage View CSU
 The Homepage View CSU takes accepts a JSON array of all cases which it gets from the viewAllCases() function.
 #### 6.3.3.8 Create Case View CSU
