@@ -87,8 +87,40 @@ CrookBook is built on two main software engines: Django and Postgres. We develop
 ![UML Use Case](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/uml_use_case.png)
 
 ## 6.3 CSC and CSU Descriptions
+This section of the document focuses on Computer Software Components, CSCs, and the Computer Software Units, CSUs, that make up our entire Computer Science Configuration Item, CSCI, CrookBook.  As previously mentioned, CrookBook is built using the Model-View-Controller architecture, therefore all of the CSCs in our project are the Model CSC, View CSC, and Controller CSC.
 
 ### 6.3.1 Detailed Class Descriptions
+The following section provided descriptions of all the classes, CSUs, used in constructing the CrookBook CSCI.
+
+#### 6.3.1.1 District Model CSU
+The District CSU is part of the Model CSC.  The District database table stores information about the LAPD District which responded to and handled a case.  This table has a One-To-Many relationship with the Case SCU.
+
+Attributes: id, bureau, division, reporting_district
+
+#### 6.3.1.2 Case Model CSU
+The Case CSU is part of the Model CSC.  The Case database table stores identifying information about each case, the actions that have been taken in solving the case, and has One-To-Many relationships with the Event, Person, and History CSUs.  Additionally, this CSU has a Many-To-Many relationship to the Binder CSU.
+
+Attributes: dr_nbr, date_fully_reviewed, motive, adjudication, evidence_destroyed, status, status_date, court_case_number, notes, solvability_factor, related_cases, district, binders
+
+#### 6.3.1.3 Event Model CSU
+The Event CSU is part of the Model CSC.  The Event database table stores information about each event that occurred in a case, this way multiple locations, people, and crimes can be associated with a case.
+
+Attributes: id, date_occurred, date_reported, address, weapon, crime_committed, coroner_case_number, case
+
+#### 6.3.1.4 Person Model CSU
+The Person CSU is part of the Model CSC.  The Person database table stores identifying information about each person, victim or suspect, associated with a case, even if information is missing about the person.
+
+Attributes: id, first_name, last_name, age, sex, ethnicity, description, case
+
+#### 6.3.1.5 Binder Model CSU
+The Binder CSU is part of the Model CSC.  The Binder database table stores identifying information about each binder, or murder book.
+
+Attributes: master_dr, check_out_date
+
+#### 6.3.1.6 History Model CSU
+The History CSU is part of the Model CSC.  The History database table tracks information about any changes made to any information related to the Case to ensure responsibility and reliable information.
+
+Attributes: id, date_edited, date_edited_by, case
 
 ### 6.3.2  Detailed Interface Descriptions
 
