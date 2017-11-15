@@ -157,22 +157,22 @@ The search cases controller CSU renders the search cases view and also redirects
 ### 6.3.2  Detailed Interface Descriptions
 
 #### 6.3.2.1 District Model CSU
-The District Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+The District Model interfaces with our controller CSC through a POST request from the Create Case View CSU and through a GET request from the Search Cases View CSU, which takes the request (of type Django.forms.Form).
 
 #### 6.3.2.2 Case Model CSU
-The Case Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+The Case Model interfaces with our controller CSC through a POST request from the Create Case View CSU and through a GET request from the Search Cases View CSU, which takes the request (of type Django.forms.Form).
 
 #### 6.3.2.3 Event Model CSU
-The Event Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+The Event Model interfaces with our controller CSC through a POST request from the Create Case View CSU and through a GET request from the Search Cases View CSU, which takes the request (of type Django.forms.Form).
 
 #### 6.3.2.4 Person Model CSU
-The Person Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+The Person Model interfaces with our controller CSC through a POST request from the Create Case View CSU and through a GET request from the Search Cases View CSU, which takes the request (of type Django.forms.Form).
 
 #### 6.3.2.5 Binder Model CSU
-The Binder Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+The Binder Model interfaces with our controller CSC through a POST request from the Create Case View CSU and through a GET request from the Search Cases View CSU, which takes the request (of type Django.forms.Form).
 
 #### 6.3.2.6 History Model CSU
-The History Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+The History Model interfaces with our controller CSC through a POST request from the Create Case View CSU and through a GET request from the Search Cases View CSU, which takes the request (of type Django.forms.Form).
 
 #### 6.3.2.7 Homepage View CSU
 The Homepage View interfaces with our controller CSU through the viewAllCases() function, which sends a GET request to the controller.
