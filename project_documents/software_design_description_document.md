@@ -125,14 +125,24 @@ Attributes: id, date_edited, date_edited_by, case
 // Some ideas for remaining CSUs:
 
 #### 6.3.1.7 Homepage View
+The Homepage View CSU is part of the Views CSC. The homepage view displays the entire database in a table and has navigation links to other views in Crookbook.
+
+Methods: viewAllCases()
 
 #### 6.3.1.8 Create Case View
+The Create Case View CSU is part of the Views CSC. The Create Case View is charged with adding a new entry to the crookbook database.
+
+Methods: addEntry(request) where request is the form data from the view.
 
 #### 6.3.1.9 Edit Case View
+The Edit Case View CSU is part of the Views CSC. The Edit Case View is responsible for changing data for a specific entry in the crookbook database.
+
+Methods: editCase(master_dr)
 
 #### 6.3.1.10 Search Cases View
+The Edit Case View CSU is part of the Views CSC. The Search Cases View allows for advanced searching of the CrookBook database.
 
-
+Methods: searchCases(request) where request is the form data from the advanced search view.
 
 ### 6.3.2  Detailed Interface Descriptions
 
