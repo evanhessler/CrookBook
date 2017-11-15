@@ -63,7 +63,7 @@ The GUI web interface is what the detectives will use to perform the CRUD operat
   - CrookBook allows detectives to add a new case into the database. Like the advanced search, they will be filling out a form consisting of case related fields.
 - **Detailed Case Page**
   - CrookBook has a unique view page for every case. Here, a case file's data is presented in an elegant and clear way for LAPD personnel to see.
-  
+
 #### API Endpoints
 The web API endpoints will serve as entry-points into the crookbook application for additional tools and automated scripts. Each endpoint will use a token based authentication scheme, and require a user's unique token which can also be obtained through the an API endpoint.
 - **Get Token**
@@ -147,11 +147,23 @@ Methods: searchCases(request) where request is the form data from the advanced s
 ### 6.3.2  Detailed Interface Descriptions
 
 #### 6.3.2.1 District Model CSU
+The District Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+
 #### 6.3.2.2 Case Model CSU
+The Case Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+
 #### 6.3.2.3 Event Model CSU
+The Event Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+
 #### 6.3.2.4 Person Model CSU
+The Person Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+
 #### 6.3.2.5 Binder Model CSU
+The Binder Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+
 #### 6.3.2.6 History Model CSU
+The History Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
+
 #### 6.3.2.7 Homepage View CSU
 The Homepage View interfaces with our controller CSC through the viewAllCases() function, which displays the entire database in a table.
 
