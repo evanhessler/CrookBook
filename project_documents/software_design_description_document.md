@@ -122,6 +122,18 @@ The History CSU is part of the Model CSC.  The History database table tracks inf
 
 Attributes: id, date_edited, date_edited_by, case
 
+// Some ideas for remaining CSUs:
+
+#### 6.3.1.7 Homepage View
+
+#### 6.3.1.8 Create Case View
+
+#### 6.3.1.9 Edit Case View
+
+#### 6.3.1.10 Search Cases View
+
+
+
 ### 6.3.2  Detailed Interface Descriptions
 
 ### 6.3.3  Detailed Data Structure Descriptions
