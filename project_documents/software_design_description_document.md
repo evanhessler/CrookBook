@@ -122,27 +122,25 @@ The History CSU is part of the Model CSC.  The History database table tracks inf
 
 Attributes: id, date_edited, date_edited_by, case
 
-// Some ideas for remaining CSUs:
-
 #### 6.3.1.7 Homepage View CSU
-The Homepage View CSU is part of the Views CSC. The homepage view displays the entire database in a table and has navigation links to other views in Crookbook.
+The Homepage View CSU is part of the Views CSC. The homepage view contains a navigation bar with links to the Advanced Search View CSU and the Create Case View CSU. The homepage also has a table which displays the Master Dr, Victims, Suspsects, and Date Occurred for all entries in the database. Furthermore, there is a basic search bar which allows the user to perform quick searches for selected terms (the columns in the homepage table). Finally, the user has a generate report button which transforms and downloads the table into a PDF file.
 
-Methods: viewAllCases()
+Methods: viewAllCases(), basicSearch(term), generateReport()
 
 #### 6.3.1.8 Create Case View CSU
-The Create Case View CSU is part of the Views CSC. The Create Case View is charged with adding a new entry to the crookbook database.
+The Create Case View CSU is part of the Views CSC. The Create Case View is charged with adding a new entry to the crookbook database. The Create Case View has tabs for Case Info, Binder Info, District Info, Victims, Suspects, and Crime Info.
 
-Methods: addEntry(request) where request is the form data from the view.
+Methods: addEntry(request) where request is the Django.forms.form data from the view.
 
 #### 6.3.1.9 Edit Case View CSU
-The Edit Case View CSU is part of the Views CSC. The Edit Case View is responsible for changing data for a specific entry in the crookbook database.
+The Edit Case View CSU is part of the Views CSC. The Edit Case View is responsible for changing data for a specific entry in the crookbook database. The Edit Case View has tabs for Case Info, Binder Info, District Info, Victims, Suspects, and Crime Info which will each contain an editable form prepopulated with the case data.
 
 Methods: editEntry(requst, master_dr)
 
 #### 6.3.1.10 Search Cases View CSU
-The Edit Case View CSU is part of the Views CSC. The Search Cases View allows for advanced searching of the CrookBook database.
+The Edit Case View CSU is part of the Views CSC. The Search Cases View allows for advanced searching of the CrookBook database. The Edit Case View has tabs for Case Info, Binder Info, District Info, Victims, Suspects, and Crime Info. The user will then be redirected to a table with the search result data in a table.
 
-Methods: searchCases(request) where request is the form data from the advanced search view.
+Methods: searchCases(request) where request is the Django.forms.form data from the advanced search view.
 
 ### 6.3.2  Detailed Interface Descriptions
 
@@ -165,16 +163,16 @@ The Binder Model interfaces with our controller CSC through both the addEntry(re
 The History Model interfaces with our controller CSC through both the addEntry(request) and searchCases(request) function, which takes the request (of type Django.forms.Form).
 
 #### 6.3.2.7 Homepage View CSU
-The Homepage View interfaces with our controller CSC through the viewAllCases() function, which displays the entire database in a table.
+The Homepage View interfaces with our controller CSU through the viewAllCases() function, which sends a GET request to the controller.
 
 #### 6.3.2.8 Create Case View CSU
-The Create Case View interfaces with our controller CSC through the addEntry(request) function, which takes the request (of type Django.forms.Form).
+The Create Case View interfaces with our controller CSU. After a GET request from the Create Case View CSU, the controller CSU sends a Django.forms.form object to the view which will be filled out by the user. The form is then sent back to the controller with a POST request.
 
 #### 6.3.2.9 Edit Case View CSU
-The Edit Case View interfaces with our controller CSC through the editEntry(requst, master_dr) function, which takes the request (of type Django.forms.Form) and replaces the entry with the matching master_dr with it.
+The Edit Case View interfaces with our controller CSU. After a GET request from the Create Case View CSU, the controller CSU sends a Django.forms.form object to the view which will be edited by the user. The form is then sent back to the controller with a POST request.
 
 #### 6.3.2.10 Search Cases View CSU
-The Search Cases View interfaces with our controller CS through the searchCases(request) which takes the request (of type Django.forms.Form) and finds all matching cases.
+The Search Cases View interfaces with our controller CSU. After a GET request from the Create Case View CSU, the controller CSU sends a Django.forms.form object to the view which will be filled out by the user. The form is then sent back to the controller with a POST request.
 
 ### 6.3.3  Detailed Data Structure Descriptions
 #### 6.3.3.1 District Model CSU
