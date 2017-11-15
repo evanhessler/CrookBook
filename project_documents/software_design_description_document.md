@@ -85,3 +85,13 @@ CrookBook is built on two main software engines: Django and Postgres. We develop
 
 #### UML Use Case Diagram
 ![UML Use Case](https://github.com/evanhessler/CrookBook/blob/master/project_documents/images/uml_use_case.png)
+
+## 6.3 CSC and CSU Descriptions
+
+### 6.3.1 Detailed Class Descriptions
+
+### 6.3.2  Detailed Interface Descriptions
+
+### 6.3.3  Detailed Data Structure Descriptions
+
+### 6.3.4  Detailed Design Diagrams
