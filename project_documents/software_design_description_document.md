@@ -124,27 +124,45 @@ Attributes: id, date_edited, date_edited_by, case
 
 // Some ideas for remaining CSUs:
 
-#### 6.3.1.7 Homepage View
+#### 6.3.1.7 Homepage View CSU
 The Homepage View CSU is part of the Views CSC. The homepage view displays the entire database in a table and has navigation links to other views in Crookbook.
 
 Methods: viewAllCases()
 
-#### 6.3.1.8 Create Case View
+#### 6.3.1.8 Create Case View CSU
 The Create Case View CSU is part of the Views CSC. The Create Case View is charged with adding a new entry to the crookbook database.
 
 Methods: addEntry(request) where request is the form data from the view.
 
-#### 6.3.1.9 Edit Case View
+#### 6.3.1.9 Edit Case View CSU
 The Edit Case View CSU is part of the Views CSC. The Edit Case View is responsible for changing data for a specific entry in the crookbook database.
 
-Methods: editCase(master_dr)
+Methods: editEntry(requst, master_dr)
 
-#### 6.3.1.10 Search Cases View
+#### 6.3.1.10 Search Cases View CSU
 The Edit Case View CSU is part of the Views CSC. The Search Cases View allows for advanced searching of the CrookBook database.
 
 Methods: searchCases(request) where request is the form data from the advanced search view.
 
 ### 6.3.2  Detailed Interface Descriptions
+
+#### 6.3.2.1 District Model CSU
+#### 6.3.2.2 Case Model CSU
+#### 6.3.2.3 Event Model CSU
+#### 6.3.2.4 Person Model CSU
+#### 6.3.2.5 Binder Model CSU
+#### 6.3.2.6 History Model CSU
+#### 6.3.2.7 Homepage View
+The Homepage View interfaces with our controller CSC through the viewAllCases() function, which displays the entire database in a table.
+
+#### 6.3.2.8 Create Case View
+The Create Case View interfaces with our controller CSC through the addEntry(request) function, which takes the request (of type Django.forms.Form).
+
+#### 6.3.2.9 Edit Case View
+The Edit Case View interfaces with our controller CSC through the editEntry(requst, master_dr) function, which takes the request (of type Django.forms.Form) and replaces the entry with the matching master_dr with it.
+
+#### 6.3.2.10 Search Cases View
+The Search Cases View interfaces with our controller CS through the searchCases(request) which takes the request (of type Django.forms.Form) and finds all matching cases.
 
 ### 6.3.3  Detailed Data Structure Descriptions
 
