@@ -142,6 +142,18 @@ The Edit Case View CSU is part of the Views CSC. The Search Cases View allows fo
 
 Methods: searchCases(request) where request is the Django.forms.form data from the advanced search view.
 
+#### 6.3.1.11 Homepage Controller CSU
+The homepage controller CSU renders the homepage view and also redirects the viewAllCases(), basicSearch(term), and generateReport() functions to the appropriate backend endpoint.
+
+#### 6.3.1.12 Create Case Controller CSU
+The create case controller CSU renders the create case view and also redirects the addEntry(request) to the database.
+
+#### 6.3.1.13 Edit Case Controller CSU
+The create case controller CSU renders the create case view and also redirects the editEntry(request, master_dr) to the database.
+
+#### 6.3.1.14 Search Cases Controller CSU
+The search cases controller CSU renders the search cases view and also redirects the seachCases(request) to the database.
+
 ### 6.3.2  Detailed Interface Descriptions
 
 #### 6.3.2.1 District Model CSU
@@ -173,6 +185,18 @@ The Edit Case View interfaces with our controller CSU. After a GET request from 
 
 #### 6.3.2.10 Search Cases View CSU
 The Search Cases View interfaces with our controller CSU. After a GET request from the Create Case View CSU, the controller CSU sends a Django.forms.form object to the view which will be filled out by the user. The form is then sent back to the controller with a POST request.
+
+#### 6.3.1.11 Homepage Controller CSU
+The homepage controller CSU gets a JSON object from the database and sends it to the homepage view.
+
+#### 6.3.1.12 Create Case Controller CSU
+The create case controller CSU sends a Django.forms.form object to the view and takes the same object back. It then validates the form and sends it to the database.
+
+#### 6.3.1.13 Edit Case Controller CSU
+The edit case controller CSU sends a Django.forms.form object to the view and takes the same object back. It then validates the form and sends it to the database.
+
+#### 6.3.1.14 Search Cases Controller CSU
+The create case controller CSU sends a Django.forms.form object to the view and takes the same object back. It then validates the form and sends it to the database.
 
 ### 6.3.3  Detailed Data Structure Descriptions
 #### 6.3.3.1 District Model CSU
@@ -218,5 +242,13 @@ The Create Case View CSU sends a Django.forms.Form request to the Controller whi
 The Edit Case View CSU sends a Django.forms.Form request (and a master_dr) to the controller.
 #### 6.3.3.10 Search Cases View CSU
 The Search Cases View CSU sends a Django.forms.Form object to the controller.
+#### 6.3.1.11 Homepage Controller CSU
+The homepage controller CSU gets a JSON object from the database and sends it to the homepage view.
+#### 6.3.1.12 Create Case Controller CSU
+The create case controller CSU sends a Django.forms.form object to the view and takes the same object back.
+#### 6.3.1.13 Edit Case Controller CSU
+The edit case controller CSU sends a Django.forms.form object to the view and takes the same object back.
+#### 6.3.1.14 Search Cases Controller CSU
+The create case controller CSU sends a Django.forms.form object to the view and takes the same object back.
 
 ### 6.3.4  Detailed Design Diagrams
