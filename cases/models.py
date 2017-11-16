@@ -46,6 +46,16 @@ class District(models.Model):
         null = False,
     )
 
+class Binder(models.Model):
+    # TODO: Expand this entity to track more binder info
+    master_dr = models.CharField(
+        primary_key = True,
+        max_length = 16,
+    )
+    check_out_date = models.DateTimeField(
+        null = True,
+    )
+
 class Case(models.Model):
     dr_nbr = models.CharField(
         primary_key = True,
@@ -93,6 +103,7 @@ class Case(models.Model):
         District,
         null = False,
     )
+
 class Event(models.Model):
     id = models.AutoField(
         primary_key=True
@@ -159,16 +170,6 @@ class Person(models.Model):
     case = models.ForeignKey(
         Case,
         null = False,
-    )
-
-class Binder(models.Model):
-    # TODO: Expand this entity to track more binder info
-    master_dr = models.CharField(
-        primary_key = True,
-        max_length = 16,
-    )
-    check_out_date = models.DateTimeField(
-        null = True,
     )
 
 class History(models.Model):
