@@ -42,12 +42,12 @@ def add_entry(request):
 
         print(district_form.errors)
         print(binder_form.errors)
-        print(district_form.errors)
+        print(case_form.errors)
         print(event_form.errors)
         print(victim_form.errors)
         print(suspect_form.errors)
 
-        if district_valid and binder_valid and case_valid and victim_valid and suspect_valid:
+        if district_valid and binder_valid and case_valid:
             district = district_form.save()
             binder = binder_form.save()
             case = case_form.save(commit=False)
@@ -59,12 +59,15 @@ def add_entry(request):
             # case.binder.add(binder)
             case.save()
 
-            event.case = case
-            victim.case = case
-            suspect.case = case
-            event.save()
-            victim.save()
-            suspect.save()
+            if event_valid:
+                event.case = case
+                event.save()
+            if victim_valid:
+                victim.case = case
+                victim.save()
+            if suspect_valid:
+                suspect.case = case
+                suspect.save()
 
             return HttpResponseRedirect('/')
 
