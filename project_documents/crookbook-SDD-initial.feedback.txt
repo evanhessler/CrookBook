@@ -1,0 +1,27 @@
+
+Hi, CrookBook team ----
+
+Good job on the Preliminary SDD!  The ERD is effin' AWESOME!  Your
+CSCI descriptions and data descriptions are great -- way past the
+required level for a preliminary design.  You won't have much work to
+do for the detailed design.....
+
+Just a couple of things:
+1) the "class" diagram isn't a class diagram.  Rather than change it,
+   just rename it to be "Top-level Diagram"
+2) likewise, the "UML Use Case Diagram" isn't one of those, either.
+   Rename it to "CrookBook Activity Flow" or some such
+3) the state diagram just needs a couple of boxes renamed, like the
+   "Advanced Search Page" should be "On Advanced Search Page" and so on
+4) same for the diagram below that; "Displaying Cases" not just "Cases"
+5) note that UML state diagrams are supposed to use boxes with rounded
+   corners.  But I don't care for this effort.
+
+Very nice work.
+
+Fix these items in the next release for full credit on the document.
+
+You have 10% out of 10% which is an A-plus.
+
+Regards,
+Prof. Johnson
