@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 
 from .forms import DistrictForm, BinderForm, CaseForm, EventForm, PersonForm
+from .models import District, Binder, Case, Event
 
 def homepage(request):
     return render(request, 'homepage.html', {})
@@ -69,7 +70,18 @@ def add_entry(request):
                 suspect.case = case
                 suspect.save()
 
-            return HttpResponseRedirect('/')
+
+            return HttpResponseRedirect('/detail/' + case.dr_nbr)
+
+def detail(request, case_id):
+    the_case = get_object_or_404(Case, dr_nbr=case_id)
+    district = the_case.district
+    event = get_object_or_404(Event, case=the_case)
+    return render(request, 'detail-entry.html', {
+        'case_form': the_case,
+        'district_form': district,
+        'event_form': event
+    })
 
 def advanced_search(request):
     return render(request, 'advanced-search.html', {})

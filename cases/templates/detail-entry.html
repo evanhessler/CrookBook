@@ -1,0 +1,129 @@
+{% extends 'snippets/nav.html' %}
+  {% block content %}
+    <div class="container" style="padding-top: 8vh;">
+      <h3>Case Entry Details</h3>
+    </div>
+    <hr width="100%" style="margin-top: 0px;">
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Case Info
+          <a>edit</a>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <!-- potentially text align right-->
+            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
+            <div class="col-md-4">
+              <p>DR Number</p>
+              <p>Court Case Number</p>
+              <p>Date Fully Reviewed</p>
+              <p>Motive</p>
+              <p>Adjudication</p>
+              <p>Status</p>
+              <p>Status Date</p>
+              <p>Evidence Destroyed</p>
+              <p>Notes</p>
+            </div>
+            <div class="col-md-8">
+              <p>{{case_form.dr_nbr}}</p>
+              <p>{{case_form.court_case_number}}</p>
+              <p>{{case_form.date_fully_reviewed}}</p>
+              <p>{{case_form.motive}}</p>
+              <p>{{case_form.adjudication}}</p>
+              <p>{{case_form.status}}</p>
+              <p>{{case_form.status_date}}</p>
+              <p>{{case_form.evidence_destroyed}}</p>
+              <p>{{case_form.notes}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr width="100%">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Binder Info
+          <a>edit</a>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <!-- potentially text align right-->
+            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
+            <div class="col-md-4">
+              <p>MDR Number</p>
+            </div>
+            <div class="col-md-8">
+              <p>{{binder_form.master_dr}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr width="100%">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          District Info
+          <a>edit</a>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <!-- potentially text align right-->
+            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
+            <div class="col-md-4">
+              <p>District Bureau</p>
+              <p>District Division</p>
+              <p>District Reporting District</p>
+            </div>
+            <div class="col-md-8">
+              <p>{{district_form.bureau}}</p>
+              <p>{{district_form.division}}</p>
+              <p>{{district_form.reporting_district}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr width="100%">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Victims Info
+          <a>edit</a>
+        </div>
+        <div class="panel-body">
+          Victims Info body
+        </div>
+      </div>
+      <hr width="100%">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Suspects Info
+          <a>edit</a>
+        </div>
+        <div class="panel-body">
+          Suspects Info body
+        </div>
+      </div>
+      <hr width="100%">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Crime Info
+          <a>edit</a>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <!-- potentially text align right-->
+            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
+            <div class="col-md-4">
+              <p>Address</p>
+            </div>
+            <div class="col-md-8">
+              <p>{{event_form.address}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

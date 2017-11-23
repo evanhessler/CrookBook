@@ -18,8 +18,9 @@
           <a class="anchor-pts" href="/"><img src="{% static "images/logo.svg" %}" width="150px"></a>
         </div>
         <div class="col-xs-8 alignment navlinks" id="nav-links">
-          <a class="anchor-pts" href="advancedSearch" id="adv-search-nav">Advanced Search</a>
+          <a class="anchor-pts" href="/advancedSearch" id="adv-search-nav">Advanced Search</a>
           <a class="anchor-pts" href="/add" id="add-entry-nav">Add Entry</a>
+          <a class="anchor-pts" href="/detail" id="detail-entry-nav">Detail</a>
         </div>
       </div>
     </div>
@@ -28,7 +29,8 @@
 
   {% endblock %}
   <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+  <script src="{% static "javascript/jquery-3.2.1.min.js" %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
   <script src="{% static "javascript/styles.js" %}"></script>
   <script src="{% static "javascript/jspdf.min.js" %}"></script>

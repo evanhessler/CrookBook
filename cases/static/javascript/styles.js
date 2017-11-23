@@ -75,10 +75,9 @@ $(document).ready(function () {
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors
 const highlightNavAnchor = function() {
-	if (window.location.pathname == '/advancedSearch') {
+	if (window.location.pathname == '/advancedSearch/') {
 		$('#adv-search-nav').css("color", "white");
-		console.log($('#adv-search-nav'));
-	} else if (window.location.pathname == '/add') {
+	} else if (window.location.pathname == '/add/') {
 		$('#add-entry-nav').css("color", "white");
 	}
 };
