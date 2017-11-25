@@ -15,7 +15,7 @@ class BinderForm(ModelForm):
 class CaseForm(ModelForm):
     class Meta:
         model = Case
-        exclude = ['related_cases', 'district']
+        exclude = ['related_cases', 'district', 'binder']
 
 class EventForm(ModelForm):
     class Meta:

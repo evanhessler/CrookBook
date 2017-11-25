@@ -103,6 +103,10 @@ class Case(models.Model):
         District,
         null = False,
     )
+    binder = models.ForeignKey(
+        Binder,
+        null = False,
+    )
 
 class Event(models.Model):
     id = models.AutoField(

@@ -36,7 +36,12 @@ def add_entry(request):
 
         district_valid = district_form.is_valid()
         binder_valid = binder_form.is_valid()
-        case_valid = district_form.is_valid()
+        #case_valid = district_form.is_valid()
+        if district_valid and binder_valid:
+            case_valid = True
+        else:
+            case_valid = False
+
         event_valid = event_form.is_valid()
         victim_valid = victim_form.is_valid()
         suspect_valid = suspect_form.is_valid()
@@ -51,12 +56,14 @@ def add_entry(request):
         if district_valid and binder_valid and case_valid:
             district = district_form.save()
             binder = binder_form.save()
+            #case = case_form.save(commit=False)
             case = case_form.save(commit=False)
             event = event_form.save(commit=False)
             victim = victim_form.save(commit=False)
             suspect = suspect_form.save(commit=False)
 
             case.district = district
+            case.binder = binder
             # case.binder.add(binder)
             case.save()
 
@@ -76,10 +83,12 @@ def add_entry(request):
 def detail(request, case_id):
     the_case = get_object_or_404(Case, dr_nbr=case_id)
     district = the_case.district
+    binder = the_case.binder
     event = get_object_or_404(Event, case=the_case)
     return render(request, 'detail-entry.html', {
         'case_form': the_case,
         'district_form': district,
+        'binder_form': binder,
         'event_form': event
     })
 
