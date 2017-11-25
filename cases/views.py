@@ -81,16 +81,19 @@ def add_entry(request):
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
 
 def detail(request, case_id):
-    the_case = get_object_or_404(Case, dr_nbr=case_id)
-    district = the_case.district
-    binder = the_case.binder
-    event = get_object_or_404(Event, case=the_case)
-    return render(request, 'detail-entry.html', {
-        'case_form': the_case,
-        'district_form': district,
-        'binder_form': binder,
-        'event_form': event
-    })
+    if request.method == 'GET':
+        the_case = get_object_or_404(Case, dr_nbr=case_id)
+        district = the_case.district
+        binder = the_case.binder
+        event = get_object_or_404(Event, case=the_case)
+        return render(request, 'detail-entry.html', {
+            'case_form': the_case,
+            'district_form': district,
+            'binder_form': binder,
+            'event_form': event
+        })
+    elif request.method == 'POST':
+        print('hey')
 
 def advanced_search(request):
     return render(request, 'advanced-search.html', {})

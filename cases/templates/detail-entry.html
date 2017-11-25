@@ -1,5 +1,7 @@
 {% extends 'snippets/nav.html' %}
   {% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
     <div class="container" style="padding-top: 8vh;">
       <h3>Case Entry Details</h3>
     </div>
@@ -52,9 +54,11 @@
             <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
             <div class="col-md-4">
               <p>MDR Number</p>
+              <p>Last Check Out Date</p>
             </div>
             <div class="col-md-8">
               <p>{{binder_form.master_dr}}</p>
+              <p>{{binder_form.check_out_date}}</p>
             </div>
           </div>
         </div>
@@ -126,4 +130,5 @@
         </div>
       </div>
     </div>
+  </form>
   {% endblock %}
