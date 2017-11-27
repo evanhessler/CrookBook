@@ -65,6 +65,7 @@ textarea {
   background-color: black;
   width: 100vw;
   position: fixed;
+  z-index: 1; /* fixed overlapping body */
 }
 #nav-bar > .container {
   margin-top: 2vh;
@@ -237,4 +238,15 @@ textarea {
 }
 .panel-heading > a {
   float: right;
+}
+.detail-input > input {
+  margin-bottom: 5px;
+  width: 550px;
+}
+.detail-input > select {
+  margin-bottom: 5px;
+  width: 550px;
+}
+.detail-edit {
+  cursor: pointer;
 }

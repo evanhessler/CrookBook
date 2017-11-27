@@ -71,6 +71,19 @@ $(document).ready(function () {
 	$('#generate-report-button').click(function() {
 		generatePDF($(document).find('table'));
 	});
+
+	// Attributes in detail-entry made editable
+	$('#detail-case').click(function() {
+		console.log('clicked on edit');
+		$(document).find('#case-input').children('input').each(function() {
+			console.log($(this));
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#case-input').children('select').each(function() {
+			console.log($(this));
+			$(this).attr("disabled", false);
+		});
+	});
 });
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors
