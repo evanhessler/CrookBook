@@ -90,6 +90,7 @@ class Case(models.Model):
         null = True,
     )
     notes = models.TextField(
+        blank = True,
         null = True,
     )
 
@@ -102,6 +103,7 @@ class Case(models.Model):
     district = models.ForeignKey(
         District,
         null = False,
+        related_name = 'district',
     )
 
 class Event(models.Model):
@@ -135,6 +137,7 @@ class Event(models.Model):
     case = models.ForeignKey(
         Case,
         null = False,
+        related_name = 'events',
     )
 
 class Person(models.Model):
@@ -165,11 +168,20 @@ class Person(models.Model):
     )
     description = models.CharField(
         max_length = 64,
+        blank = True,
         null = True,
     )
-    case = models.ForeignKey(
+    case_victim = models.ForeignKey(
         Case,
-        null = False,
+        blank = True,
+        null = True,
+        related_name = 'victims',
+    )
+    case_suspect = models.ForeignKey(
+        Case,
+        blank = True,
+        null = True,
+        related_name = 'suspects',
     )
 
 class History(models.Model):
