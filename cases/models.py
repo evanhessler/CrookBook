@@ -46,13 +46,35 @@ class District(models.Model):
         null = False,
     )
 
-class Binder(models.Model):
-    # TODO: Expand this entity to track more binder info
-    master_dr = models.CharField(
-        primary_key = True,
-        max_length = 16,
+class Person(models.Model):
+    id = models.AutoField(
+        primary_key=True
     )
-    check_out_date = models.DateTimeField(
+    first_name = models.CharField(
+        max_length = 32,
+        null = True,
+    )
+    last_name = models.CharField(
+        max_length = 32,
+        null = True,
+    )
+    age = models.IntegerField(
+        null = True,
+    )
+    sex = models.CharField(
+        max_length = 32,
+        choices = SEX,
+        null = True,
+    )
+    ethnicity = models.CharField(
+        max_length  = 2,
+        choices = ETHNICITIES,
+        # TODO: Add ETHNICITIES choices
+        null = True,
+    )
+    description = models.CharField(
+        max_length = 64,
+        blank = True,
         null = True,
     )
 
@@ -105,6 +127,16 @@ class Case(models.Model):
         null = False,
         related_name = 'district',
     )
+    victims = models.ManyToManyField(
+        Person,
+        blank = True,
+        related_name = 'victims1',
+    )
+    suspects = models.ManyToManyField(
+        Person,
+        blank = True,
+        related_name = 'suspects1',
+    )
 
 class Event(models.Model):
     id = models.AutoField(
@@ -140,48 +172,14 @@ class Event(models.Model):
         related_name = 'events',
     )
 
-class Person(models.Model):
-    id = models.AutoField(
-        primary_key=True
+class Binder(models.Model):
+    # TODO: Expand this entity to track more binder info
+    master_dr = models.CharField(
+        primary_key = True,
+        max_length = 16,
     )
-    first_name = models.CharField(
-        max_length = 32,
+    check_out_date = models.DateTimeField(
         null = True,
-    )
-    last_name = models.CharField(
-        max_length = 32,
-        null = True,
-    )
-    age = models.IntegerField(
-        null = True,
-    )
-    sex = models.CharField(
-        max_length = 32,
-        choices = SEX,
-        null = True,
-    )
-    ethnicity = models.CharField(
-        max_length  = 1,
-        choices = ETHNICITIES,
-        # TODO: Add ETHNICITIES choices
-        null = True,
-    )
-    description = models.CharField(
-        max_length = 64,
-        blank = True,
-        null = True,
-    )
-    case_victim = models.ForeignKey(
-        Case,
-        blank = True,
-        null = True,
-        related_name = 'victims',
-    )
-    case_suspect = models.ForeignKey(
-        Case,
-        blank = True,
-        null = True,
-        related_name = 'suspects',
     )
 
 class History(models.Model):

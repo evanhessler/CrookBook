@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 
 from .models import Case
-from .forms import DistrictForm, BinderForm, CaseForm, EventForm, PersonForm
+from .forms import DistrictForm, BinderForm, PersonForm, CaseForm, EventForm
 
 def homepage(request):
     cases = Case.objects.all()
@@ -51,26 +51,25 @@ def add_entry(request):
         print(suspect_form.errors)
 
         if district_valid and binder_valid and case_valid:
+            victim = victim_form.save()
+            suspect = suspect_form.save()
             district = district_form.save()
             binder = binder_form.save()
             case = case_form.save(commit=False)
             event = event_form.save(commit=False)
-            victim = victim_form.save(commit=False)
-            suspect = suspect_form.save(commit=False)
 
             case.district = district
             # case.binder.add(binder)
+            if victim_valid:
+                case.victims.add(victim)
+            if suspect_valid:
+                case.suspects.add(suspect)
             case.save()
+
 
             if event_valid:
                 event.case = case
                 event.save()
-            if victim_valid:
-                victim.case_victim = case
-                victim.save()
-            if suspect_valid:
-                suspect.case_suspect = case
-                suspect.save()
 
             return HttpResponseRedirect('/')
 
