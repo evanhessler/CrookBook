@@ -12,14 +12,15 @@ LAPD Case Tracking Management System
 
 #### Steps:
 1. Ensure docker and docker-compose are installed and working.
-2. Run 'docker-compose build' to create the needed images.
-3. Run 'docker-compose up' to run the images as containers.
+2. Run `docker-compose build` to create the needed images.
+3. Run `docker-compose up` to run the images as containers.
 4. Ctrl+c to stop server.
 
 #### Additional docker-compose Commands:
-- 'docker-compose run makemigrations' detects new database migrations.
-- 'docker-compose run migrate' runs above command and makes the migrations.
-- 'docker-compose run manage' serves as an entry-point for additional Django manage.py commands.
+- `docker-compose run makemigrations` detects new database migrations.
+- `docker-compose run migrate` runs above command and makes the migrations.
+- `docker-compose run manage` serves as an entry-point for additional Django manage.py commands.
+- `docker-compose run manage createsuperuser` will prompt for username/password and then create a root user.
 
 ### Building Manually
 #### Requirements:
