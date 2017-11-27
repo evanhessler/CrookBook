@@ -21,6 +21,7 @@ LAPD Case Tracking Management System
 - `docker-compose run migrate` runs above command and makes the migrations.
 - `docker-compose run manage` serves as an entry-point for additional Django manage.py commands.
 - `docker-compose run manage createsuperuser` will prompt for username/password and then create a root user.
+- `docker-compose run manage shell` will start interactive Django shell to database.
 
 ### Building Manually
 #### Requirements:
