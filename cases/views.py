@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 
+from .models import Case
 from .forms import DistrictForm, BinderForm, CaseForm, EventForm, PersonForm
 
 def homepage(request):
-    return render(request, 'homepage.html', {})
+    cases = Case.objects.all()
+
+    return render(request, 'homepage.html', {'cases': cases})
 
 def add_entry(request):
     if request.method == 'GET':
@@ -63,10 +66,10 @@ def add_entry(request):
                 event.case = case
                 event.save()
             if victim_valid:
-                victim.case = case
+                victim.case_victim = case
                 victim.save()
             if suspect_valid:
-                suspect.case = case
+                suspect.case_suspect = case
                 suspect.save()
 
             return HttpResponseRedirect('/')
