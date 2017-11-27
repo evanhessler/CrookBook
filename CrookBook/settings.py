@@ -26,7 +26,8 @@ SECRET_KEY = '7w@hh$j853%1qv+k6c+uj$-av56jkk99*y&&0no@pehn_z4sct'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    os.environ['HOST']
+    os.environ['HOST'],
+    '192.168.99.100',
 ]
 
 
