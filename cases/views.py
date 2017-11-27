@@ -59,12 +59,13 @@ def add_entry(request):
             event = event_form.save(commit=False)
 
             case.district = district
+
+            case.save()
             # case.binder.add(binder)
             if victim_valid:
                 case.victims.add(victim)
             if suspect_valid:
                 case.suspects.add(suspect)
-            case.save()
 
 
             if event_valid:
