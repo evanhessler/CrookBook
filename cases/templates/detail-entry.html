@@ -11,7 +11,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           Case Info
-          <a class="detail-edit" id="detail-case">edit</a>
+          <a id="case-edit">edit</a>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -54,7 +54,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           Binder Info
-          <a>edit</a>
+          <a id="binder-edit">edit</a>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -62,7 +62,7 @@
               <p>MDR Number</p>
               <p>Last Check Out Date</p>
             </div>
-            <div class="col-md-8 detail-input">
+            <div class="col-md-8 detail-input" id="binder-input">
               <input type="text" name="DrNBR" class='form-control' value={{binder_form.master_dr}} readonly>
               <input type="text" name="DrNBR" class='form-control' value='{{binder_form.check_out_date}}' readonly>
             </div>
@@ -74,7 +74,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           District Info
-          <a>edit</a>
+          <a id="district-edit">edit</a>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -83,7 +83,7 @@
               <p>District Division</p>
               <p>District Reporting District</p>
             </div>
-            <div class="col-md-8 detail-input">
+            <div class="col-md-8 detail-input" id="district-input">
               <input type="text" name="DrNBR" class='form-control' value={{district_form.bureau}} readonly>
               <input type="text" name="DrNBR" class='form-control' value={{district_form.division}} readonly>
               <input type="text" name="DrNBR" class='form-control' value={{district_form.reporting_district}} readonly>
@@ -118,7 +118,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           Crime Info
-          <a>edit</a>
+          <a id="crime-edit">edit</a>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -130,7 +130,7 @@
               <p>Crime Committed</p>
               <p>Coroner Case Number</p>
             </div>
-            <div class="col-md-8 detail-input">
+            <div class="col-md-8 detail-input" id="crime-input">
               <input type="text" name="DrNBR" class='form-control' value='{{event_form.date_occurred}}' readonly>
               <input type="text" name="DrNBR" class='form-control' value='{{event_form.date_reported}}' readonly>
               <input type="text" name="DrNBR" class='form-control' value='{{event_form.address}}' readonly>

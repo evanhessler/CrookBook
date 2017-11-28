@@ -238,6 +238,7 @@ textarea {
 }
 .panel-heading > a {
   float: right;
+  cursor: pointer;
 }
 .detail-input > input {
   margin-top: 4px;
@@ -246,7 +247,4 @@ textarea {
 .detail-input > select {
   margin-top: 4px;
   width: 550px;
-}
-.detail-edit {
-  cursor: pointer;
 }

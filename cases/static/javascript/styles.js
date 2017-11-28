@@ -73,14 +73,38 @@ $(document).ready(function () {
 	});
 
 	// Attributes in detail-entry made editable
-	$('#detail-case').click(function() {
-		console.log('clicked on edit');
+	$('#case-edit').click(function() {
 		$(document).find('#case-input').children('input').each(function() {
-			console.log($(this));
 			$(this).attr("readonly", false);
 		});
 		$(document).find('#case-input').children('select').each(function() {
-			console.log($(this));
+			$(this).attr("disabled", false);
+		});
+	});
+
+	$('#binder-edit').click(function() {
+		$(document).find('#binder-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#binder-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+
+	$('#district-edit').click(function() {
+		$(document).find('#district-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#district-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+
+	$('#crime-edit').click(function() {
+		$(document).find('#crime-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#crime-input').children('select').each(function() {
 			$(this).attr("disabled", false);
 		});
 	});
