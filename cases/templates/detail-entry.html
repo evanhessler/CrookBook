@@ -15,8 +15,6 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <!-- potentially text align right-->
-            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
             <div class="col-md-4">
               <p>DR Number</p>
               <p>Court Case Number</p>
@@ -44,23 +42,9 @@
                 <option value="IC">Investigation Continued</option>
               </select>
 
-              <!--
-              <input type="text" name="DrNBR" class='form-control' value={{case_form.status}} readonly>
-              -->
               <input type="text" name="DrNBR" class='form-control' value='{{case_form.status_date}}' readonly>
               <input type="text" name="DrNBR" class='form-control' value={{case_form.evidence_destroyed}} readonly>
               <input type="text" name="DrNBR" class='form-control' value={{case_form.notes}} readonly>
-              <!--
-              <p>{{case_form.dr_nbr}}</p>
-              <p>{{case_form.court_case_number}}</p>
-              <p>{{case_form.date_fully_reviewed}}</p>
-              <p>{{case_form.motive}}</p>
-              <p>{{case_form.adjudication}}</p>
-              <p>{{case_form.status}}</p>
-              <p>{{case_form.status_date}}</p>
-              <p>{{case_form.evidence_destroyed}}</p>
-              <p>{{case_form.notes}}</p>
-              -->
             </div>
           </div>
         </div>
@@ -74,15 +58,13 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <!-- potentially text align right-->
-            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
             <div class="col-md-4">
               <p>MDR Number</p>
               <p>Last Check Out Date</p>
             </div>
-            <div class="col-md-8">
-              <p>{{binder_form.master_dr}}</p>
-              <p>{{binder_form.check_out_date}}</p>
+            <div class="col-md-8 detail-input">
+              <input type="text" name="DrNBR" class='form-control' value={{binder_form.master_dr}} readonly>
+              <input type="text" name="DrNBR" class='form-control' value='{{binder_form.check_out_date}}' readonly>
             </div>
           </div>
         </div>
@@ -96,17 +78,15 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <!-- potentially text align right-->
-            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
             <div class="col-md-4">
               <p>District Bureau</p>
               <p>District Division</p>
               <p>District Reporting District</p>
             </div>
-            <div class="col-md-8">
-              <p>{{district_form.bureau}}</p>
-              <p>{{district_form.division}}</p>
-              <p>{{district_form.reporting_district}}</p>
+            <div class="col-md-8 detail-input">
+              <input type="text" name="DrNBR" class='form-control' value={{district_form.bureau}} readonly>
+              <input type="text" name="DrNBR" class='form-control' value={{district_form.division}} readonly>
+              <input type="text" name="DrNBR" class='form-control' value={{district_form.reporting_district}} readonly>
             </div>
           </div>
         </div>
@@ -142,13 +122,21 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <!-- potentially text align right-->
-            <!--TODO: Get the value of the attributes. Currentyl, passes in HTML input tags -->
             <div class="col-md-4">
+              <p>Date Occurred</p>
+              <p>Date Reported</p>
               <p>Address</p>
+              <p>Weapon</p>
+              <p>Crime Committed</p>
+              <p>Coroner Case Number</p>
             </div>
-            <div class="col-md-8">
-              <p>{{event_form.address}}</p>
+            <div class="col-md-8 detail-input">
+              <input type="text" name="DrNBR" class='form-control' value='{{event_form.date_occurred}}' readonly>
+              <input type="text" name="DrNBR" class='form-control' value='{{event_form.date_reported}}' readonly>
+              <input type="text" name="DrNBR" class='form-control' value='{{event_form.address}}' readonly>
+              <input type="text" name="DrNBR" class='form-control' value={{event_form.weapon}} readonly>
+              <input type="text" name="DrNBR" class='form-control' value={{event_form.crime_committed}} readonly>
+              <input type="text" name="DrNBR" class='form-control' value={{event_form.coroner_case_number}} readonly>
             </div>
           </div>
         </div>

@@ -240,11 +240,11 @@ textarea {
   float: right;
 }
 .detail-input > input {
-  margin-bottom: 5px;
+  margin-top: 4px;
   width: 550px;
 }
 .detail-input > select {
-  margin-bottom: 5px;
+  margin-top: 4px;
   width: 550px;
 }
 .detail-edit {
