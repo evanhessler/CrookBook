@@ -39,7 +39,7 @@ LAPD Case Tracking Management System
 ## Database backup and restore
 
 ### Backup
-  - `docker exec -t <db_container_name> pg_dumpall -c -U postgres > db_backup_`date +%d-%m-%Y"_"%H_%M%S`.sql`
+  - ```docker exec -t <db_container_name> pg_dumpall -c -U postgres > db_backup_`date +%d-%m-%Y"_"%H_%M%S`.sql```
     - Database name can be found with `docker ps`
 
 ### Restore
