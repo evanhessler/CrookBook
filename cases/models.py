@@ -62,7 +62,7 @@ class Person(models.Model):
         null = True,
     )
     sex = models.CharField(
-        max_length = 32,
+        max_length = 1,
         choices = SEX,
         null = True,
     )
@@ -72,8 +72,7 @@ class Person(models.Model):
         # TODO: Add ETHNICITIES choices
         null = True,
     )
-    description = models.CharField(
-        max_length = 64,
+    description = models.TextField(
         blank = True,
         null = True,
     )
@@ -149,7 +148,7 @@ class Event(models.Model):
         null = False,
     )
     address = models.CharField(
-        max_length = 50,
+        max_length = 64,
         null = False,
     )
     weapon = models.CharField(
