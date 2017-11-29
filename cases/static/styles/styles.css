@@ -248,3 +248,6 @@ textarea {
   margin-top: 4px;
   width: 550px;
 }
+#save-entry-button {
+  margin-bottom: 15px;
+}

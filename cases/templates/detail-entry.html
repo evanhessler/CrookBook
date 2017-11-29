@@ -35,7 +35,7 @@
               <input type="text" class='form-control' id="case-adjudication" name="case-adjudication" value={{case_form.adjudication}} readonly>
 
               <select class="form-control" id="case-status" name="case-status" required="" disabled>
-                <option value="" selected="">{{case_form.status}}</option>
+                <option value="{{case_form.status}}" selected="">{{case_form.status}}</option>
                 <option value="AA">Adult Arrest</option>
                 <option value="JA">Juvenile Arrest</option>
                 <option value="AO">Adult Other</option>
@@ -46,7 +46,7 @@
               <input type="text" class='form-control' id="case-status_date" name="case-status_date" value='{{case_form.status_date}}' readonly>
 
               <select class="form-control" id="case-evidence_destroyed" name="case-evidence_destroyed" required="" disabled>
-                <option value="" selected="" id="evidence_destroyed_input">{{case_form.evidence_destroyed}}</option>
+                <option value="{{case_form.evidence_destroyed}}" selected="" id="evidence_destroyed_input">{{case_form.evidence_destroyed}}</option>
               </select>
 
               <input type="text" class='form-control' id="case-notes" name="case-notes" value={{case_form.notes}} readonly>
@@ -146,6 +146,11 @@
           </div>
         </div>
       </div>
+
+      <center class="button-container" id="save-entry-button">
+        <input class="button inline-block" type="submit" value="Save Entry" />
+      </center>
+
     </div>
   </form>
   {% endblock %}
