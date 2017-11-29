@@ -8,6 +8,7 @@
     </div>
     <hr width="100%" style="margin-top: 0px;">
     <div class="container">
+
       <div class="panel panel-default">
         <div class="panel-heading">
           Case Info
@@ -27,11 +28,11 @@
               <p>Notes</p>
             </div>
             <div class="col-md-8 detail-input" id="case-input">
-              <input type="text" name="DrNBR" class='form-control' value={{case_form.dr_nbr}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{case_form.court_case_number}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value='{{case_form.date_fully_reviewed}}' readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{case_form.motive}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{case_form.adjudication}} readonly>
+              <input type="text" class='form-control' id="case-dr_nbr" name="case-dr-nbr" value={{case_form.dr_nbr}} readonly>
+              <input type="text" class='form-control' id="case-court_case_number" name="case-court_case_number" value={{case_form.court_case_number}} readonly>
+              <input type="text" class='form-control' id="case-date_fully_reviewed" name="case-date_fully_reviewed" value='{{case_form.date_fully_reviewed}}' readonly>
+              <input type="text" class='form-control' id="case-motive" name="case-motive" value={{case_form.motive}} readonly>
+              <input type="text" class='form-control' id="case-adjudication" name="case-adjudication" value={{case_form.adjudication}} readonly>
 
               <select class="form-control" id="case-status" name="case-status" required="" disabled>
                 <option value="" selected="">{{case_form.status}}</option>
@@ -42,9 +43,13 @@
                 <option value="IC">Investigation Continued</option>
               </select>
 
-              <input type="text" name="DrNBR" class='form-control' value='{{case_form.status_date}}' readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{case_form.evidence_destroyed}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{case_form.notes}} readonly>
+              <input type="text" class='form-control' id="case-status_date" name="case-status_date" value='{{case_form.status_date}}' readonly>
+
+              <select class="form-control" id="case-evidence_destroyed" name="case-evidence_destroyed" required="" disabled>
+                <option value="" selected="" id="evidence_destroyed_input">{{case_form.evidence_destroyed}}</option>
+              </select>
+
+              <input type="text" class='form-control' id="case-notes" name="case-notes" value={{case_form.notes}} readonly>
             </div>
           </div>
         </div>
@@ -63,8 +68,8 @@
               <p>Last Check Out Date</p>
             </div>
             <div class="col-md-8 detail-input" id="binder-input">
-              <input type="text" name="DrNBR" class='form-control' value={{binder_form.master_dr}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value='{{binder_form.check_out_date}}' readonly>
+              <input type="text" class='form-control' value={{binder_form.master_dr}} readonly>
+              <input type="text" class='form-control' value='{{binder_form.check_out_date}}' readonly>
             </div>
           </div>
         </div>
@@ -84,9 +89,9 @@
               <p>District Reporting District</p>
             </div>
             <div class="col-md-8 detail-input" id="district-input">
-              <input type="text" name="DrNBR" class='form-control' value={{district_form.bureau}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{district_form.division}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{district_form.reporting_district}} readonly>
+              <input type="text" class='form-control' value={{district_form.bureau}} readonly>
+              <input type="text" class='form-control' value={{district_form.division}} readonly>
+              <input type="text" class='form-control' value={{district_form.reporting_district}} readonly>
             </div>
           </div>
         </div>
@@ -131,12 +136,12 @@
               <p>Coroner Case Number</p>
             </div>
             <div class="col-md-8 detail-input" id="crime-input">
-              <input type="text" name="DrNBR" class='form-control' value='{{event_form.date_occurred}}' readonly>
-              <input type="text" name="DrNBR" class='form-control' value='{{event_form.date_reported}}' readonly>
-              <input type="text" name="DrNBR" class='form-control' value='{{event_form.address}}' readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{event_form.weapon}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{event_form.crime_committed}} readonly>
-              <input type="text" name="DrNBR" class='form-control' value={{event_form.coroner_case_number}} readonly>
+              <input type="text" class='form-control' value='{{event_form.date_occurred}}' readonly>
+              <input type="text" class='form-control' value='{{event_form.date_reported}}' readonly>
+              <input type="text" class='form-control' value='{{event_form.address}}' readonly>
+              <input type="text" class='form-control' value={{event_form.weapon}} readonly>
+              <input type="text" class='form-control' value={{event_form.crime_committed}} readonly>
+              <input type="text" class='form-control' value={{event_form.coroner_case_number}} readonly>
             </div>
           </div>
         </div>

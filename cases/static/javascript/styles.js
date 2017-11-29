@@ -108,6 +108,13 @@ $(document).ready(function () {
 			$(this).attr("disabled", false);
 		});
 	});
+
+	// Changes 'Evidence Destroyed' options on details page on load 
+	if ($('#evidence_destroyed_input').text() == 'True') {
+		$('#evidence_destroyed_input').after('<option value="False">False</option>');
+	} else {
+		$('#evidence_destroyed_input').after('<option value="True">True</option>');
+	}
 });
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors
