@@ -38,5 +38,12 @@ LAPD Case Tracking Management System
 3. Activate virtual environment: `source venv/bin/activate`
 4. Install requirements: `pip install -r requirements.txt`
 
-## Contributing
-TODO
+## Database backup and restore
+
+### Backup
+  - ```docker exec -t <db_container_name> pg_dumpall -c -U postgres > db_backup_`date +%d-%m-%Y"_"%H_%M%S`.sql```
+    - Database name can be found with `docker ps`
+
+### Restore
+  - `cat <backup_name>.sql | docker exec -i <db_container_name> psql -U postgres`
+    - Database name can be found with `docker ps`
