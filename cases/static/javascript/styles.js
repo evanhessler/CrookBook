@@ -109,12 +109,29 @@ $(document).ready(function () {
 		});
 	});
 
-	// Changes 'Evidence Destroyed' options on details page on load 
+	// Changes 'Evidence Destroyed' options on details page on load
 	if ($('#evidence_destroyed_input').text() == 'True') {
 		$('#evidence_destroyed_input').after('<option value="False">False</option>');
 	} else {
 		$('#evidence_destroyed_input').after('<option value="True">True</option>');
 	}
+
+	$('#suspect-edit').click(function() {
+		$(document).find('#suspect-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#suspect-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+	$('#victim-edit').click(function() {
+		$(document).find('#victim-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#victim-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
 });
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors

@@ -57,30 +57,27 @@
       </div>
       <hr width="100%">
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Binder Info
-          <a id="binder-edit">edit</a>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-4">
-              <p>MDR Number</p>
-              <p>Last Check Out Date</p>
-            </div>
-            <div class="col-md-8 detail-input" id="binder-input">
-              <!--
-              <input type="text" class='form-control' value='{{binder_form.master_dr}}' readonly>
-              <input type="text" class='form-control' value='{{binder_form.check_out_date}}' readonly>
-              -->
-              {% for binder in case.binders.all %}
-                <input type="text" class='form-control' value='{{ binder.master_dr }} {{ binder.check_out_date }}' readonly>
-              {% endfor %}
+      {% for binder in case.binders.all %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Binder Info
+            <a id="binder-edit">edit</a>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-4">
+                <p>MDR Number</p>
+                <p>Last Check Out Date</p>
+              </div>
+              <div class="col-md-8 detail-input" id="binder-input">
+                <input type="text" class='form-control' value='{{ binder.master_dr }}' readonly>
+                <input type="text" class='form-control' value='{{ binder.check_out_date }}' readonly>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <hr width="100%">
+        <hr width="100%">
+      {% endfor %}
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -104,30 +101,66 @@
       </div>
       <hr width="100%">
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Victims Info
-          <a>edit</a>
+      {% for victim in case.victims.all %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Victim Info
+            <a id="victim-edit">edit</a>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-4">
+                <p>Victim First Name</p>
+                <p>Victim Last Name</p>
+                <p>Victim Age</p>
+                <p>Victim Sex</p>
+                <p>Victim Ethnicity</p>
+                <p>Victim Description</p>
+              </div>
+              <div class="col-md-8 detail-input" id="victim-input">
+                <input type="text" class='form-control' value='{{ victim.first_name }}' readonly>
+                <input type="text" class='form-control' value='{{ victim.last_name }}' readonly>
+                <input type="text" class='form-control' value='{{ victim.age }}' readonly>
+                <input type="text" class='form-control' value='{{ victim.sex }}' readonly>
+                <input type="text" class='form-control' value='{{ victim.ethnicity }}' readonly>
+                <input type="text" class='form-control' value='{{ victim.description }}' readonly>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-          Victims Info body
-        </div>
-      </div>
-      <hr width="100%">
+        <hr width="100%">
+      {% endfor %}
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Suspects Info
-          <a>edit</a>
+      {% for suspect in case.suspects.all %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Suspect Info
+            <a id="suspect-edit">edit</a>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-4">
+                <p>Suspect First Name</p>
+                <p>Suspect Last Name</p>
+                <p>Suspect Age</p>
+                <p>Suspect Sex</p>
+                <p>Suspect Ethnicity</p>
+                <p>Suspect Description</p>
+              </div>
+              <div class="col-md-8 detail-input" id="suspect-input">
+                <input type="text" class='form-control' value='{{ suspect.first_name }}' readonly>
+                <input type="text" class='form-control' value='{{ suspect.last_name }}' readonly>
+                <input type="text" class='form-control' value='{{ suspect.age }}' readonly>
+                <input type="text" class='form-control' value='{{ suspect.sex }}' readonly>
+                <input type="text" class='form-control' value='{{ suspect.ethnicity }}' readonly>
+                <input type="text" class='form-control' value='{{ suspect.description }}' readonly>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-          Suspects Info body
-          {% for suspect in case.suspects.all %}
-            <input type="text" class='form-control' value='{{ suspect.first_name }} {{ suspect.last_name }}' readonly>
-          {% endfor %}
-        </div>
-      </div>
-      <hr width="100%">
+        <hr width="100%">
+      {% endfor %}
+
 
       <div class="panel panel-default">
         <div class="panel-heading">
