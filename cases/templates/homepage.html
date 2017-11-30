@@ -25,7 +25,8 @@
         </thead>
         <tbody>
           {% for case in cases %}
-            <tr>
+          <a onclick={% url 'detail_entry' case_id=case.dr_nbr %}>
+            <tr onclick="document.location='detail/{{case.dr_nbr}}';">
               <td>{{ case.dr_nbr }}</td>
               <td>
                 {% for victim in case.victims.all %}
@@ -43,6 +44,7 @@
                 {% endfor %}
                </td>
             </tr>
+          </a>
           {% endfor %}
         </tbody>
       </table>
