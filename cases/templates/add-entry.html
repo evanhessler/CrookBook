@@ -54,7 +54,7 @@
           </div>
           <div class="col-sm-12 col-md-6">
             <label>Date Fully Reviewed</label>
-            <input type="text" class="form-control" id="case-date_fully_reviewed" name="case-date_fully_reviewed">
+            <input type="date" class="form-control" id="case-date_fully_reviewed" name="case-date_fully_reviewed">
 
             <label>Status Date</label>
             <input type="date" class="form-control" id="case-status_date" name="case-status_date">
@@ -189,7 +189,9 @@
               <input type="text" class="form-control" id="event-weapon" name="event-weapon">
 
               <label>Crime Committed</label>
-              <input type="text" class="form-control" placeholder="Default: Murder" id="event-crime_committed" name="event-crime_committed">
+              <select class="form-control" id="event-crime_committed" name="event-crime_committed">
+                <option value="M" selected="">Murder</option>
+              </select>
 
               <label>Date Occurred</label>
               <input type="date" class="form-control" id="event-date_occurred" name="event-date_occurred">

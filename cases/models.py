@@ -56,6 +56,37 @@ class Binder(models.Model):
         null = True,
     )
 
+class Person(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+    first_name = models.CharField(
+        max_length = 32,
+        null = True,
+    )
+    last_name = models.CharField(
+        max_length = 32,
+        null = True,
+    )
+    age = models.IntegerField(
+        null = True,
+    )
+    sex = models.CharField(
+        max_length = 1,
+        choices = SEX,
+        null = True,
+    )
+    ethnicity = models.CharField(
+        max_length  = 2,
+        choices = ETHNICITIES,
+        # TODO: Add ETHNICITIES choices
+        null = True,
+    )
+    description = models.TextField(
+        blank = True,
+        null = True,
+    )
+
 class Case(models.Model):
     dr_nbr = models.CharField(
         primary_key = True,
@@ -90,6 +121,7 @@ class Case(models.Model):
         null = True,
     )
     notes = models.TextField(
+        blank = True,
         null = True,
     )
 
@@ -102,10 +134,22 @@ class Case(models.Model):
     district = models.ForeignKey(
         District,
         null = False,
+        related_name = 'district',
     )
-    binder = models.ForeignKey(
+    victims = models.ManyToManyField(
+        Person,
+        blank = True,
+        related_name = 'victims',
+    )
+    suspects = models.ManyToManyField(
+        Person,
+        blank = True,
+        related_name = 'suspects',
+    )
+    binders = models.ManyToManyField(
         Binder,
-        null = False,
+        blank = True,
+        related_name = 'cases',
     )
 
 class Event(models.Model):
@@ -119,7 +163,7 @@ class Event(models.Model):
         null = False,
     )
     address = models.CharField(
-        max_length = 50,
+        max_length = 64,
         null = False,
     )
     weapon = models.CharField(
@@ -139,41 +183,7 @@ class Event(models.Model):
     case = models.ForeignKey(
         Case,
         null = False,
-    )
-
-class Person(models.Model):
-    id = models.AutoField(
-        primary_key=True
-    )
-    first_name = models.CharField(
-        max_length = 32,
-        null = True,
-    )
-    last_name = models.CharField(
-        max_length = 32,
-        null = True,
-    )
-    age = models.IntegerField(
-        null = True,
-    )
-    sex = models.CharField(
-        max_length = 32,
-        choices = SEX,
-        null = True,
-    )
-    ethnicity = models.CharField(
-        max_length  = 1,
-        choices = ETHNICITIES,
-        # TODO: Add ETHNICITIES choices
-        null = True,
-    )
-    description = models.CharField(
-        max_length = 64,
-        null = True,
-    )
-    case = models.ForeignKey(
-        Case,
-        null = False,
+        related_name = 'events',
     )
 
 class History(models.Model):
