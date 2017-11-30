@@ -65,6 +65,7 @@ textarea {
   background-color: black;
   width: 100vw;
   position: fixed;
+  z-index: 1; /* fixed overlapping body */
 }
 #nav-bar > .container {
   margin-top: 2vh;
@@ -210,4 +211,43 @@ textarea {
     position: relative;
     left: 10px;
     margin-right: 20px;
+}
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel-default {
+  border-color: #ddd;
+}
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel-body {
+  padding: 15px;
+}
+.panel-heading > a {
+  float: right;
+  cursor: pointer;
+}
+.detail-input > input {
+  margin-top: 4px;
+  width: 550px;
+}
+.detail-input > select {
+  margin-top: 4px;
+  width: 550px;
+}
+#save-entry-button {
+  margin-bottom: 15px;
 }

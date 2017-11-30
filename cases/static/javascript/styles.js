@@ -71,14 +71,74 @@ $(document).ready(function () {
 	$('#generate-report-button').click(function() {
 		generatePDF($(document).find('table'));
 	});
+
+	// Attributes in detail-entry made editable
+	$('#case-edit').click(function() {
+		$(document).find('#case-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#case-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+
+	$('#binder-edit').click(function() {
+		$(document).find('#binder-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#binder-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+
+	$('#district-edit').click(function() {
+		$(document).find('#district-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#district-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+
+	$('#crime-edit').click(function() {
+		$(document).find('#crime-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#crime-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+
+	// Changes 'Evidence Destroyed' options on details page on load
+	if ($('#evidence_destroyed_input').text() == 'True') {
+		$('#evidence_destroyed_input').after('<option value="False">False</option>');
+	} else {
+		$('#evidence_destroyed_input').after('<option value="True">True</option>');
+	}
+
+	$('#suspect-edit').click(function() {
+		$(document).find('#suspect-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#suspect-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
+	$('#victim-edit').click(function() {
+		$(document).find('#victim-input').children('input').each(function() {
+			$(this).attr("readonly", false);
+		});
+		$(document).find('#victim-input').children('select').each(function() {
+			$(this).attr("disabled", false);
+		});
+	});
 });
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors
 const highlightNavAnchor = function() {
-	if (window.location.pathname == '/advancedSearch') {
+	if (window.location.pathname == '/advancedSearch/') {
 		$('#adv-search-nav').css("color", "white");
-		console.log($('#adv-search-nav'));
-	} else if (window.location.pathname == '/add') {
+	} else if (window.location.pathname == '/add/') {
 		$('#add-entry-nav').css("color", "white");
 	}
 };

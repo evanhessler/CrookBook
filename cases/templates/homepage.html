@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           {% for case in cases %}
-            <tr>
+            <tr onclick="window.location.href = '/detail/{{ case.dr_nbr }}';">
               <td>{{ case.dr_nbr }}</td>
               <td>
                 {% for victim in case.victims.all %}

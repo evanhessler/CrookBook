@@ -46,6 +46,16 @@ class District(models.Model):
         null = False,
     )
 
+class Binder(models.Model):
+    # TODO: Expand this entity to track more binder info
+    master_dr = models.CharField(
+        primary_key = True,
+        max_length = 16,
+    )
+    check_out_date = models.DateTimeField(
+        null = True,
+    )
+
 class Person(models.Model):
     id = models.AutoField(
         primary_key=True
@@ -129,12 +139,17 @@ class Case(models.Model):
     victims = models.ManyToManyField(
         Person,
         blank = True,
-        related_name = 'victims1',
+        related_name = 'victims',
     )
     suspects = models.ManyToManyField(
         Person,
         blank = True,
-        related_name = 'suspects1',
+        related_name = 'suspects',
+    )
+    binders = models.ManyToManyField(
+        Binder,
+        blank = True,
+        related_name = 'cases',
     )
 
 class Event(models.Model):
@@ -169,16 +184,6 @@ class Event(models.Model):
         Case,
         null = False,
         related_name = 'events',
-    )
-
-class Binder(models.Model):
-    # TODO: Expand this entity to track more binder info
-    master_dr = models.CharField(
-        primary_key = True,
-        max_length = 16,
-    )
-    check_out_date = models.DateTimeField(
-        null = True,
     )
 
 class History(models.Model):

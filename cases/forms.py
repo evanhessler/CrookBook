@@ -20,7 +20,7 @@ class PersonForm(ModelForm):
 class CaseForm(ModelForm):
     class Meta:
         model = Case
-        exclude = ['related_cases', 'district', 'victims', 'suspects']
+        exclude = ['related_cases', 'district', 'binders', 'victims', 'suspects']
 
 class EventForm(ModelForm):
     class Meta:
