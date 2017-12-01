@@ -140,6 +140,8 @@ const highlightNavAnchor = function() {
 		$('#adv-search-nav').css("color", "white");
 	} else if (window.location.pathname == '/add/') {
 		$('#add-entry-nav').css("color", "white");
+	} else if (window.location.pathname == '/') {
+		$('#home-nav').css("color", "white");
 	}
 };
 
