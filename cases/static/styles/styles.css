@@ -67,9 +67,14 @@ textarea {
   position: fixed;
   z-index: 1; /* fixed overlapping body */
 }
-#nav-bar > .container {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+#nav-bar > #white-section {
+  height: 8vh;
+  background-color: white !important;
+}
+#black-section {
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  background-color: black;
 }
 #welcome-page {
   text-align: center;
@@ -115,13 +120,15 @@ textarea {
   margin-top: 2vh;
 }
 #generate-report-button {
-  margin-top: 30px;
+  margin-right: 10px;
+  width: 90%;
+  text-align: center;
 }
 .page-content {
-  padding-top: 14vh;
+  padding-top: 17vh;
 }
 .alignment {
-  text-align: right;
+  text-align: left;
 }
 .anchor-pts {
   color: #bcbcbc;
@@ -142,7 +149,7 @@ textarea {
   margin-top: 4px;
 }
 .navlinks a{
-  margin-left: 30px;
+  margin-right: 30px;
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -163,9 +170,6 @@ textarea {
   margin-bottom: 10px;
   cursor: pointer;
 }
-.gray-background {
-  background: #898989;
-}
 .container-wide {
   width: 94% !important;
 }
@@ -174,7 +178,7 @@ textarea {
   overflow-y: auto;
 }
 .database-table {
-  height: 60vh;
+  /*height: 60vh;*/
   overflow-y: scroll;
 }
 .add-entry-nav {
@@ -250,4 +254,10 @@ textarea {
 }
 #save-entry-button {
   margin-bottom: 15px;
+}
+#crookbook-logo {
+  bottom: 25%;
+  margin-left: 45vw;
+  position: absolute;
+
 }

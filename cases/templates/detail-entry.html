@@ -3,196 +3,195 @@
   {% block content %}
   <form action="" method="post">
     {% csrf_token %}
-    <div class="container" style="padding-top: 8vh;">
+    <div class="container page-content">
       <h3>Case Entry Details</h3>
-    </div>
-    <hr width="100%" style="margin-top: 0px;">
-    <div class="container">
+      <hr width="100%" style="margin-top: 0px;">
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Case Info
-          <a id="case-edit">edit</a>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-4">
-              <p>DR Number</p>
-              <p>Court Case Number</p>
-              <p>Date Fully Reviewed</p>
-              <p>Motive</p>
-              <p>Adjudication</p>
-              <p>Status</p>
-              <p>Status Date</p>
-              <p>Evidence Destroyed</p>
-              <p>Notes</p>
-            </div>
-            <div class="col-md-8 detail-input" id="case-input">
-
-              <input type="text" class='form-control' id="case-dr_nbr" name="case-dr-nbr" value='{{case.dr_nbr}}' readonly>
-              <input type="text" class='form-control' id="case-court_case_number" name="case-court_case_number" value='{{case.court_case_number}}' readonly>
-              <input type="text" class='form-control' id="case-date_fully_reviewed" name="case-date_fully_reviewed" value='{{case.date_fully_reviewed}}' readonly>
-              <input type="text" class='form-control' id="case-motive" name="case-motive" value='{{case.motive}}' readonly>
-              <input type="text" class='form-control' id="case-adjudication" name="case-adjudication" value='{{case.adjudication}}' readonly>
-
-              <select class="form-control" id="case-status" name="case-status" required="" disabled>
-                <option value="{{case.status}}" selected="">{{case.status}}</option>
-                <option value="AA">Adult Arrest</option>
-                <option value="JA">Juvenile Arrest</option>
-                <option value="AO">Adult Other</option>
-                <option value="JO">Juvenile Arrest</option>
-                <option value="IC">Investigation Continued</option>
-              </select>
-
-              <input type="text" class='form-control' id="case-status_date" name="case-status_date" value='{{case.status_date}}' readonly>
-
-              <select class="form-control" id="case-evidence_destroyed" name="case-evidence_destroyed" required="" disabled>
-                <option value="{{case.evidence_destroyed}}" selected="" id="evidence_destroyed_input">{{case.evidence_destroyed}}</option>
-              </select>
-
-              <input type="text" class='form-control' id="case-notes" name="case-notes" value='{{case.notes}}' readonly>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr width="100%">
-
-      {% for binder in case.binders.all %}
         <div class="panel panel-default">
           <div class="panel-heading">
-            Binder Info
-            <a id="binder-edit">edit</a>
+            Case Info
+            <a id="case-edit">edit</a>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-4">
-                <p>MDR Number</p>
-                <p>Last Check Out Date</p>
+                <p>DR Number</p>
+                <p>Court Case Number</p>
+                <p>Date Fully Reviewed</p>
+                <p>Motive</p>
+                <p>Adjudication</p>
+                <p>Status</p>
+                <p>Status Date</p>
+                <p>Evidence Destroyed</p>
+                <p>Notes</p>
               </div>
-              <div class="col-md-8 detail-input" id="binder-input">
-                <input type="text" class='form-control' value='{{ binder.master_dr }}' readonly>
-                <input type="text" class='form-control' value='{{ binder.check_out_date }}' readonly>
+              <div class="col-md-8 detail-input" id="case-input">
+
+                <input type="text" class='form-control' id="case-dr_nbr" name="case-dr-nbr" value='{{case.dr_nbr}}' readonly>
+                <input type="text" class='form-control' id="case-court_case_number" name="case-court_case_number" value='{{case.court_case_number}}' readonly>
+                <input type="text" class='form-control' id="case-date_fully_reviewed" name="case-date_fully_reviewed" value='{{case.date_fully_reviewed}}' readonly>
+                <input type="text" class='form-control' id="case-motive" name="case-motive" value='{{case.motive}}' readonly>
+                <input type="text" class='form-control' id="case-adjudication" name="case-adjudication" value='{{case.adjudication}}' readonly>
+
+                <select class="form-control" id="case-status" name="case-status" required="" disabled>
+                  <option value="{{case.status}}" selected="">{{case.status}}</option>
+                  <option value="AA">Adult Arrest</option>
+                  <option value="JA">Juvenile Arrest</option>
+                  <option value="AO">Adult Other</option>
+                  <option value="JO">Juvenile Arrest</option>
+                  <option value="IC">Investigation Continued</option>
+                </select>
+
+                <input type="text" class='form-control' id="case-status_date" name="case-status_date" value='{{case.status_date}}' readonly>
+
+                <select class="form-control" id="case-evidence_destroyed" name="case-evidence_destroyed" required="" disabled>
+                  <option value="{{case.evidence_destroyed}}" selected="" id="evidence_destroyed_input">{{case.evidence_destroyed}}</option>
+                </select>
+
+                <input type="text" class='form-control' id="case-notes" name="case-notes" value='{{case.notes}}' readonly>
               </div>
             </div>
           </div>
         </div>
         <hr width="100%">
-      {% endfor %}
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          District Info
-          <a id="district-edit">edit</a>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-4">
-              <p>District Bureau</p>
-              <p>District Division</p>
-              <p>District Reporting District</p>
+        {% for binder in case.binders.all %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Binder Info
+              <a id="binder-edit">edit</a>
             </div>
-            <div class="col-md-8 detail-input" id="district-input">
-              <input type="text" class='form-control' value='{{case.district.bureau}}' readonly>
-              <input type="text" class='form-control' value='{{case.district.division}}' readonly>
-              <input type="text" class='form-control' value='{{case.district.reporting_district}}' readonly>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <p>MDR Number</p>
+                  <p>Last Check Out Date</p>
+                </div>
+                <div class="col-md-8 detail-input" id="binder-input">
+                  <input type="text" class='form-control' value='{{ binder.master_dr }}' readonly>
+                  <input type="text" class='form-control' value='{{ binder.check_out_date }}' readonly>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <hr width="100%">
+          <hr width="100%">
+        {% endfor %}
 
-      {% for victim in case.victims.all %}
         <div class="panel panel-default">
           <div class="panel-heading">
-            Victim Info
-            <a id="victim-edit">edit</a>
+            District Info
+            <a id="district-edit">edit</a>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-4">
-                <p>Victim First Name</p>
-                <p>Victim Last Name</p>
-                <p>Victim Age</p>
-                <p>Victim Sex</p>
-                <p>Victim Ethnicity</p>
-                <p>Victim Description</p>
+                <p>District Bureau</p>
+                <p>District Division</p>
+                <p>District Reporting District</p>
               </div>
-              <div class="col-md-8 detail-input" id="victim-input">
-                <input type="text" class='form-control' value='{{ victim.first_name }}' readonly>
-                <input type="text" class='form-control' value='{{ victim.last_name }}' readonly>
-                <input type="text" class='form-control' value='{{ victim.age }}' readonly>
-                <input type="text" class='form-control' value='{{ victim.sex }}' readonly>
-                <input type="text" class='form-control' value='{{ victim.ethnicity }}' readonly>
-                <input type="text" class='form-control' value='{{ victim.description }}' readonly>
+              <div class="col-md-8 detail-input" id="district-input">
+                <input type="text" class='form-control' value='{{case.district.bureau}}' readonly>
+                <input type="text" class='form-control' value='{{case.district.division}}' readonly>
+                <input type="text" class='form-control' value='{{case.district.reporting_district}}' readonly>
               </div>
             </div>
           </div>
         </div>
         <hr width="100%">
-      {% endfor %}
 
-      {% for suspect in case.suspects.all %}
+        {% for victim in case.victims.all %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Victim Info
+              <a id="victim-edit">edit</a>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <p>Victim First Name</p>
+                  <p>Victim Last Name</p>
+                  <p>Victim Age</p>
+                  <p>Victim Sex</p>
+                  <p>Victim Ethnicity</p>
+                  <p>Victim Description</p>
+                </div>
+                <div class="col-md-8 detail-input" id="victim-input">
+                  <input type="text" class='form-control' value='{{ victim.first_name }}' readonly>
+                  <input type="text" class='form-control' value='{{ victim.last_name }}' readonly>
+                  <input type="text" class='form-control' value='{{ victim.age }}' readonly>
+                  <input type="text" class='form-control' value='{{ victim.sex }}' readonly>
+                  <input type="text" class='form-control' value='{{ victim.ethnicity }}' readonly>
+                  <input type="text" class='form-control' value='{{ victim.description }}' readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr width="100%">
+        {% endfor %}
+
+        {% for suspect in case.suspects.all %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Suspect Info
+              <a id="suspect-edit">edit</a>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <p>Suspect First Name</p>
+                  <p>Suspect Last Name</p>
+                  <p>Suspect Age</p>
+                  <p>Suspect Sex</p>
+                  <p>Suspect Ethnicity</p>
+                  <p>Suspect Description</p>
+                </div>
+                <div class="col-md-8 detail-input" id="suspect-input">
+                  <input type="text" class='form-control' value='{{ suspect.first_name }}' readonly>
+                  <input type="text" class='form-control' value='{{ suspect.last_name }}' readonly>
+                  <input type="text" class='form-control' value='{{ suspect.age }}' readonly>
+                  <input type="text" class='form-control' value='{{ suspect.sex }}' readonly>
+                  <input type="text" class='form-control' value='{{ suspect.ethnicity }}' readonly>
+                  <input type="text" class='form-control' value='{{ suspect.description }}' readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr width="100%">
+        {% endfor %}
+
+
         <div class="panel panel-default">
           <div class="panel-heading">
-            Suspect Info
-            <a id="suspect-edit">edit</a>
+            Crime Info
+            <a id="crime-edit">edit</a>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-4">
-                <p>Suspect First Name</p>
-                <p>Suspect Last Name</p>
-                <p>Suspect Age</p>
-                <p>Suspect Sex</p>
-                <p>Suspect Ethnicity</p>
-                <p>Suspect Description</p>
+                <p>Date Occurred</p>
+                <p>Date Reported</p>
+                <p>Address</p>
+                <p>Weapon</p>
+                <p>Crime Committed</p>
+                <p>Coroner Case Number</p>
               </div>
-              <div class="col-md-8 detail-input" id="suspect-input">
-                <input type="text" class='form-control' value='{{ suspect.first_name }}' readonly>
-                <input type="text" class='form-control' value='{{ suspect.last_name }}' readonly>
-                <input type="text" class='form-control' value='{{ suspect.age }}' readonly>
-                <input type="text" class='form-control' value='{{ suspect.sex }}' readonly>
-                <input type="text" class='form-control' value='{{ suspect.ethnicity }}' readonly>
-                <input type="text" class='form-control' value='{{ suspect.description }}' readonly>
+              <div class="col-md-8 detail-input" id="crime-input">
+                <input type="text" class='form-control' value='{{event.date_occurred}}' readonly>
+                <input type="text" class='form-control' value='{{event.date_reported}}' readonly>
+                <input type="text" class='form-control' value='{{event.address}}' readonly>
+                <input type="text" class='form-control' value='{{event.weapon}}' readonly>
+                <input type="text" class='form-control' value='{{event.crime_committed}}' readonly>
+                <input type="text" class='form-control' value='{{event.coroner_case_number}}' readonly>
               </div>
             </div>
           </div>
         </div>
-        <hr width="100%">
-      {% endfor %}
 
+        <center class="button-container" id="save-entry-button">
+          <input class="button inline-block" type="submit" value="Save Entry" />
+        </center>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Crime Info
-          <a id="crime-edit">edit</a>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-4">
-              <p>Date Occurred</p>
-              <p>Date Reported</p>
-              <p>Address</p>
-              <p>Weapon</p>
-              <p>Crime Committed</p>
-              <p>Coroner Case Number</p>
-            </div>
-            <div class="col-md-8 detail-input" id="crime-input">
-              <input type="text" class='form-control' value='{{event.date_occurred}}' readonly>
-              <input type="text" class='form-control' value='{{event.date_reported}}' readonly>
-              <input type="text" class='form-control' value='{{event.address}}' readonly>
-              <input type="text" class='form-control' value='{{event.weapon}}' readonly>
-              <input type="text" class='form-control' value='{{event.crime_committed}}' readonly>
-              <input type="text" class='form-control' value='{{event.coroner_case_number}}' readonly>
-            </div>
-          </div>
-        </div>
-      </div>
+  </div>
 
-      <center class="button-container" id="save-entry-button">
-        <input class="button inline-block" type="submit" value="Save Entry" />
-      </center>
-
-    </div>
   </form>
   {% endblock %}

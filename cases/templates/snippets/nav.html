@@ -12,16 +12,28 @@
 
 <body>
   <div id="nav-bar">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-4">
-          <a class="anchor-pts" href="/"><img src="{% static "images/logo.svg" %}" width="150px"></a>
-        </div>
-        <div class="col-xs-8 alignment navlinks" id="nav-links">
-          <a class="anchor-pts" href="/advancedSearch" id="adv-search-nav">Advanced Search</a>
-          <a class="anchor-pts" href="/add" id="add-entry-nav">Add Entry</a>
+    <div id="white-section">
+      <a id="crookbook-logo" href="/"><img src="{% static "images/crookbook_black_again.png" %}"></a>
+    </div>
+    <div id="black-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 alignment navlinks" id="nav-links">
+            <a class="anchor-pts" href="/" id="home-nav">Home</a>
+            <a class="anchor-pts" href="/advancedSearch" id="adv-search-nav">Advanced Search</a>
+            <a class="anchor-pts" href="/add" id="add-entry-nav">Add Entry</a>
+            <a class="anchor-pts" href="/" id="about-entry-nav">About</a>
+          </div>
+          <!--
+          <div class="col-xs-8 alignment navlinks" id="nav-links">
+            <a class="anchor-pts" href="/advancedSearch" id="adv-search-nav">Advanced Search</a>
+            <a class="anchor-pts" href="/add" id="add-entry-nav">Add Entry</a>
+            <a class="anchor-pts" href="/" id="add-entry-nav">About</a>
+          </div>
+        -->
         </div>
       </div>
+
     </div>
   </div>
   {% block content %}
