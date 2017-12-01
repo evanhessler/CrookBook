@@ -65,20 +65,16 @@ textarea {
   background-color: black;
   width: 100vw;
   position: fixed;
-  z-index: 1; /* fixed overlapping body */
+  z-index: 1;
 }
 #nav-bar > #white-section {
   height: 8vh;
   background-color: white !important;
 }
-#black-section {
+#nav-bar > #black-section {
   margin-top: 1.5vh;
   margin-bottom: 1.5vh;
   background-color: black;
-}
-#welcome-page {
-  text-align: center;
-  height: 100vh;
 }
 #database > .container {
   margin-top: 5vh;
@@ -123,6 +119,14 @@ textarea {
   margin-right: 10px;
   width: 90%;
   text-align: center;
+}
+#save-entry-button {
+  margin-bottom: 15px;
+}
+#crookbook-logo {
+  bottom: 25%;
+  margin-left: 45vw;
+  position: absolute;
 }
 .page-content {
   padding-top: 17vh;
@@ -178,7 +182,7 @@ textarea {
   overflow-y: auto;
 }
 .database-table {
-  /*height: 60vh;*/
+  height: 60vh;
   overflow-y: scroll;
 }
 .add-entry-nav {
@@ -209,12 +213,11 @@ textarea {
 .home-table {
   margin-top: 15px !important;
 }
-
 .radio-input span {
-    bottom: 4px;
-    position: relative;
-    left: 10px;
-    margin-right: 20px;
+  bottom: 4px;
+  position: relative;
+  left: 10px;
+  margin-right: 20px;
 }
 .panel {
   margin-bottom: 20px;
@@ -246,18 +249,9 @@ textarea {
 }
 .detail-input > input {
   margin-top: 4px;
-  width: 550px;
+  width: 90%;
 }
 .detail-input > select {
   margin-top: 4px;
-  width: 550px;
-}
-#save-entry-button {
-  margin-bottom: 15px;
-}
-#crookbook-logo {
-  bottom: 25%;
-  margin-left: 45vw;
-  position: absolute;
-
+  width: 90%;
 }
