@@ -258,3 +258,7 @@ textarea {
   margin-top: 4px;
   width: 90%;
 }
+
+#details-header {
+  display: inline-block;
+}
