@@ -18,7 +18,7 @@ function generatePDF(source) {
         top: 80,
         bottom: 60,
         left: 75,
-        width: 100
+        width: 1500
     };
     // all coords and widths are in jsPDF instance's declared units
     // 'inches' in this case

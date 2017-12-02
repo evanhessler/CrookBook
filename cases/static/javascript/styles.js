@@ -94,16 +94,9 @@ $(document).ready(function () {
 			$(this).find('h3').each(function() {
 				var index = $(this).index();
 				var data = `<b><p>` + $(this).text() + ` :</b> ` + $($(this).parent().siblings()[0]).find(`p:eq(` + index + `)`).text() + `</p>`;
-				// console.log($(this).text(), $($(this).parent().siblings()[0]).find(`p:eq(` + index + `)`).text());
 				result.append(data);
 			})
 		});
-		// $('#all-panels').find('input').each(function() {
-		// 	var val = `<p>` + $(this).val() + `</p>`;
-		// 	result.append(val)
-		// })
-
-		console.log(result.html());
 		generatePDF(result.html());
 	})
 
