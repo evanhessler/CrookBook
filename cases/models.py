@@ -54,6 +54,7 @@ class Binder(models.Model):
     )
     check_out_date = models.DateTimeField(
         null = True,
+        blank = True,
     )
 
 class Person(models.Model):
@@ -63,24 +64,29 @@ class Person(models.Model):
     first_name = models.CharField(
         max_length = 32,
         null = True,
+        blank = True,
     )
     last_name = models.CharField(
         max_length = 32,
         null = True,
+        blank = True,
     )
     age = models.IntegerField(
         null = True,
+        blank = True,
     )
     sex = models.CharField(
         max_length = 1,
         choices = SEX,
         null = True,
+        blank = True,
     )
     ethnicity = models.CharField(
         max_length  = 2,
         choices = ETHNICITIES,
         # TODO: Add ETHNICITIES choices
         null = True,
+        blank = True,
     )
     description = models.TextField(
         blank = True,
@@ -91,17 +97,22 @@ class Case(models.Model):
     dr_nbr = models.CharField(
         primary_key = True,
         max_length = 32,
+        null = False,
+        blank = False,
     )
     date_fully_reviewed = models.DateTimeField(
         null = True,
+        blank = True,
     )
     motive = models.CharField(
         max_length = 32,
-        null = False,
+        null = True,
+        blank = True,
     )
     adjudication = models.CharField(
         max_length = 32,
         null = True,
+        blank = True,
     )
     evidence_destroyed = models.BooleanField(
         null = False,
@@ -111,14 +122,17 @@ class Case(models.Model):
         max_length = 2,
         choices =  CASE_STATUS,
         null = True,
+        blank = True,
     )
     status_date = models.DateTimeField(
         null = True,
+        blank = True,
     )
     # Should this be part of Event?
     court_case_number = models.CharField(
         max_length = 32,
         null = True,
+        blank = True,
     )
     notes = models.TextField(
         blank = True,
@@ -157,28 +171,34 @@ class Event(models.Model):
         primary_key=True
     )
     date_occurred = models.DateTimeField(
-        null = False,
+        null = True,
+        blank = True,
     )
     date_reported = models.DateTimeField(
-        null = False,
+        null = True,
+        blank = True,
     )
     address = models.CharField(
         max_length = 64,
-        null = False,
+        null = True,
+        blank = True,
     )
     weapon = models.CharField(
         max_length = 32,
         null = True,
+        blank = True,
     )
     crime_committed = models.CharField(
         max_length = 1,
         choices = CRIME,
         default = 'M',
-        null = False,
+        null = True,
+        blank = True,
     )
     coroner_case_number = models.CharField(
         max_length = 32,
         null = True,
+        blank = True,
     )
     case = models.ForeignKey(
         Case,
