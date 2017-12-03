@@ -31,20 +31,38 @@
           <tbody>
             {% for case in cases %}
               <tr onclick="window.location.href = '/detail/{{ case.dr_nbr }}';">
-                <td>{{ case.dr_nbr }}</td>
+                <td>
+                  {% if case.dr_nbr %}
+                    {{ case.dr_nbr }}
+                  {% else %}
+                      &#8212;
+                  {% endif %}
+                </td>
                 <td>
                   {% for victim in case.victims.all %}
-                    {{ victim.first_name }} {{ victim.last_name }}{% include "snippets/list_comma.html" %}
+                    {% if victim.first_name and victim.last_name %}
+                      {{ victim.first_name }} {{ victim.last_name }}{% include "snippets/list_comma.html" %}
+                    {% else %}
+                      &#8212;
+                    {% endif %}
                   {% endfor %}
                 </td>
                 <td>
                   {% for suspect in case.suspects.all %}
-                    {{ suspect.first_name }} {{ suspect.last_name }}{% include "snippets/list_comma.html" %}
+                    {% if suspect.first_name and suspect.last_name %}
+                      {{ suspect.first_name }} {{ suspect.last_name }}{% include "snippets/list_comma.html" %}
+                    {% else %}
+                      &#8212;
+                    {% endif %}
                   {% endfor %}
                 </td>
                 <td>
                   {% for case in case.events.all %}
-                    {{ case.date_occurred }}
+                    {% if case.date_occurred %}
+                      {{ case.date_occurred }}
+                    {% else %}
+                      &#8212;
+                    {% endif %}
                   {% endfor %}
                  </td>
               </tr>
