@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 
-from .forms import DistrictForm, BinderForm, CaseForm, EventForm, PersonForm
+from .forms import DistrictForm, BinderForm, CaseForm, EventForm, VictimFormset, SuspectFormset
 from .models import District, Binder, Case, Event, Person
 
 def homepage(request):
@@ -11,21 +11,23 @@ def homepage(request):
 
 def add_entry(request):
     if request.method == 'GET':
+
         district_form = DistrictForm(prefix='district')
         binder_form = BinderForm(prefix='binder')
         case_form = CaseForm(prefix='case')
         event_form = EventForm(prefix='event')
-        victim_form = PersonForm(prefix='victim')
-        suspect_form = PersonForm(prefix='suspect')
+        victim_formset = VictimFormset(prefix='victim')
+        suspect_formset = SuspectFormset(prefix='suspect')
 
+        print(victim_formset)
 
         return render(request, 'add-entry.html', {
             'district_form': district_form,
             'binder_form': binder_form,
             'case_form': case_form,
             'event_form': event_form,
-            'victim_form': victim_form,
-            'suspect_form': suspect_form,
+            'victim_formset': victim_formset,
+            'suspect_formset': suspect_formset,
         })
 
     elif request.method == 'POST':
