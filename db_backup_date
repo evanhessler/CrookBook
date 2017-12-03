@@ -1,0 +1,2 @@
+pg_dumpall: too many command-line arguments (first is "+%d-%m-%Y%H%M%S.sql")
+Try "pg_dumpall --help" for more information.

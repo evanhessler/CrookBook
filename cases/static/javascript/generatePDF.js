@@ -1,8 +1,7 @@
-function generatePDF(table) {
+function generatePDF(source) {
     var pdf = new jsPDF('p', 'pt', 'letter');
     // source can be HTML-formatted string, or a reference
     // to an actual DOM element from which the text will be scraped.
-    source = table.parent()[0];
 
     // we support special element handlers. Register them with jQuery-style 
     // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
@@ -19,7 +18,7 @@ function generatePDF(table) {
         top: 80,
         bottom: 60,
         left: 75,
-        width: 850
+        width: 1500
     };
     // all coords and widths are in jsPDF instance's declared units
     // 'inches' in this case

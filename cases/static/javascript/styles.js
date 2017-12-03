@@ -69,8 +69,36 @@ $(document).ready(function () {
 	});
 
 	$('#generate-report-button').click(function() {
-		generatePDF($(document).find('table'));
+		generatePDF($(document).find('table').parent()[0]);
 	});
+
+	$('#generate-details-report-button').click(function() {
+		result = $('<div></div>');
+		$('.panel').clone().each(function() {
+			$(this).find('.panel-heading').each(function() {
+				$(this).remove();
+			});
+
+			$(this).find('p').each(function() {
+				var val = $(`<h3>` + $(this).text() + `</h3>`);
+				$(this).after(val);
+				$(this).remove();
+			});
+
+			$(this).find('input').each(function() {
+				var val = $(`<p>` + $(this).val() + `</p>`);
+				$(this).after(val);
+				$(this).remove();
+			});
+
+			$(this).find('h3').each(function() {
+				var index = $(this).index();
+				var data = `<b><p>` + $(this).text() + ` :</b> ` + $($(this).parent().siblings()[0]).find(`p:eq(` + index + `)`).text() + `</p>`;
+				result.append(data);
+			})
+		});
+		generatePDF(result.html());
+	})
 
 	// Attributes in detail-entry made editable
 	$('#case-edit').click(function() {
