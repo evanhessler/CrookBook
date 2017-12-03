@@ -60,6 +60,7 @@ def add_entry(request):
 
             case.district = district
             # Need to save case before adding ManyToMany relationships
+
             case.save()
             if binder_valid:
                 case.binders.add(binder)
