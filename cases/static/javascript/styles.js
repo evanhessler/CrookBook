@@ -132,6 +132,20 @@ $(document).ready(function () {
 			$(this).attr("disabled", false);
 		});
 	});
+
+	var homepageTableUnfiltered = $('#database').html();
+
+	$('#search-button').click(function() {
+		$('#database').html(homepageTableUnfiltered);
+		var val = $('#search-val').val().toUpperCase();
+		if (val != '') {
+			$('#database tbody tr').each(function() {
+				if ($(this).text().toUpperCase().indexOf(val) == -1) {
+					$(this).remove();
+				}
+			});
+		}
+	})
 });
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors
