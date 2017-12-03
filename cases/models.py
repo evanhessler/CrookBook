@@ -52,7 +52,7 @@ class Binder(models.Model):
         primary_key = True,
         max_length = 16,
     )
-    check_out_date = models.DateTimeField(
+    check_out_date = models.DateField(
         null = True,
         blank = True,
     )
@@ -100,7 +100,7 @@ class Case(models.Model):
         null = False,
         blank = False,
     )
-    date_fully_reviewed = models.DateTimeField(
+    date_fully_reviewed = models.DateField(
         null = True,
         blank = True,
     )
@@ -124,7 +124,7 @@ class Case(models.Model):
         null = True,
         blank = True,
     )
-    status_date = models.DateTimeField(
+    status_date = models.DateField(
         null = True,
         blank = True,
     )
@@ -170,11 +170,11 @@ class Event(models.Model):
     id = models.AutoField(
         primary_key=True
     )
-    date_occurred = models.DateTimeField(
+    date_occurred = models.DateField(
         null = True,
         blank = True,
     )
-    date_reported = models.DateTimeField(
+    date_reported = models.DateField(
         null = True,
         blank = True,
     )
@@ -210,7 +210,7 @@ class History(models.Model):
     id = models.AutoField(
         primary_key=True
     )
-    date_edited = models.DateTimeField(
+    date_edited = models.DateField(
         null = False,
     )
     edited_by = models.CharField(
