@@ -62,12 +62,70 @@ $(document).ready(function () {
 		$('#crime-info-entry').addClass('block-selected');
 	});
 
-	var addAnotherBlock = $('.add-another-block').html()
+	var victimBlock = $('#victim-block').clone();
+	var victimIndex = 1;
 
-	$(".add-another-button").click(function() {
-		$(this).parent().parent().find('.add-another-block').append('<div class="col-xs-12 divider"></div>' + addAnotherBlock);
+	$('#add-another-victim-button').click(function() {
+		var newBlock = victimBlock.clone();
+		victimIndex++;
+
+		$(newBlock).find('input').each(function(){
+			var currentName = $(this).attr('name').split('-');
+			var newName = [currentName[0], victimIndex, currentName[2]].join('-');
+			$(this).attr('name', newName);
+			$(this).attr('id', newName);
+		});
+
+		$(newBlock).find('select').each(function(){
+			var currentName = $(this).attr('name').split('-');
+			var newName = [currentName[0], victimIndex, currentName[2]].join('-');
+			$(this).attr('name', newName);
+			$(this).attr('id', newName);
+		});
+
+		$(newBlock).find('textarea').each(function(){
+			var currentName = $(this).attr('name').split('-');
+			var newName = [currentName[0], victimIndex, currentName[2]].join('-');
+			$(this).attr('name', newName);
+			$(this).attr('id', newName);
+		});
+
+		$('<div class="col-xs-12 divider"></div>' + newBlock.html()).insertBefore($(this))
 	});
 
+
+	var suspectBlock = $('#suspect-block').clone();
+	var suspectIndex = 1;
+
+	$('#add-another-suspect-button').click(function() {
+		var newBlock = suspectBlock.clone();
+		suspectIndex++;
+
+		$(newBlock).find('input').each(function(){
+			var currentName = $(this).attr('name').split('-');
+			var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
+			$(this).attr('name', newName);
+			$(this).attr('id', newName);
+		});
+
+		$(newBlock).find('select').each(function(){
+			var currentName = $(this).attr('name').split('-');
+			var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
+			$(this).attr('name', newName);
+			$(this).attr('id', newName);
+		});
+
+		$(newBlock).find('textarea').each(function(){
+			var currentName = $(this).attr('name').split('-');
+			var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
+			$(this).attr('name', newName);
+			$(this).attr('id', newName);
+		});
+
+		$('<div class="col-xs-12 divider"></div>' + newBlock.html()).insertBefore($(this))
+	});
+
+	
 	$('#generate-report-button').click(function() {
 		generatePDF($(document).find('table').parent()[0]);
 	});
