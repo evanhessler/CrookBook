@@ -29,9 +29,9 @@
                 </div>
                 <div class="col-xs-8 detail-input" id="case-input">
 
-                  <input type="text" class='form-control' id="case-dr_nbr" name="case-dr-nbr" value='{{case.dr_nbr}}' readonly>
+                  <input type="text" class='form-control' id="case-dr_nbr" name="case-dr_nbr" value='{{case.dr_nbr}}' required="" readonly>
                   <input type="text" class='form-control' id="case-court_case_number" name="case-court_case_number" value='{{case.court_case_number}}' readonly>
-                  <input type="text" class='form-control' id="case-date_fully_reviewed" name="case-date_fully_reviewed" value='{{case.date_fully_reviewed}}' readonly>
+                  <input type="date" class='form-control' id="case-date_fully_reviewed" name="case-date_fully_reviewed" value='{{case.date_fully_reviewed}}' readonly>
                   <input type="text" class='form-control' id="case-motive" name="case-motive" value='{{case.motive}}' readonly>
                   <input type="text" class='form-control' id="case-adjudication" name="case-adjudication" value='{{case.adjudication}}' readonly>
 
@@ -56,7 +56,7 @@
                     <option value="IC">Investigation Continued</option>
                   </select>
 
-                  <input type="text" class='form-control' id="case-status_date" name="case-status_date" value='{{case.status_date}}' readonly>
+                  <input type="date" class='form-control' id="case-status_date" name="case-status_date" value='{{case.status_date}}' readonly>
 
                   <select class="form-control" id="case-evidence_destroyed" name="case-evidence_destroyed" required="" disabled>
                     <option value="{{case.evidence_destroyed}}" selected="" id="evidence_destroyed_input">{{case.evidence_destroyed}}</option>
@@ -82,8 +82,8 @@
                     <p>Last Check Out Date</p>
                   </div>
                   <div class="col-xs-8 detail-input" id="binder-input">
-                    <input type="text" class='form-control' id="binder-master_dr" name="binder-master_dr" value='{{ binder.master_dr }}' readonly>
-                    <input type="text" class='form-control' id="binder-check_out_date" name="binder-check_out_date" value='{{ binder.check_out_date }}' readonly>
+                    <input type="text" class='form-control' id="binder-master_dr" name="binder-master_dr" value='{{ binder.master_dr }}' required="" readonly>
+                    <input type="date" class='form-control' id="binder-check_out_date" name="binder-check_out_date" value='{{ binder.check_out_date }}' readonly>
                   </div>
                 </div>
               </div>
@@ -104,9 +104,9 @@
                   <p>District Reporting District</p>
                 </div>
                 <div class="col-xs-8 detail-input" id="district-input">
-                  <input type="text" class='form-control' id="district-bureau" name="district-bureau" value='{{case.district.bureau}}' readonly>
-                  <input type="text" class='form-control' id="district-division" name="district-division" value='{{case.district.division}}' readonly>
-                  <input type="text" class='form-control' id="district-reporting_district" name="district-reporting_district" value='{{case.district.reporting_district}}' readonly>
+                  <input type="text" class='form-control' id="district-bureau" name="district-bureau" value='{{case.district.bureau}}' required="" readonly>
+                  <input type="text" class='form-control' id="district-division" name="district-division" value='{{case.district.division}}' required="" readonly>
+                  <input type="text" class='form-control' id="district-reporting_district" name="district-reporting_district" value='{{case.district.reporting_district}}' required="" readonly>
                 </div>
               </div>
             </div>
@@ -271,13 +271,16 @@
                   <p>Coroner Case Number</p>
                 </div>
                 <div class="col-xs-8 detail-input" id="crime-input">
-                  <input type="text" class='form-control' id="event-date_occurred" name="event-date_occurred" value='{{event.date_occurred}}' readonly>
-                  <input type="text" class='form-control' id="event-date_reported" name="event-date_reported" value='{{event.date_reported}}' readonly>
+                  <input type="date" class='form-control' id="event-date_occurred" name="event-date_occurred" value='{{event.date_occurred}}' readonly>
+                  <input type="date" class='form-control' id="event-date_reported" name="event-date_reported" value='{{event.date_reported}}' readonly>
                   <input type="text" class='form-control' id="event-address" name="event-address" value='{{event.address}}' readonly>
                   <input type="text" class='form-control' id="event-weapon" name="event-weapon" value='{{event.weapon}}' readonly>
-                  {% if event.crime_committed == 'M' %}
-                    <input type="text" class='form-control' id="event-crime_committed" name="event-crime_committed" value='Murder' readonly>
-                  {% endif %}
+
+                  <select class="form-control" id="event-crime_committed" name="event-crime_committed" disabled>
+                    {% if event.crime_committed == 'M' %}
+                      <option value="M" selected="">Murder</option>
+                    {% endif %}
+                  </select>
                   <input type="text" class='form-control' id="event-coroner_case_number" name="event-coroner_case_number" value='{{event.coroner_case_number}}' readonly>
                 </div>
               </div>
