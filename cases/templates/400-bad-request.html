@@ -1,0 +1,36 @@
+{% extends "snippets/nav.html"%}
+  {% block content %}
+    <div class="container page-content">
+      <h1>Oops! Please ensure the following:</h1>
+
+      {% if case_form.errors %}
+        {% for field in case_form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>Case {{ field.label|escape }}: {{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if district_form.errors %}
+        {% for field in district_form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>District {{ field.label|escape }}: {{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endblock %}

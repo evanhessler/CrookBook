@@ -74,6 +74,10 @@ def add_entry(request):
                 event.save()
 
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
+        return render(request, '400-bad-request.html', {
+            'case_form': case_form,
+            'district_form': district_form
+        })
 
 def detail(request, case_id):
     if request.method == 'GET':

@@ -258,7 +258,9 @@ textarea {
   margin-top: 4px;
   width: 90%;
 }
-
+.alert {
+  color: red;
+}
 #details-header {
   display: inline-block;
 }
