@@ -258,7 +258,7 @@ textarea {
   margin-top: 4px;
   width: 90%;
 }
-.alert {
+.red-alert {
   color: red;
 }
 #details-header {

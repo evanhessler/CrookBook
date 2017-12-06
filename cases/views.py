@@ -76,7 +76,11 @@ def add_entry(request):
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
         return render(request, '400-bad-request.html', {
             'case_form': case_form,
-            'district_form': district_form
+            'binder_form': binder_form,
+            'district_form': district_form,
+            'victim_form': victim_form,
+            'suspect_form': suspect_form,
+            'event_form': event_form,
         })
 
 def detail(request, case_id):
