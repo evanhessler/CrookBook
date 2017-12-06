@@ -100,6 +100,58 @@ def detail(request, case_id):
 
     elif request.method == 'POST':
         print('f')
+        # case = get_object_or_404(Case,dr_nbr=case_id)
+        # event = get_object_or_404(Event, case=case)
+        # binder = get_object_or_404(Binder, case=case)   ;;;l/;p
+        #
+        # district_form = DistrictForm(request.POST, prefix='district')
+        # binder_form = BinderForm(request.POST, prefix='binder')
+        # case_form = CaseForm(request.POST, prefix='case')
+        # event_form = EventForm(request.POST, prefix='event')
+        # victim_form = PersonForm(request.POST, prefix='victim')
+        # suspect_form = PersonForm(request.POST, prefix='suspect')
+        #
+        # district_valid = district_form.is_valid()
+        # binder_valid = binder_form.is_valid()
+        # case_valid = case_form.is_valid()
+        # event_valid = event_form.is_valid()
+        # victim_valid = victim_form.is_valid()
+        # suspect_valid = suspect_form.is_valid()
+        #
+        # print(district_form.errors)
+        # print(binder_form.errors)
+        # print(case_form.errors)
+        # print(event_form.errors)
+        # print(victim_form.errors)
+        # print(suspect_form.errors)
+        #
+        # if district_valid and case_valid:
+        #     victim = victim_form.save()
+        #     suspect = suspect_form.save()
+        #     district = district_form.save()
+        #     binder = binder_form.save()
+        #     case = case_form.save(commit=False)
+        #     event = event_form.save(commit=False)
+        #
+        #     case.district = district
+        #     # Need to save case before adding ManyToMany relationships
+        #
+        #     case.save()
+        #     if binder_valid:
+        #         case.binders.save(binder)
+        #     if victim_valid:
+        #         case.victims.save(victim)
+        #     if suspect_valid:
+        #         case.suspects.save(suspect)
+        #
+        #     if event_valid:
+        #         event.case = case
+        #         event.save()
+        #
+        #     case.save()
+        #
+        #     return HttpResponseRedirect('/detail/' + case.dr_nbr)
+        # return HttpResponseRedirect('/detail/' + case.dr_nbr)
 
     # if request.method == 'GET':
     #     the_case = get_object_or_404(Case, dr_nbr=case_id)
