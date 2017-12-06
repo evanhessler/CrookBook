@@ -262,3 +262,7 @@ textarea {
 #details-header {
   display: inline-block;
 }
+
+.red {
+  color: red;
+}

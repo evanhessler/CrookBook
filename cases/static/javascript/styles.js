@@ -173,7 +173,7 @@ $(document).ready(function () {
 				}
 			});
 		}
-	})
+	});
 });
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors
