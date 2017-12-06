@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-xs-8 detail-input" id="case-input">
 
-                  <input type="text" class='form-control' id="case-dr_nbr" name="case-dr-nbr" value='{{case.dr_nbr}}' readonly>
+                  <input type="text" class='form-control' id="case-dr_nbr" name="case-dr_nbr" value='{{case.dr_nbr}}' readonly>
                   <input type="text" class='form-control' id="case-court_case_number" name="case-court_case_number" value='{{case.court_case_number}}' readonly>
                   <input type="text" class='form-control' id="case-date_fully_reviewed" name="case-date_fully_reviewed" value='{{case.date_fully_reviewed}}' readonly>
                   <input type="text" class='form-control' id="case-motive" name="case-motive" value='{{case.motive}}' readonly>
@@ -276,7 +276,7 @@
                   <input type="text" class='form-control' id="event-address" name="event-address" value='{{event.address}}' readonly>
                   <input type="text" class='form-control' id="event-weapon" name="event-weapon" value='{{event.weapon}}' readonly>
                   {% if event.crime_committed == 'M' %}
-                    <input type="text" class='form-control' id="event-crime_committed" name="event-crime_committed" value='Murder' readonly>
+                    <input type="text" class='form-control' id="event-crime_committed" name="event-crime_committed" value='M' readonly>
                   {% endif %}
                   <input type="text" class='form-control' id="event-coroner_case_number" name="event-coroner_case_number" value='{{event.coroner_case_number}}' readonly>
                 </div>

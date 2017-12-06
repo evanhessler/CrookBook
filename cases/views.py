@@ -43,13 +43,6 @@ def add_entry(request):
         victim_valid = victim_form.is_valid()
         suspect_valid = suspect_form.is_valid()
 
-        print(district_form.errors)
-        print(binder_form.errors)
-        print(case_form.errors)
-        print(event_form.errors)
-        print(victim_form.errors)
-        print(suspect_form.errors)
-
         if district_valid and case_valid:
             victim = victim_form.save()
             suspect = suspect_form.save()
@@ -83,9 +76,9 @@ def detail(request, case_id):
         event_form = EventForm(prefix='event')
         victim_form = PersonForm(prefix='victim')
         suspect_form = PersonForm(prefix='suspect')
+
         case = get_object_or_404(Case,dr_nbr=case_id)
         event = get_object_or_404(Event, case=case)
-        print(len(case.binders.all()))
         return render(request, 'detail-entry.html', {
 
             'district_form': district_form,
@@ -99,25 +92,77 @@ def detail(request, case_id):
         })
 
     elif request.method == 'POST':
-        print('f')
+        post_copy = request.POST.copy()
+        for field in post_copy:
+            if post_copy[field] == 'None':
+                post_copy[field] = ''
+                
+        district_form = DistrictForm(post_copy, prefix='district')
+        binder_form = BinderForm(post_copy, prefix='binder')
+        case_form = CaseForm(post_copy, prefix='case')
+        event_form = EventForm(post_copy, prefix='event')
+        victim_form = PersonForm(post_copy, prefix='victim')
+        suspect_form = PersonForm(post_copy, prefix='suspect')
 
-    # if request.method == 'GET':
-    #     the_case = get_object_or_404(Case, dr_nbr=case_id)
-    #     district = the_case.district
-    #     binder = the_case.binders
-    #     # suspect = the_case.suspects.all()
-    #     print(the_case.suspects)
-    #     event = get_object_or_404(Event, case=the_case)
-    #     return render(request, 'detail-entry.html', {
-    #         'case_form': the_case,
-    #         'district_form': district,
-    #         'binder_form': binder,
-    #         'event_form': event,
-    #         'suspect_form': suspect,
-    #     })
-    # elif request.method == 'POST':
-    #     print('hey')
-    #
+        if post_copy['case-dr_nbr'] != case_id:
+            try:
+                case = Case.objects.get(dr_nbr=post_copy['case-dr_nbr'])
+                print("Dr Number already exists")
+                render(request, '400-bad-request.html', {
+                'case_form' : post_copy[case_form],
+                })
+            except:
+                print('Valid Dr')
+                case = Case.objects.get(dr_nbr = case_id)
+                case.dr_nbr = post_copy['case-dr_nbr']
+                for field in case_form.fields:
+                    print(case_form[field].value())
+                    setattr(case, field, case_form[field].value())
+                case.save()
+                # for field in case._meta.fields:
+                #     setattr(case, field.name, case_form[field.name])
+                # case.save()
+        else:
+            pass
+
+
+
+        # case, created = Case.objects.update_or_create(
+        # dr_nbr = post_copy['case-dr_nbr'],
+        # date_fully_reviewed = post_copy['case-date_fully_reviewed'],
+        # court_case_number = post_copy['case-court_case_number'],
+        # motive = post_copy['case-motive'],
+        # adjudication = post_copy['case-adjudication'],
+        # status = post_copy['case-status'],
+        # status_date = post_copy['case-status_date'],
+        # evidence_destroyed = post_copy['case-evidence_destroyed'],
+        # notes = post_copy['case-notes'],
+        # )
+
+        district_valid = district_form.is_valid()
+        binder_valid = binder_form.is_valid()
+        case_valid = case_form.is_valid()
+        event_valid = event_form.is_valid()
+        victim_valid = victim_form.is_valid()
+        suspect_valid = suspect_form.is_valid()
+
+        print(district_form.errors)
+        print(binder_form.errors)
+        print(case_form.errors)
+        print(event_form.errors)
+        print(victim_form.errors)
+        print(suspect_form.errors)
+
+        # if district_valid and case_valid:
+        #     case = get_object_or_404(Case, dr_nbr = case_id)
+        #     district = get_object_or_404(District, id = case.district.id)
+        #     for field in case:
+        #         print(field)
+        #         case[field] = case_form[field]
+
+
+        return HttpResponseRedirect('/detail/' + case.dr_nbr)
+
 
 def advanced_search(request):
     return render(request, 'advanced-search.html', {})
