@@ -92,32 +92,34 @@ def detail(request, case_id):
         })
 
     elif request.method == 'POST':
-        post_copy = request.POST.copy()
-        for field in post_copy:
-            if post_copy[field] == 'None':
-                post_copy[field] = ''
-                
-        district_form = DistrictForm(post_copy, prefix='district')
-        binder_form = BinderForm(post_copy, prefix='binder')
-        case_form = CaseForm(post_copy, prefix='case')
-        event_form = EventForm(post_copy, prefix='event')
-        victim_form = PersonForm(post_copy, prefix='victim')
-        suspect_form = PersonForm(post_copy, prefix='suspect')
 
-        if post_copy['case-dr_nbr'] != case_id:
+        # post_copy = request.POST.copy()
+        # for field in post_copy:
+        #     if post_copy[field] == 'None':
+        #         post_copy[field] = ''
+
+        district_form = DistrictForm(request.POST, prefix='district')
+        binder_form = BinderForm(request.POST, prefix='binder')
+        case_form = CaseForm(request.POST, prefix='case')
+        event_form = EventForm(request.POST, prefix='event')
+        victim_form = PersonForm(request.POST, prefix='victim')
+        suspect_form = PersonForm(request.POST, prefix='suspect')
+
+        if request.POST['case-dr_nbr'] != case_id:
             try:
-                case = Case.objects.get(dr_nbr=post_copy['case-dr_nbr'])
+                case = Case.objects.get(dr_nbr=request.POST['case-dr_nbr'])
                 print("Dr Number already exists")
                 render(request, '400-bad-request.html', {
-                'case_form' : post_copy[case_form],
+                'case_form' : request.POST[case_form],
                 })
             except:
                 print('Valid Dr')
+                print(case_form.errors)
                 case = Case.objects.get(dr_nbr = case_id)
-                case.dr_nbr = post_copy['case-dr_nbr']
+                case.dr_nbr = request.POST['case-dr_nbr']
                 for field in case_form.fields:
-                    print(case_form[field].value())
-                    setattr(case, field, case_form[field].value())
+                    print(str(field) + " : " + str(case_form[field].value()))
+                    setattr(case, field, case_form[field].value() or None)
                 case.save()
                 # for field in case._meta.fields:
                 #     setattr(case, field.name, case_form[field.name])

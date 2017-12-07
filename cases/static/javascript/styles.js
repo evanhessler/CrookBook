@@ -138,11 +138,12 @@ $(document).ready(function () {
 	});
 
 	// Changes 'Evidence Destroyed' options on details page on load
-	if ($('#evidence_destroyed_input').text() == 'True') {
-		$('#evidence_destroyed_input').after('<option value="False">False</option>');
-	} else {
-		$('#evidence_destroyed_input').after('<option value="True">True</option>');
-	}
+    //
+    // if ($('#evidence_destroyed_input').text() == 'True') {
+	// 	$('#evidence_destroyed_input').after('<option value="False">False</option>');
+	// } else {
+	// 	$('#evidence_destroyed_input').after('<option value="True">True</option>');
+	// }
 
 	$('#suspect-edit').click(function() {
 		$(document).find('#suspect-input').children('input').each(function() {
