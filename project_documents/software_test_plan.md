@@ -28,5 +28,5 @@ This document serves to describe the Integration testing plan and procedures for
 - 10.2.1.7 Integration Test #7 - Generate Report: This test will throw an error is a pdf is not generated.
 - 10.2.1.8 Integration Test #8 - LAPD Data Linking: This test will throw an error if any data is left out of the database from the LAPD's Excel sheet. An error will also be thrown if there is a missing attribute for a particular case.
 
-##10.3 Module Dependencies
+## 10.3 Module Dependencies
 ![Module Dependencies](./images/module_dependencies.png)
