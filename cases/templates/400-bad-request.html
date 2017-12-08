@@ -1,0 +1,126 @@
+{% extends "snippets/nav.html"%}
+  {% block content %}
+    <div class="container page-content">
+      <h1>Oops! Please ensure the following:</h1>
+
+      {% if case_form.errors %}
+        {% for field in case_form %}
+            {% for error in field.errors %}
+                <div>
+                  <span class="red-alert">
+                    Case {{ field.label|escape }}:
+                  </span>
+                  <span>
+                    {{ error|escape }}
+                  </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div>
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if binder_form.errors %}
+        {% for field in binder_form %}
+            {% for error in field.errors %}
+                <div>
+                  <span class="red-alert">
+                    Binder {{ field.label|escape }}:
+                  </span>
+                  <span>
+                    {{ error|escape }}
+                  </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div >
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if district_form.errors %}
+        {% for field in district_form %}
+            {% for error in field.errors %}
+                <div >
+                  <span class="red-alert">
+                    District {{ field.label|escape }}:
+                  </span>
+                  <span>
+                    {{ error|escape }}
+                  </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div >
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if victim_form.errors %}
+        {% for field in victim_form %}
+            {% for error in field.errors %}
+                <div >
+                  <span class="red-alert">
+                    Victim {{ field.label|escape }}:
+                  </span>
+                  <span>
+                    {{ error|escape }}
+                  </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div >
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if suspect_form.errors %}
+        {% for field in suspect_form %}
+            {% for error in field.errors %}
+                <div >
+                  <span class="red-alert">
+                    Suspect {{ field.label|escape }}:
+                  </span>
+                  <span>
+                    {{ error|escape }}
+                  </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div >
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if event_form.errors %}
+        {% for field in event_form %}
+            {% for error in field.errors %}
+                <div >
+                  <span class="red-alert">
+                    Event {{ field.label|escape }}:
+                  </span>
+                  <span>
+                    {{ error|escape }}
+                  </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div >
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endblock %}
