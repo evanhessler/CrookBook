@@ -64,6 +64,14 @@ def add_entry(request):
                     binder_valid = True
                 except ObjectDoesNotExist:
                     print('caught exception. should throw 400')
+                    return render(request, '400-bad-request.html', {
+                        'case_form': case_form,
+                        'binder_form': binder_form,
+                        'district_form': district_form,
+                        'victim_form': victim_form,
+                        'suspect_form': suspect_form,
+                        'event_form': event_form,
+                    })
             else:
                 binder = binder_form.save()
 
@@ -131,12 +139,27 @@ def detail(request, case_id):
         if request.POST['case-dr_nbr'] != case_id:
             case_valid = case_form.is_valid() #only invalid if it currently exists or is too long
             district_valid = district_form.is_valid()
+            binder_valid = binder_form.is_valid()
+            event_valid = event_form.is_valid()
+            victim_valid = victim_form.is_valid()
+            suspect_valid = suspect_form.is_valid()
+
             existing_district = existing_case.district
+            existing_binder = None
+
             district_does_exist = False
+            binder_does_exist = False
+
             add_new_district = False
+            add_new_binder = False
+            case = None
+            event = None
 
             for field in district_form.fields:
-                if existing_district.field == district_form[field].value():
+                print(district_form[field].value())
+                print(existing_district.bureau)
+                print(getattr(existing_district, field))
+                if getattr(existing_district, field) == district_form[field].value():
                     district_does_exist = True
                 else:
                     district_does_exist = False
@@ -149,12 +172,40 @@ def detail(request, case_id):
                 district = district_form.save()
                 case = case_form.save(commit=False)
                 case.district = district
+                case.save()
             elif district_valid and case_valid:
                 case = case_form.save(commit=False)
                 case.district = existing_district
+                case.save()
 
+            try:
+                existing_binder = Binder.objects.get(master_dr=request.POST['binder-master_dr'])
+                binder_valid = True
+            except Binder.DoesNotExist:
+                existing_binder = None # then create a new binder
 
-        return HttpResponseRedirect('/detail/' + case.dr_nbr)
+            if binder_valid and existing_binder != None:
+                case.binders.add(existing_binder)
+            elif binder_valid:
+                binder = binder_form.save()
+                case.binders.add(binder)
+
+            if victim_valid:
+                victim = victim_form.save()
+                case.victims.add(victim)
+            if suspect_valid:
+                suspect = suspect_form.save()
+                case.suspects.add(suspect)
+
+            if event_valid:
+                event = event_form.save(commit=False)
+                event.case = case
+                event.save()
+
+            existing_case.delete()
+            return HttpResponseRedirect('/detail/' + case.dr_nbr)
+        else:
+            print('hey')
 
 
 
