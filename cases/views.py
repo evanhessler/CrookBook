@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.core.exceptions import ObjectDoesNotExist
+
 
 from .forms import DistrictForm, BinderForm, CaseForm, EventForm, PersonForm
 from .models import District, Binder, Case, Event, Person
@@ -43,11 +45,28 @@ def add_entry(request):
         victim_valid = victim_form.is_valid()
         suspect_valid = suspect_form.is_valid()
 
+        print(district_form.errors)
+        print(binder_form.errors)
+        print(case_form.errors)
+        print(event_form.errors)
+        print(victim_form.errors)
+        print(suspect_form.errors)
+
         if district_valid and case_valid:
             victim = victim_form.save()
             suspect = suspect_form.save()
             district = district_form.save()
-            binder = binder_form.save()
+            binder = None
+            if not binder_valid:
+                try:
+                    existing_binder = Binder.objects.get(master_dr = request.POST['binder-master_dr'])
+                    binder = existing_binder
+                    binder_valid = True
+                except ObjectDoesNotExist:
+                    print('caught exception. should throw 400')
+            else:
+                binder = binder_form.save()
+
             case = case_form.save(commit=False)
             event = event_form.save(commit=False)
 
@@ -92,11 +111,7 @@ def detail(request, case_id):
         })
 
     elif request.method == 'POST':
-
-        # post_copy = request.POST.copy()
-        # for field in post_copy:
-        #     if post_copy[field] == 'None':
-        #         post_copy[field] = ''
+        existing_case = get_object_or_404(Case, dr_nbr=case_id)
 
         district_form = DistrictForm(request.POST, prefix='district')
         binder_form = BinderForm(request.POST, prefix='binder')
@@ -106,29 +121,99 @@ def detail(request, case_id):
         suspect_form = PersonForm(request.POST, prefix='suspect')
 
         if request.POST['case-dr_nbr'] != case_id:
-            try:
-                case = Case.objects.get(dr_nbr=request.POST['case-dr_nbr'])
-                print("Dr Number already exists")
-                render(request, '400-bad-request.html', {
-                'case_form' : request.POST[case_form],
-                })
-            except:
-                print('Valid Dr')
-                print(case_form.errors)
-                case = Case.objects.get(dr_nbr = case_id)
-                case.dr_nbr = request.POST['case-dr_nbr']
-                for field in case_form.fields:
-                    print(str(field) + " : " + str(case_form[field].value()))
-                    setattr(case, field, case_form[field].value() or None)
-                case.save()
-                # for field in case._meta.fields:
-                #     setattr(case, field.name, case_form[field.name])
-                # case.save()
-        else:
-            pass
+            case_valid = case_form.is_valid() #only invalid if it currently exists or is too long
+            district_valid = district_form.is_valid()
+            existing_district = existing_case.district
+            district_does_exist = False
+            add_new_district = False
+
+            for field in district_form.fields:
+                if existing_district.field == district_form[field].value():
+                    district_does_exist = True
+                else:
+                    district_does_exist = False
+                    break
+
+            if not district_does_exist and district_valid and case_valid: #checks if dist exists, if not then new.
+                add_new_district = True
+
+            if add_new_district and district_valid and case_valid:
+                district = district_form.save()
+                case = case_form.save(commit=False)
+                case.district = district
+            elif district_valid and case_valid:
+                case = case_form.save(commit=False)
+                case.district = existing_district
+
+
+        return HttpResponseRedirect('/detail/' + case.dr_nbr)
 
 
 
+
+
+
+
+        # # post_copy = request.POST.copy()
+        # # for field in post_copy:
+        # #     if post_copy[field] == 'None':
+        # #         post_copy[field] = ''
+        #
+        # district_form = DistrictForm(request.POST, prefix='district')
+        # binder_form = BinderForm(request.POST, prefix='binder')
+        # case_form = CaseForm(request.POST, prefix='case')
+        # event_form = EventForm(request.POST, prefix='event')
+        # victim_form = PersonForm(request.POST, prefix='victim')
+        # suspect_form = PersonForm(request.POST, prefix='suspect')
+        #
+        # if request.POST['case-dr_nbr'] != case_id:
+        #     try:
+        #         case = Case.objects.get(dr_nbr=request.POST['case-dr_nbr'])
+        #         print("Dr Number already exists")
+        #         render(request, '400-bad-request.html', {
+        #         'case_form' : request.POST[case_form],
+        #         })
+        #     except:
+        #         print('Valid Dr')
+        #         print(case_form.errors)
+        #         event = get_object_or_404(Event, case=case_id)
+        #         case = Case.objects.get(dr_nbr = case_id)
+        #         original_case = Case.objects.get(dr_nbr = case_id)
+        #         original_district = case.district
+        #
+        #         case.dr_nbr = request.POST['case-dr_nbr']
+        #         for field in case_form.fields:
+        #             print(str(field) + " : " + str(case_form[field].value()))
+        #             setattr(case, field, case_form[field].value() or None)
+        #
+        #         #for victim in original_case.victims.all():
+        #         #    case.victims.add(victim)
+        #
+        #         #for suspect in original_case.suspects.all():
+        #         #    case.suspects.add(suspect)
+        #
+        #         #for binder in original_case.binders.all():
+        #         #    case.binders.add(binder)
+        #
+        #         #case.district = original_district
+        #         case.save(force_update = True, dr_nbr = request.POST['case-dr_nbr'])
+        #         #original_case.delete()
+        #         event.case = case;
+        #         event.save()
+        #         # for field in case._meta.fields:
+        #         #     setattr(case, field.name, case_form[field.name])
+        #         # case.save()
+        # else:
+        #     pass
+
+
+        #   CASE 1: Check if DR_NBR is already in DB -> Throw error
+        #   CASE 2: If DR_NBR IS THE SAME -> UPDATE EVERY OTHER FIELD
+        #   CASE 3: NEW DR_NBR -> Create and validat the new form. Delete Existing shit
+        #
+        #
+        #
+        #
         # case, created = Case.objects.update_or_create(
         # dr_nbr = post_copy['case-dr_nbr'],
         # date_fully_reviewed = post_copy['case-date_fully_reviewed'],
@@ -141,19 +226,19 @@ def detail(request, case_id):
         # notes = post_copy['case-notes'],
         # )
 
-        district_valid = district_form.is_valid()
-        binder_valid = binder_form.is_valid()
-        case_valid = case_form.is_valid()
-        event_valid = event_form.is_valid()
-        victim_valid = victim_form.is_valid()
-        suspect_valid = suspect_form.is_valid()
-
-        print(district_form.errors)
-        print(binder_form.errors)
-        print(case_form.errors)
-        print(event_form.errors)
-        print(victim_form.errors)
-        print(suspect_form.errors)
+        # district_valid = district_form.is_valid()
+        # binder_valid = binder_form.is_valid()
+        # case_valid = case_form.is_valid()
+        # event_valid = event_form.is_valid()
+        # victim_valid = victim_form.is_valid()
+        # suspect_valid = suspect_form.is_valid()
+        #
+        # print(district_form.errors)
+        # print(binder_form.errors)
+        # print(case_form.errors)
+        # print(event_form.errors)
+        # print(victim_form.errors)
+        # print(suspect_form.errors)
 
         # if district_valid and case_valid:
         #     case = get_object_or_404(Case, dr_nbr = case_id)
@@ -161,10 +246,6 @@ def detail(request, case_id):
         #     for field in case:
         #         print(field)
         #         case[field] = case_form[field]
-
-
-        return HttpResponseRedirect('/detail/' + case.dr_nbr)
-
 
 def advanced_search(request):
     return render(request, 'advanced-search.html', {})
