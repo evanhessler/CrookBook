@@ -318,6 +318,9 @@ def detail(request, case_id):
                         existing_case.binders.remove(binder)
                     existing_case.binders.add(existing_binder)
             elif binder_valid and existing_binder == None:
+                binder_relationships = existing_case.binders.all() # remove the current one?
+                for binder in binder_relationships:
+                    existing_case.binders.remove(binder)
                 binder = binder_form.save()
                 existing_case.binders.add(binder)
             #
