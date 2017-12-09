@@ -144,28 +144,40 @@ def detail(request, case_id):
             victim_valid = victim_form.is_valid()
             suspect_valid = suspect_form.is_valid()
 
-            existing_district = existing_case.district
+            existing_district = None
             existing_binder = None
 
             district_does_exist = False
             binder_does_exist = False
 
-            add_new_district = False
+            add_new_district = None
             add_new_binder = False
             case = None
             event = None
+            obj_primary_key = None
 
-            for field in district_form.fields:
-                print(district_form[field].value())
-                print(existing_district.bureau)
-                print(getattr(existing_district, field))
-                if getattr(existing_district, field) == district_form[field].value():
-                    district_does_exist = True
-                else:
-                    district_does_exist = False
+            # ENSURES IF THE FORM DISTRICT IS VALID.
+            # IF NEW, ADD IT TO DB AND CASE, ELSE, ADD THE EXISTING ONE TO CASE
+            all_districts = District.objects.all()
+            verify = 0
+            for obj in all_districts:
+                for field in district_form.fields:
+                    if getattr(obj, field) == district_form[field].value():
+                        verify+=1
+                        if verify == 3:
+                            district_does_exist = True
+                            obj_primary_key = obj.pk
+                            break
+                    else:
+                        district_does_exist = False
+                        verify = 0
+                        break
+                if verify == 3:
                     break
 
-            if not district_does_exist and district_valid and case_valid: #checks if dist exists, if not then new.
+            if verify == 3 and district_does_exist:
+                add_new_district = False
+            elif not district_does_exist and district_valid and case_valid and verify == 0:
                 add_new_district = True
 
             if add_new_district and district_valid and case_valid:
@@ -173,11 +185,15 @@ def detail(request, case_id):
                 case = case_form.save(commit=False)
                 case.district = district
                 case.save()
-            elif district_valid and case_valid:
+            elif not add_new_district and district_valid and case_valid:
                 case = case_form.save(commit=False)
-                case.district = existing_district
+                case.district = District.objects.get(id=obj_primary_key)
                 case.save()
+            #
+            #
 
+            # ENSURES IF THE BINDER FORM IS VALID.
+            # IF NEW, ADD IT TO DB AND CASE, ELSE, ADD THE EXISTING ONE TO CASE
             try:
                 existing_binder = Binder.objects.get(master_dr=request.POST['binder-master_dr'])
                 binder_valid = True
@@ -189,7 +205,9 @@ def detail(request, case_id):
             elif binder_valid:
                 binder = binder_form.save()
                 case.binders.add(binder)
-
+            #
+            #
+            
             if victim_valid:
                 victim = victim_form.save()
                 case.victims.add(victim)
@@ -206,6 +224,7 @@ def detail(request, case_id):
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
         else:
             print('hey')
+            render(request, '400-bad-request.html', {})
 
 
 
