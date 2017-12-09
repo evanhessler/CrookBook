@@ -63,11 +63,11 @@
                   </select>
               -->
                     {% if case.evidence_destroyed %}
-                      <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="True" checked><span>Yes</span></span>
+                      <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="{{case.evidence_destroyed}}" checked><span>Yes</span></span>
                       <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="False"><span>No</span></span>
                     {% else %}
                       <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="True"><span>Yes</span></span>
-                      <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="False" checked><span>No</span></span>
+                      <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="{{case.evidence_destroyed}}" checked><span>No</span></span>
                     {% endif %}
 
                   <input type="text" class='form-control' id="case-notes" name="case-notes" value='{{case.notes}}' readonly>
@@ -285,9 +285,7 @@
                   <input type="text" class='form-control' id="event-weapon" name="event-weapon" value='{{event.weapon}}' readonly>
 
                   <select class="form-control" id="event-crime_committed" name="event-crime_committed" disabled>
-                    {% if event.crime_committed == 'M' %}
-                      <option value="M" selected="">Murder</option>
-                    {% endif %}
+                    <option value="{{event.crime_committed}}" selected="">Murder</option>
                   </select>
                   <input type="text" class='form-control' id="event-coroner_case_number" name="event-coroner_case_number" value='{{event.coroner_case_number}}' readonly>
                 </div>
