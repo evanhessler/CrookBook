@@ -172,6 +172,7 @@ def detail(request, case_id):
     #
 
 def advanced_search(request):
+    table_value = request.GET['tableSel']
     return render(request, 'advanced-search.html', {})
 
 def district_detail(request, district_id):

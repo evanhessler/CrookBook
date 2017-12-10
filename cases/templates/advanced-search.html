@@ -18,7 +18,7 @@
           <div class="col-xs-4" id="field-op">
             <label>Field</label>
 
-            {% if tableSel.value == 'Case' %}
+            {% if tableValue == 'Case' %}
               <select class="form-control" id="case-sel">
                 <option value="DR Number">DR Number</option>
                 <option value="Court Case Number">Court Case Number</option>
@@ -27,7 +27,8 @@
                 <option value="Notes">Notes</option>
               </select>
             {% else %}
-                &#8212; html(tableSel.value)
+                &#8212;
+                table_value
             {% endif %}
 
 
