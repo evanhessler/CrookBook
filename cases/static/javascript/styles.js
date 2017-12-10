@@ -68,6 +68,11 @@ $(document).ready(function () {
 		$(this).parent().parent().find('.add-another-block').append('<div class="col-xs-12 divider"></div>' + addAnotherBlock);
 	});
 
+  var addFilterBlock = $('.another-filter-block').html()
+	$(".plus-filter-button").click(function() {
+    console.log("FUCK")
+		$(this).parent().parent().find('.another-filter-block').append('<div class="col-xs-12 divider" style="width:100%"></div><select class="form-control" id="table-sel" style="width:20%;margin-top:30px;"><option value="AND">AND</option><option value="OR">OR</option></select>' + addFilterBlock);
+	});
 	$('#generate-report-button').click(function() {
 		generatePDF($(document).find('table').parent()[0]);
 	});

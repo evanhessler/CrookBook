@@ -206,6 +206,18 @@ textarea {
 .add-another-button {
   margin-top: 30px;
 }
+.add-filter-block {
+  border: 1px solid #bcbcbc;
+  height: 60vh;
+  margin-top: 30px;
+  margin-left: -15px;
+  margin-right: -15px;
+  overflow: scroll;
+  display: none;
+}
+.plus-filter-button {
+  margin-top: 30px;
+}
 .divider {
   width: 100%;
   height: 1px;
