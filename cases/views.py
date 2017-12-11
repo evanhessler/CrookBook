@@ -195,6 +195,26 @@ def advanced_search(request):
                 filterQuery = dict()
                 filterQuery['events__' + field] = value
                 cases = cases.filter(**filterQuery)
+
+        print("length ", len(cases))
+
+        for victim_form in victim_formset.forms:
+            for field in victim_form.fields:
+                value = victim_form[field].value()
+                if value not in {'', False, None}:
+                    filterQuery = dict()
+                    filterQuery['victims__' + field] = value
+                    cases = cases.filter(**filterQuery)
+
+        print("length ", len(cases))
+
+        for suspect_form in suspect_formset.forms:
+            for field in suspect_form.fields:
+                value = suspect_form[field].value()
+                if value not in {'', False, None}:
+                    filterQuery = dict()
+                    filterQuery['suspects__' + field] = value
+                    cases = cases.filter(**filterQuery)
         
         print("final length ", len(cases))
 
