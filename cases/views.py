@@ -169,14 +169,34 @@ def advanced_search(request):
                 filterQuery = {field : value}
                 cases = cases.filter(**filterQuery)
 
+        print("length ", len(cases))
+
         for field in binder_form.fields:
             value = binder_form[field].value()
             if value not in {'', False, None}:
                 filterQuery = dict()
                 filterQuery['binders__' + field] = value
                 cases = cases.filter(**filterQuery)
+
+        print("length ", len(cases))
+
+        for field in district_form.fields:
+            value = district_form[field].value()
+            if value not in {'', False, None}:
+                filterQuery = dict()
+                filterQuery['district__' + field] = value
+                cases = cases.filter(**filterQuery)
+
+        print("length ", len(cases))
+
+        for field in event_form.fields:
+            value = event_form[field].value()
+            if value not in {'', False, None, 'M'}:
+                filterQuery = dict()
+                filterQuery['events__' + field] = value
+                cases = cases.filter(**filterQuery)
         
-        print("new length ", len(cases))
+        print("final length ", len(cases))
 
 
 def district_detail(request, district_id):
