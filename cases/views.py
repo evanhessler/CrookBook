@@ -158,6 +158,7 @@ def advanced_search(request):
         suspect_formset = SuspectFormset(request.POST, prefix='suspect')
 
         cases = Case.objects.all()
+        queryHeading = [];
 
         print("original length ", len(cases), len(cases.filter(binders__master_dr=891038582)))
 
@@ -166,6 +167,7 @@ def advanced_search(request):
         for field in case_form.fields:
             value = case_form[field].value()
             if value not in {'', False, None}:
+                queryHeading.append(field + ' is ' + value)
                 filterQuery = {field : value}
                 cases = cases.filter(**filterQuery)
 
@@ -174,6 +176,7 @@ def advanced_search(request):
         for field in binder_form.fields:
             value = binder_form[field].value()
             if value not in {'', False, None}:
+                queryHeading.append('binders ' + field + ' is ' + value)
                 filterQuery = dict()
                 filterQuery['binders__' + field] = value
                 cases = cases.filter(**filterQuery)
@@ -183,6 +186,7 @@ def advanced_search(request):
         for field in district_form.fields:
             value = district_form[field].value()
             if value not in {'', False, None}:
+                queryHeading.append('district ' + field + ' is ' + value)
                 filterQuery = dict()
                 filterQuery['district__' + field] = value
                 cases = cases.filter(**filterQuery)
@@ -192,6 +196,7 @@ def advanced_search(request):
         for field in event_form.fields:
             value = event_form[field].value()
             if value not in {'', False, None, 'M'}:
+                queryHeading.append(field + ' is ' + value)
                 filterQuery = dict()
                 filterQuery['events__' + field] = value
                 cases = cases.filter(**filterQuery)
@@ -202,6 +207,7 @@ def advanced_search(request):
             for field in victim_form.fields:
                 value = victim_form[field].value()
                 if value not in {'', False, None}:
+                    queryHeading.append('victim ' + field + ' is ' + value)
                     filterQuery = dict()
                     filterQuery['victims__' + field] = value
                     cases = cases.filter(**filterQuery)
@@ -212,11 +218,24 @@ def advanced_search(request):
             for field in suspect_form.fields:
                 value = suspect_form[field].value()
                 if value not in {'', False, None}:
+                    queryHeading.append('suspect ' + field + ' is ' + value)
                     filterQuery = dict()
                     filterQuery['suspects__' + field] = value
                     cases = cases.filter(**filterQuery)
+
+        print(len(queryHeading))
         
-        print("final length ", len(cases))
+        if len(queryHeading) > 0:
+            queryHeading = "Cases where " + ' and'.join(queryHeading)
+        else:
+            queryHeading = None
+        
+        print("final length ", len(cases), queryHeading)
+
+        return render(request, 'advanced-search-results.html', {
+            'cases': cases,
+            'queryHeading': queryHeading
+        })
 
 
 def district_detail(request, district_id):
