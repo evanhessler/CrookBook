@@ -150,23 +150,31 @@ def advanced_search(request):
             'suspect_formset': suspect_formset,
         })
     elif request.method == 'POST':
-        district_form = DistrictForm(prefix='district')
-        binder_form = BinderForm(prefix='binder')
-        case_form = CaseForm(prefix='case')
-        event_form = EventForm(prefix='event')
-        victim_formset = VictimFormset(prefix='victim')
-        suspect_formset = SuspectFormset(prefix='suspect')
+        district_form = DistrictForm(request.POST, prefix='district')
+        binder_form = BinderForm(request.POST, prefix='binder')
+        case_form = CaseForm(request.POST, prefix='case')
+        event_form = EventForm(request.POST, prefix='event')
+        victim_formset = VictimFormset(request.POST, prefix='victim')
+        suspect_formset = SuspectFormset(request.POST, prefix='suspect')
 
         cases = Case.objects.all()
 
-        print("original length ", len(cases))
-        print(len(Case.objects.filter(binders__master_dr=891038582)))
+        print("original length ", len(cases), len(cases.filter(binders__master_dr=891038582)))
+
+        #891038582
 
         for field in case_form.fields:
             value = case_form[field].value()
             if value not in {'', False, None}:
-                print(field, value)
-                cases = cases.filter(**{field: value})
+                filterQuery = {field : value}
+                cases = cases.filter(**filterQuery)
+
+        for field in binder_form.fields:
+            value = binder_form[field].value()
+            if value not in {'', False, None}:
+                filterQuery = dict()
+                filterQuery['binders__' + field] = value
+                cases = cases.filter(**filterQuery)
         
         print("new length ", len(cases))
 
