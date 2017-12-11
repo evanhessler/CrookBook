@@ -19,13 +19,13 @@ def add_entry(request):
         victim_formset = VictimFormset(prefix='victim')
         suspect_formset = SuspectFormset(prefix='suspect')
 
-        # print(victim_formset)
+        print(district_form)
         # print(suspect_formset)
 
         return render(request, 'add-entry.html', {
             'district_form': district_form,
             'binder_form': binder_form,
-            'case_form': case_form,
+            'case_form': {},
             'event_form': event_form,
             'victim_formset': victim_formset,
             'suspect_formset': suspect_formset,
@@ -52,6 +52,17 @@ def add_entry(request):
         print(event_form.errors)
         print(victim_formset.errors)
         print(suspect_formset.errors)
+
+        if not (district_valid and binder_valid and case_valid and event_valid and victims_valid and suspects_valid):
+            return render(request, 'add-entry.html', {
+            'district_form': district_form,
+            'binder_form': binder_form,
+            'case_form': case_form.cleaned_data,
+            'event_form': event_form,
+            'victim_formset': victim_formset,
+            'suspect_formset': suspect_formset,
+            'district_form_errors': district_form.errors,
+        })
 
         if district_valid and case_valid:
             # victim = victim_form.save()

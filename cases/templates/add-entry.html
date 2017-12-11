@@ -30,14 +30,14 @@
         <div class="add-entry-block block-selected" id="case-info-entry">
           <div class="col-sm-12 col-md-6">
             <label>DR Number</label>
-            <input type="text" class="form-control" id="case-dr_nbr" name="case-dr_nbr" required="">
+            <input type="text" class="form-control" id="case-dr_nbr" name="case-dr_nbr" value="{{ case_form.dr_nbr|default:'' }}">
 
             <label>Court Case Number</label>
-            <input type="text" class="form-control" id="case-court_case_number" name="case-court_case_number">
+            <input type="text" class="form-control" id="case-court_case_number" name="case-court_case_number" value="{{ case_form.court_case_number|default:'' }}">
 
             <label>Case Status</label>
-            <select class="form-control" id="case-status" name="case-status">
-              <option value="" selected="">----------------</option>
+            <select class="form-control" id="case-status" name="case-status" value="{{ case_form.status }}">
+              <option value="">----------------</option>
               <option value="AA">Adult Arrest</option>
               <option value="JA">Juvenile Arrest</option>
               <option value="AO">Adult Other</option>
@@ -46,52 +46,53 @@
             </select>
 
             <label>Motive</label>
-            <input type="text" class="form-control" id="case-motive" name="case-motive">
+            <input type="text" class="form-control" id="case-motive" name="case-motive" value="{{ case_form.motive|default:'' }}">
 
             <label>Case Adjudication</label>
-            <input type="text" class="form-control" id="case-adjudication" name="case-adjudication">
+            <input type="text" class="form-control" id="case-adjudication" name="case-adjudication" value="{{ case_form.adjudication|default:'' }}">
 
           </div>
           <div class="col-sm-12 col-md-6">
             <label>Date Fully Reviewed</label>
-            <input type="date" class="form-control" id="case-date_fully_reviewed" name="case-date_fully_reviewed">
+            <input type="date" class="form-control" id="case-date_fully_reviewed" name="case-date_fully_reviewed" value="{{ case_form.date_fully_reviewed|default:'' }}">
 
             <label>Status Date</label>
-            <input type="date" class="form-control" id="case-status_date" name="case-status_date">
+            <input type="date" class="form-control" id="case-status_date" name="case-status_date" value="{{ case_form.status_date|default:'' }}">
 
             <!-- <label>Solvability Factor</label>
             <input type="number" class="form-control" id="case-solvability_factor"> -->
 
             <label>Evidence Destroyed</label>
-            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed"><span>Yes</span></span>
-            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed"><span>No</span></span>
+            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="{{ case_form.evidence_destroyed|default:'' }}"><span>Yes</span></span>
+            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="{{ case_form.evidence_destroyed|default:'' }}"><span>No</span></span>
 
             <label>Notes</label>
-            <textarea class="form-control" id="case-notes" name="case-notes"></textarea>
+            <textarea class="form-control" id="case-notes" name="case-notes">{{ case_form.notes|default:'' }}</textarea>
           </div>
+          {{ case_form }}
         </div>
 
         <div class="add-entry-block row" id="binder-info-entry">
           <div class="col-sm-12 col-md-6">
             <label>Master DR</label>
-            <input type="text" class="form-control" id="binder-master_dr" name="binder-master_dr" required=""/>
+            <input type="text" class="form-control" id="id_binder-master_dr" name="binder-master_dr" />
           </div>
           <div class="col-sm-12 col-md-6">
             <label>Check Out Date</label>
-            <input type="date" class="form-control" id="binder-check_out_date" name="binder-check_out_date" />
+            <input type="date" class="form-control" id="id_binder-check_out_date" name="binder-check_out_date" />
           </div>
         </div>
 
         <div class="add-entry-block row" id="district-info-entry">
           <div class="col-sm-12 col-md-6">
             <label>Division</label>
-            <input type="text" class="form-control" id="district-division" name="district-division" required=""/>
+            <input type="text" class="form-control" id="id_district-division" name="district-division" />
             <label>Reporting District</label>
-            <input type="text" class="form-control" id="district-reporting_district" name="district-reporting_district" required=""/>
+            <input type="text" class="form-control" id="id_district-reporting_district" name="district-reporting_district" />
           </div>
           <div class="col-sm-12 col-md-6">
             <label>Bureau</label>
-            <input type="text" class="form-control" id="district-bureau" name="district-bureau" />
+            <input type="text" class="form-control" id="id_district-bureau" name="district-bureau" />
           </div>
         </div>
 
@@ -208,20 +209,7 @@
           </div>
         </div>
 
-        {% if form.errors %}
-          {% for field in form %}
-              {% for error in field.errors %}
-                  <div class="alert alert-danger">
-                      <strong>{{ error|escape }}</strong>
-                  </div>
-              {% endfor %}
-          {% endfor %}
-          {% for error in form.non_field_errors %}
-              <div class="alert alert-danger">
-                  <strong>{{ error|escape }}</strong>
-              </div>
-          {% endfor %}
-      {% endif %}
+        {{ district_form_errors }}
 
         <center class="button-container" id="add-entry-button">
           <input class="button inline-block" type="submit" value="Add Entry" />
