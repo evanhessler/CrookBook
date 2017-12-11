@@ -4,14 +4,14 @@
     <div class="container">
       <div class="row alignment">
         <center>
-        {% if queryHeading is not None %}
-          <div class="col-xs-12">
-              <h2>{{queryHeading}}</h2>
+          {% if queryHeading is not None %}
+            <div class="col-xs-12">
+                <h2>"{{queryHeading}}."</h2>
+            </div>
+          {% endif %}
+          <div class="col-sm-12 col-md-12">
+            <div class="button generate-report-button" id="generate-report-button-advanced-search">Generate Report</div>
           </div>
-        {% endif %}
-        <div class="col-sm-12 col-md-12">
-          <div class="button generate-report-button" id="generate-report-button">Generate Report</div>
-        </div>
         </center>
       </div>
     </div>
@@ -19,6 +19,9 @@
     <div id="database">
       <div class="container container-wide database-table home-table">
         <table class="table table-striped table-hover table-responsive">
+          {% if queryHeading is not None %}
+              <h2 style="display: none;">"{{queryHeading}}."</h2>
+          {% endif %}
           <thead>
             <tr>
               <th>MASTER DR</th>
