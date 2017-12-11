@@ -19,7 +19,8 @@ def add_entry(request):
         victim_formset = VictimFormset(prefix='victim')
         suspect_formset = SuspectFormset(prefix='suspect')
 
-        print(victim_formset)
+        # print(victim_formset)
+        # print(suspect_formset)
 
         return render(request, 'add-entry.html', {
             'district_form': district_form,
@@ -35,26 +36,26 @@ def add_entry(request):
         binder_form = BinderForm(request.POST, prefix='binder')
         case_form = CaseForm(request.POST, prefix='case')
         event_form = EventForm(request.POST, prefix='event')
-        victim_form = PersonForm(request.POST, prefix='victim')
-        suspect_form = PersonForm(request.POST, prefix='suspect')
+        victim_formset = VictimFormset(request.POST, prefix='victim')
+        suspect_formset = SuspectFormset(request.POST, prefix='suspect')
 
         district_valid = district_form.is_valid()
         binder_valid = binder_form.is_valid()
         case_valid = case_form.is_valid()
         event_valid = event_form.is_valid()
-        victim_valid = victim_form.is_valid()
-        suspect_valid = suspect_form.is_valid()
+        victims_valid = victim_formset.is_valid()
+        suspects_valid = suspect_formset.is_valid()
 
         print(district_form.errors)
         print(binder_form.errors)
         print(case_form.errors)
         print(event_form.errors)
-        print(victim_form.errors)
-        print(suspect_form.errors)
+        print(victim_formset.errors)
+        print(suspect_formset.errors)
 
         if district_valid and case_valid:
-            victim = victim_form.save()
-            suspect = suspect_form.save()
+            # victim = victim_form.save()
+            # suspect = suspect_form.save()
             district = district_form.save()
             binder = binder_form.save()
             case = case_form.save(commit=False)
@@ -66,9 +67,16 @@ def add_entry(request):
             case.save()
             if binder_valid:
                 case.binders.add(binder)
-            if victim_valid:
+
+            for victim in victim_formset:
+                # if victim.is_valid():
+                victim = victim.save()
+                print(victim)
                 case.victims.add(victim)
-            if suspect_valid:
+
+            for suspect in suspect_formset:
+                # if suspect.is_valid():
+                suspect = suspect.save()
                 case.suspects.add(suspect)
 
             if event_valid:

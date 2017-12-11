@@ -63,69 +63,82 @@ $(document).ready(function () {
 	});
 
 	var victimBlock = $('#victim-block').clone();
-	var victimIndex = 1;
+	var victimIndex = -1;
 
 	$('#add-another-victim-button').click(function() {
 		var newBlock = victimBlock.clone();
 		victimIndex++;
+		$('#id_victim-TOTAL_FORMS').attr('value', victimIndex + 1);
 
-		$(newBlock).find('input').each(function(){
-			var currentName = $(this).attr('name').split('-');
-			var newName = [currentName[0], victimIndex, currentName[2]].join('-');
-			$(this).attr('name', newName);
-			$(this).attr('id', newName);
-		});
 
-		$(newBlock).find('select').each(function(){
-			var currentName = $(this).attr('name').split('-');
-			var newName = [currentName[0], victimIndex, currentName[2]].join('-');
-			$(this).attr('name', newName);
-			$(this).attr('id', newName);
-		});
+		if(victimIndex == 0) {
+			$('#victim-block').attr('style', '');
 
-		$(newBlock).find('textarea').each(function(){
-			var currentName = $(this).attr('name').split('-');
-			var newName = [currentName[0], victimIndex, currentName[2]].join('-');
-			$(this).attr('name', newName);
-			$(this).attr('id', newName);
-		});
+		} else {
+			$(newBlock).find('input').each(function(){
+				var currentName = $(this).attr('name').split('-');
+				var newName = [currentName[0], victimIndex, currentName[2]].join('-');
+				$(this).attr('name', newName);
+				$(this).attr('id', 'id_' + newName);
+			});
 
-		$('<div class="col-xs-12 divider"></div>' + newBlock.html()).insertBefore($(this))
+			$(newBlock).find('select').each(function(){
+				var currentName = $(this).attr('name').split('-');
+				var newName = [currentName[0], victimIndex, currentName[2]].join('-');
+				$(this).attr('name', newName);
+				$(this).attr('id', 'id_' + newName);
+			});
+
+			$(newBlock).find('textarea').each(function(){
+				var currentName = $(this).attr('name').split('-');
+				var newName = [currentName[0], victimIndex, currentName[2]].join('-');
+				$(this).attr('name', newName);
+				$(this).attr('id', 'id_' + newName);
+			});
+
+			$('<div class="col-xs-12 divider"></div>' + newBlock.html()).insertBefore($(this))
+		}
 	});
 
 
 	var suspectBlock = $('#suspect-block').clone();
-	var suspectIndex = 1;
+	var suspectIndex = -1;
 
 	$('#add-another-suspect-button').click(function() {
 		var newBlock = suspectBlock.clone();
 		suspectIndex++;
+		$('#id_suspect-TOTAL_FORMS').attr('value', suspectIndex + 1);
 
-		$(newBlock).find('input').each(function(){
-			var currentName = $(this).attr('name').split('-');
-			var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
-			$(this).attr('name', newName);
-			$(this).attr('id', newName);
-		});
+		if(suspectIndex == 0) {
+			$('#suspect-block').attr('style', '');
 
-		$(newBlock).find('select').each(function(){
-			var currentName = $(this).attr('name').split('-');
-			var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
-			$(this).attr('name', newName);
-			$(this).attr('id', newName);
-		});
+		} else {
+			$(newBlock).find('input').each(function(){
+				var currentName = $(this).attr('name').split('-');
+				var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
+				$(this).attr('name', newName);
+				$(this).attr('id', 'id_' + newName);
+			});
 
-		$(newBlock).find('textarea').each(function(){
-			var currentName = $(this).attr('name').split('-');
-			var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
-			$(this).attr('name', newName);
-			$(this).attr('id', newName);
-		});
+			$(newBlock).find('select').each(function(){
+				var currentName = $(this).attr('name').split('-');
+				var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
+				$(this).attr('name', newName);
+				$(this).attr('id', 'id_' + newName);
+			});
 
-		$('<div class="col-xs-12 divider"></div>' + newBlock.html()).insertBefore($(this))
+			$(newBlock).find('textarea').each(function(){
+				var currentName = $(this).attr('name').split('-');
+				var newName = [currentName[0], suspectIndex, currentName[2]].join('-');
+				$(this).attr('name', newName);
+				$(this).attr('id', 'id_' + newName);
+			});
+
+			$('<div class="col-xs-12 divider"></div>' + newBlock.html()).insertBefore($(this))
+		}
 	});
 
-	
+
 	$('#generate-report-button').click(function() {
 		generatePDF($(document).find('table').parent()[0]);
 	});

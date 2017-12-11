@@ -1,9 +1,9 @@
 {% extends "snippets/nav.html"%}
   {% block content %}
-    <form action="" method="post">
+    <form method="post" action="">
       {% csrf_token %}
-
       <div class="container page-content">
+
         <div id="add-entry-nav" class="row">
           <center id="info-buttons">
             <div class="col-xs-2 nav-selected" id="case-info-button">
@@ -83,120 +83,146 @@
         </div>
 
         <div class="add-entry-block row" id="district-info-entry">
-            <div class="col-sm-12 col-md-6">
-              <label>Division</label>
-              <input type="text" class="form-control" id="district-division" name="district-division" required=""/>
-              <label>Reporting District</label>
-              <input type="text" class="form-control" id="district-reporting_district" name="district-reporting_district" required=""/>
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <label>Bureau</label>
-              <input type="text" class="form-control" id="district-bureau" name="district-bureau" />
-            </div>
+          <div class="col-sm-12 col-md-6">
+            <label>Division</label>
+            <input type="text" class="form-control" id="district-division" name="district-division" required=""/>
+            <label>Reporting District</label>
+            <input type="text" class="form-control" id="district-reporting_district" name="district-reporting_district" required=""/>
           </div>
-
-          <div class="add-entry-block row" id="victims-info-entry">
-            <div id="victim-block">
-              <div class="col-sm-12 col-md-6">
-                <label>First Name</label>
-                <input type="text" class="form-control" id="id_victim-1-first_name" name="id_victim-1-first_name">
-
-                <label>Age</label>
-                <input type="number" class="form-control" id="id_victim-1-age" name="id_victim-1-age">
-
-                <label>Ethnicity</label>
-                <select class="form-control" id="id_victim-1-ethnicity" name="id_victim-1-ethnicity">
-                  <option value="" selected="">----------------</option>
-                  <option value="W">White</option>
-                  <option value="H">Hispanic</option>
-                  <option value="B">Black or African American</option>
-                  <option value="A">Asian</option>
-                  <option value="AI">American Indian or Alaska Native</option>
-                  <option value="ME">Middle Eastern</option>
-                  <option value="PI">Pacific Islander</option>
-                  <option value="O">Other</option>
-                </select>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <label>Last Name</label>
-                <input type="text" class="form-control" id="id_victim-1-last_name" name="id_victim-1-last_name">
-
-                <label>Sex</label>
-                <span class="radio-input"><input type="radio" id="id_victim-1-sex" name="id_victim-1-sex" value="M"><span>Male</span></span>
-                <span class="radio-input"><input type="radio" id="id_victim-1-sex" name="id_victim-1-sex" value="F"><span>Female</span></span>
-
-                <label>Description</label>
-                <textarea class="form-control" id="id_victim-1-description" name="id_victim-1-description"></textarea>
-              </div>
-            </div>
-            <center class="button-container">
-              <div class="button inline-block gray-background add-another-button" id="add-another-victim-button">+ Add Another</div>
-            </center>
+          <div class="col-sm-12 col-md-6">
+            <label>Bureau</label>
+            <input type="text" class="form-control" id="district-bureau" name="district-bureau" />
           </div>
+        </div>
 
-          <div class="add-entry-block row" id="suspects-info-entry">
-            <div id="suspect-block">
-              <div class="col-sm-12 col-md-6">
-                <label>First Name</label>
-                <input type="text" class="form-control" id="id_suspect-1-first_name" name="id_suspect-1-first_name">
+        <div class="add-entry-block row" id="victims-info-entry">
+          <input type="hidden" name="victim-TOTAL_FORMS" value="0" id="id_victim-TOTAL_FORMS" />
+          <input type="hidden" name="victim-INITIAL_FORMS" value="0" id="id_victim-INITIAL_FORMS" />
+          <input type="hidden" name="victim-MIN_NUM_FORMS" value="0" id="id_victim-MIN_NUM_FORMS" />
+          <input type="hidden" name="victim-MAX_NUM_FORMS" value="1000" id="id_victim-MAX_NUM_FORMS" />
 
-                <label>Age</label>
-                <input type="number" class="form-control" id="id_suspect-1-age" name="id_suspect-1-age">
-
-                <label>Ethnicity</label>
-                <select class="form-control" id="id_suspect-1-ethnicity" name="id_suspect-1-ethnicity">
-                  <option value="" selected="">----------------</option>
-                  <option value="W">White</option>
-                  <option value="H">Hispanic</option>
-                  <option value="B">Black or African American</option>
-                  <option value="A">Asian</option>
-                  <option value="AI">American Indian or Alaska Native</option>
-                  <option value="ME">Middle Eastern</option>
-                  <option value="PI">Pacific Islander</option>
-                  <option value="O">Other</option>
-                </select>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <label>Last Name</label>
-                <input type="text" class="form-control" id="id_suspect-1-last_name" name="id_suspect-1-last_name">
-
-                <label>Sex</label>
-                <span class="radio-input"><input type="radio" id="id_suspect-1-sex" name="id_suspect-1-sex" value="M"><span>Male</span></span>
-                <span class="radio-input"><input type="radio" id="id_suspect-1-sex" name="id_suspect-1-sex" value="F"><span>Female</span></span>
-
-                <label>Description</label>
-                <textarea class="form-control" id="id_suspect-1-description" name="id_suspect-1-description"></textarea>
-              </div>
-            </div>
-            <center class="button-container">
-              <div class="button inline-block gray-background add-another-button" id="add-another-suspect-button">+ Add Another</div>
-            </center>
-          </div>
-
-          <div class="add-entry-block row" id="crime-info-entry">
+          <div id="victim-block" style="display: none;">
             <div class="col-sm-12 col-md-6">
-              <label>Coroner Case Number</label>
-              <input type="number" class="form-control" id="event-coroner_case_number" name="event-coroner_case_number">
+              <label>First Name</label>
+              <input type="text" class="form-control" id="id_victim-0-first_name" name="victim-0-first_name">
 
-              <label>Crime Address</label>
-              <input type="text" class="form-control" id="event-address" name="event-address">
+              <label>Age</label>
+              <input type="number" class="form-control" id="id_victim-0-age" name="victim-0-age">
 
-              <label>Date Reported</label>
-              <input type="date" class="form-control" id="event-date_reported" name="event-date_reported">
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <label>Weapon</label>
-              <input type="text" class="form-control" id="event-weapon" name="event-weapon">
-
-              <label>Crime Committed</label>
-              <select class="form-control" id="event-crime_committed" name="event-crime_committed">
-                <option value="M" selected="">Murder</option>
+              <label>Ethnicity</label>
+              <select class="form-control" id="id_victim-0-ethnicity" name="victim-0-ethnicity">
+                <option value="" selected="">----------------</option>
+                <option value="W">White</option>
+                <option value="H">Hispanic</option>
+                <option value="B">Black or African American</option>
+                <option value="A">Asian</option>
+                <option value="AI">American Indian or Alaska Native</option>
+                <option value="ME">Middle Eastern</option>
+                <option value="PI">Pacific Islander</option>
+                <option value="O">Other</option>
               </select>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <label>Last Name</label>
+              <input type="text" class="form-control" id="id_victim-0-last_name" name="victim-0-last_name">
 
-              <label>Date Occurred</label>
-              <input type="date" class="form-control" id="event-date_occurred" name="event-date_occurred">
+              <label>Sex</label>
+              <span class="radio-input"><input type="radio" id="id_victim-0-sex" name="victim-0-sex" value="M"><span>Male</span></span>
+              <span class="radio-input"><input type="radio" id="id_victim-0-sex" name="victim-0-sex" value="F"><span>Female</span></span>
+
+              <label>Description</label>
+              <textarea class="form-control" id="id_victim-0-description" name="victim-0-description"></textarea>
             </div>
           </div>
+          <center class="button-container">
+            <div class="button inline-block gray-background add-another-button" id="add-another-victim-button">+ Add Another</div>
+          </center>
+        </div>
+
+        <div class="add-entry-block row" id="suspects-info-entry">
+          <input type="hidden" name="suspect-TOTAL_FORMS" value="0" id="id_suspect-TOTAL_FORMS" />
+          <input type="hidden" name="suspect-INITIAL_FORMS" value="0" id="id_suspect-INITIAL_FORMS" />
+          <input type="hidden" name="suspect-MIN_NUM_FORMS" value="0" id="id_suspect-MIN_NUM_FORMS" />
+          <input type="hidden" name="suspect-MAX_NUM_FORMS" value="1000" id="id_suspect-MAX_NUM_FORMS" />
+
+          <div id="suspect-block" style="display: none;">
+            <div class="col-sm-12 col-md-6">
+              <label>First Name</label>
+              <input type="text" class="form-control" id="id_ suspect-0-first_name" name="suspect-0-first_name">
+
+              <label>Age</label>
+              <input type="number" class="form-control" id="id_ suspect-0-age" name="suspect-0-age">
+
+              <label>Ethnicity</label>
+              <select class="form-control" id="id_  suspect-0-ethnicity" name="suspect-0-ethnicity">
+                <option value="" selected="">----------------</option>
+                <option value="W">White</option>
+                <option value="H">Hispanic</option>
+                <option value="B">Black or African American</option>
+                <option value="A">Asian</option>
+                <option value="AI">American Indian or Alaska Native</option>
+                <option value="ME">Middle Eastern</option>
+                <option value="PI">Pacific Islander</option>
+                <option value="O">Other</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <label>Last Name</label>
+              <input type="text" class="form-control" id="id_ suspect-0-last_name" name="suspect-0-last_name">
+
+              <label>Sex</label>
+              <span class="radio-input"><input type="radio" id="id_ suspect-0-sex" name="suspect-0-sex" value="M"><span>Male</span></span>
+              <span class="radio-input"><input type="radio" id="id_ suspect-0-sex" name="suspect-0-sex" value="F"><span>Female</span></span>
+
+              <label>Description</label>
+              <textarea class="form-control" id="id_  suspect-0-description" name="suspect-0-description"></textarea>
+            </div>
+          </div>
+          <center class="button-container">
+            <div class="button inline-block gray-background add-another-button" id="add-another-suspect-button">+ Add Another</div>
+          </center>
+        </div>
+
+        <div class="add-entry-block row" id="crime-info-entry">
+          <div class="col-sm-12 col-md-6">
+            <label>Coroner Case Number</label>
+            <input type="number" class="form-control" id="event-coroner_case_number" name="event-coroner_case_number">
+
+            <label>Crime Address</label>
+            <input type="text" class="form-control" id="event-address" name="event-address">
+
+            <label>Date Reported</label>
+            <input type="date" class="form-control" id="event-date_reported" name="event-date_reported">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label>Weapon</label>
+            <input type="text" class="form-control" id="event-weapon" name="event-weapon">
+
+            <label>Crime Committed</label>
+            <select class="form-control" id="event-crime_committed" name="event-crime_committed">
+              <option value="M" selected="">Murder</option>
+            </select>
+
+            <label>Date Occurred</label>
+            <input type="date" class="form-control" id="event-date_occurred" name="event-date_occurred">
+          </div>
+        </div>
+
+        {% if form.errors %}
+          {% for field in form %}
+              {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+              <div class="alert alert-danger">
+                  <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
+      {% endif %}
+
         <center class="button-container" id="add-entry-button">
           <input class="button inline-block" type="submit" value="Add Entry" />
         </center>
