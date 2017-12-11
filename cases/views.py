@@ -160,6 +160,7 @@ def advanced_search(request):
         cases = Case.objects.all()
 
         print("original length ", len(cases))
+        print(len(Case.objects.filter(binders__master_dr=891038582)))
 
         for field in case_form.fields:
             value = case_form[field].value()
