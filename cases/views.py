@@ -91,19 +91,18 @@ def detail(request, case_id):
         binder_form = BinderForm(prefix='binder')
         case_form = CaseForm(prefix='case')
         event_form = EventForm(prefix='event')
-        victim_form = PersonForm(prefix='victim')
-        suspect_form = PersonForm(prefix='suspect')
-        case = get_object_or_404(Case,dr_nbr=case_id)
+        victim_formset = VictimFormset(prefix='victim')
+        suspect_formset = SuspectFormset(prefix='suspect')
+        case = get_object_or_404(Case, dr_nbr=case_id)
         event = get_object_or_404(Event, case=case)
-        print(len(case.binders.all()))
-        return render(request, 'detail-entry.html', {
 
+        return render(request, 'detail-entry.html', {
             'district_form': district_form,
             'binder_form': binder_form,
             'case_form': case_form,
             'event_form': event_form,
-            'victim_form': victim_form,
-            'suspect_form': suspect_form,
+            'victim_formset': victim_formset,
+            'suspect_formset': suspect_formset,
             'case': case,
             'event': event,
         })
