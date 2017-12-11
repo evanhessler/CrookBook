@@ -129,7 +129,46 @@ def detail(request, case_id):
     #
 
 def advanced_search(request):
-    return render(request, 'advanced-search.html', {})
+    if request.method == 'GET':
+
+        district_form = DistrictForm(prefix='district')
+        binder_form = BinderForm(prefix='binder')
+        case_form = CaseForm(prefix='case')
+        event_form = EventForm(prefix='event')
+        victim_formset = VictimFormset(prefix='victim')
+        suspect_formset = SuspectFormset(prefix='suspect')
+
+        # print(victim_formset)
+        # print(suspect_formset)
+
+        return render(request, 'advanced-search.html', {
+            'district_form': district_form,
+            'binder_form': binder_form,
+            'case_form': case_form,
+            'event_form': event_form,
+            'victim_formset': victim_formset,
+            'suspect_formset': suspect_formset,
+        })
+    elif request.method == 'POST':
+        district_form = DistrictForm(prefix='district')
+        binder_form = BinderForm(prefix='binder')
+        case_form = CaseForm(prefix='case')
+        event_form = EventForm(prefix='event')
+        victim_formset = VictimFormset(prefix='victim')
+        suspect_formset = SuspectFormset(prefix='suspect')
+
+        cases = Case.objects.all()
+
+        print("original length ", len(cases))
+
+        for field in case_form.fields:
+            value = case_form[field].value()
+            if value not in {'', False, None}:
+                print(field, value)
+                cases = cases.filter(**{field: value})
+        
+        print("new length ", len(cases))
+
 
 def district_detail(request, district_id):
     office = get_object_or_404(District, id=district_id)
