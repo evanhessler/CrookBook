@@ -267,3 +267,13 @@ textarea {
 .generate-report-button {
   max-width: 200px;
 }
+
+.input-short {
+  width: 15%;
+  display: inline-block !important;
+}
+
+.input-long {
+  width: 84% !important;
+  display: inline-block !important;
+}

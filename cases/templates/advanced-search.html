@@ -54,10 +54,22 @@
           </div>
           <div class="col-sm-12 col-md-6">
             <label>Date Fully Reviewed</label>
-            <input type="date" class="form-control" id="case-date_fully_reviewed" name="case-date_fully_reviewed">
+
+            <select class="input-short" id="case-date_fully_reviewed_select" name="case-date_fully_reviewed_select">
+              <option selected value="on">On</option>
+              <option value="before">Before</option>
+              <option value="after">After</option>
+            </select>
+            <input type="date" class="form-control input-long" id="case-date_fully_reviewed" name="case-date_fully_reviewed">
+
 
             <label>Status Date</label>
-            <input type="date" class="form-control" id="case-status_date" name="case-status_date">
+            <select class="input-short">
+              <option selected value="on">On</option>
+              <option value="before">Before</option>
+              <option value="after">After</option>
+            </select>
+            <input type="date" class="form-control input-long" id="case-status_date" name="case-status_date">
 
             <!-- <label>Solvability Factor</label>
             <input type="number" class="form-control" id="case-solvability_factor"> -->
@@ -78,7 +90,12 @@
           </div>
           <div class="col-sm-12 col-md-6">
             <label>Check Out Date</label>
-            <input type="date" class="form-control" id="binder-check_out_date" name="binder-check_out_date" />
+            <select class="input-short">
+              <option selected value="on">On</option>
+              <option value="before">Before</option>
+              <option value="after">After</option>
+            </select>
+            <input type="date" class="form-control input-long" id="binder-check_out_date" name="binder-check_out_date" />
           </div>
         </div>
 
@@ -107,7 +124,12 @@
               <input type="text" class="form-control" id="id_victim-0-first_name" name="victim-0-first_name">
 
               <label>Age</label>
-              <input type="number" class="form-control" id="id_victim-0-age" name="victim-0-age">
+              <select class="input-short">
+                <option selected value="exactly">Exactly</option>
+                <option value="before">Younger Than</option>
+                <option value="after">Older Than</option>
+              </select>
+              <input type="number" class="form-control input-long" id="id_victim-0-age" name="victim-0-age">
 
               <label>Ethnicity</label>
               <select class="form-control" id="id_victim-0-ethnicity" name="victim-0-ethnicity">
@@ -151,7 +173,12 @@
               <input type="text" class="form-control" id="id_ suspect-0-first_name" name="suspect-0-first_name">
 
               <label>Age</label>
-              <input type="number" class="form-control" id="id_ suspect-0-age" name="suspect-0-age">
+              <select class="input-short">
+                <option selected value="exactly">Exactly</option>
+                <option value="before">Younger Than</option>
+                <option value="after">Older Than</option>
+              </select>
+              <input type="number" class="form-control input-long" id="id_ suspect-0-age" name="suspect-0-age">
 
               <label>Ethnicity</label>
               <select class="form-control" id="id_  suspect-0-ethnicity" name="suspect-0-ethnicity">
@@ -192,7 +219,12 @@
             <input type="text" class="form-control" id="event-address" name="event-address">
 
             <label>Date Reported</label>
-            <input type="date" class="form-control" id="event-date_reported" name="event-date_reported">
+            <select class="input-short">
+              <option selected value="on">On</option>
+              <option value="before">Before</option>
+              <option value="after">After</option>
+            </select>
+            <input type="date" class="form-control input-long" id="event-date_reported" name="event-date_reported">
           </div>
           <div class="col-sm-12 col-md-6">
             <label>Weapon</label>
@@ -204,7 +236,12 @@
             </select>
 
             <label>Date Occurred</label>
-            <input type="date" class="form-control" id="event-date_occurred" name="event-date_occurred">
+            <select class="input-short">
+              <option selected value="on">On</option>
+              <option value="before">Before</option>
+              <option value="after">After</option>
+            </select>
+            <input type="date" class="form-control input-long" id="event-date_occurred" name="event-date_occurred">
           </div>
         </div>
 

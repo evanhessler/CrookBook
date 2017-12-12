@@ -164,6 +164,7 @@ def advanced_search(request):
 
         for field in case_form.fields:
             value = case_form[field].value()
+            print(field, value)
             if value not in {'', False, None}:
                 queryHeading.append(field.replace('_', ' ') + ' is ' + value)
                 filterQuery = {field : value}
