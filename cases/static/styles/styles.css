@@ -165,7 +165,8 @@ textarea {
 .basic-search-input {
   margin-top: 10px;
   text-align: center;
-  width: 100% !important;
+  width: 70% !important;
+  margin-left: 20px;
 }
 .button {
   background: black;
@@ -177,6 +178,7 @@ textarea {
   margin-top: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+  max-width: 200px;
 }
 .container-wide {
   width: 94% !important;
