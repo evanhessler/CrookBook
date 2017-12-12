@@ -3,10 +3,17 @@
   <div class="page-content">
     <div class="container">
       <div class="row alignment">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="button" id="generate-report-button">Generate Report</div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-2">
+          <form id="upload-form">
+            {% csrf_token %}
+            <input type="file" id="upload-file-button-hidden" accept=".xlsx">
+            <div class="button" id="upload-file-button" type="submit">Upload Excel File...</div>
+          </form>
+        </div>
+        <div class="col-md-8">
             <input type="text" class="basic-search-input form-control inline-block" id="search-val" placeholder="Search Master DR, Victims, Suspects, or Date Occured">
             <div class="button pull-right inline-block" id="search-button">Search</div>
         </div>

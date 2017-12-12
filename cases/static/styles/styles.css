@@ -179,6 +179,7 @@ textarea {
   margin-bottom: 10px;
   cursor: pointer;
   max-width: 200px;
+  text-align: center;
 }
 .container-wide {
   width: 94% !important;
@@ -266,3 +267,9 @@ textarea {
 #details-header {
   display: inline-block;
 }
+
+#upload-file-button-hidden {
+  display: none;
+}
+
+

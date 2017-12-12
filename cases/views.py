@@ -85,6 +85,9 @@ def add_entry(request):
 
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
 
+def add_file(request):
+    print("HERE")
+
 def detail(request, case_id):
     if request.method == 'GET':
         district_form = DistrictForm(prefix='district')

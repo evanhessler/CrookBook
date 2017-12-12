@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
     url(r'add/$', views.add_entry, name='add_entry'),
+    url(r'addFile/$', views.add_file, name='add_file'),
     url(r'detail/(?P<case_id>[0-9]+)$', views.detail, name='detail_entry'),
     url(r'advancedSearch/$', views.advanced_search, name='advanced_search'),
     url(r'office/(?P<district_id>[0-9]+)/$', views.district_detail, name='district_detail'),

@@ -244,7 +244,26 @@ $(document).ready(function () {
 				}
 			});
 		}
-	})
+	});
+
+	$('#upload-file-button').click(function() {
+		$('#upload-file-button-hidden').trigger('click');
+	});
+
+	$('input[type=file]').change(function() {
+		var data = $("#upload-form").serialize();
+		$.ajax({
+	        url: '/addFile/',
+	        type: 'post',
+	        data: {
+	        	data
+	        },
+	        success: function(data) {
+	           console.log("SUCCESS")
+	        }
+	    });
+	});
+
 });
 
 // If we wait for the DOM to load, theres a delay in highlighting the anchors
