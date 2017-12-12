@@ -165,7 +165,11 @@ def advanced_search(request):
         for field in case_form.fields:
             value = case_form[field].value()
             if value not in {'', False, None}:
-                queryHeading.append(field.replace('_', ' ') + ' is ' + value)
+                if isinstance(value, bool):
+                    value2 = "true" if value else "false"
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + value2)
+                else:
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + value)
                 filterQuery = {field : value}
                 cases = cases.filter(**filterQuery)
 
@@ -227,7 +231,7 @@ def advanced_search(request):
             queryHeading = "Cases where " + ' and '.join(queryHeading)
         else:
             queryHeading = None
-        
+
         print("final length ", len(cases), queryHeading)
 
         return render(request, 'advanced-search-results.html', {
