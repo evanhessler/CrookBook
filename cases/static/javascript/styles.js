@@ -138,6 +138,10 @@ $(document).ready(function () {
 		}
 	});
 
+	$('#generate-report-button-advanced-search').click(function() {
+		console.log($($(document).find('table').parent()[0]));
+		generatePDF($(document).find('table').parent()[0]);
+	});
 
 	$('#generate-report-button').click(function() {
 		generatePDF($(document).find('table').parent()[0]);

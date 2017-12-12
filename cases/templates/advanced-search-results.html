@@ -1,0 +1,83 @@
+{% extends "snippets/nav.html"%}
+  {% block content %}
+  <div class="page-content">
+    <div class="container">
+      <div class="row alignment">
+        <center>
+          {% if queryHeading is not None %}
+            <div class="col-xs-12">
+                <h2>"{{queryHeading}}."</h2>
+            </div>
+          {% endif %}
+          <div class="col-sm-12 col-md-12">
+            <div class="button generate-report-button" id="generate-report-button-advanced-search">Generate Report</div>
+          </div>
+        </center>
+      </div>
+    </div>
+
+    <div id="database">
+      <div class="container container-wide database-table home-table">
+        <table class="table table-striped table-hover table-responsive">
+          {% if queryHeading is not None %}
+              <h2 style="display: none;">"{{queryHeading}}."</h2>
+          {% endif %}
+          <thead>
+            <tr>
+              <th>MASTER DR</th>
+              <th>VICTIMS</th>
+              <th>SUSPECTS</th>
+              <th>DATE OCCURED</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for case in cases %}
+              <tr onclick="window.location.href = '/detail/{{ case.dr_nbr }}';">
+                <td>
+                  {% if case.dr_nbr %}
+                    {{ case.dr_nbr }}
+                  {% else %}
+                      &#8212;
+                  {% endif %}
+                </td>
+                <td>
+                  {% for victim in case.victims.all %}
+                    {% if victim.first_name and victim.last_name %}
+                      {{ victim.first_name }} {{ victim.last_name }}{% include "snippets/list_comma.html" %}
+                    {% else %}
+                      &#8212;
+                    {% endif %}
+                  {% endfor %}
+                </td>
+                <td>
+                  {% for suspect in case.suspects.all %}
+                    {% if suspect.first_name and suspect.last_name %}
+                      {{ suspect.first_name }} {{ suspect.last_name }}{% include "snippets/list_comma.html" %}
+                    {% else %}
+                      &#8212;
+                    {% endif %}
+                  {% endfor %}
+                </td>
+                <td>
+                  {% for case in case.events.all %}
+                    {% if case.date_occurred %}
+                      {{ case.date_occurred }}
+                    {% else %}
+                      &#8212;
+                    {% endif %}
+                  {% endfor %}
+                 </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--
+    <center class="button-container" id="add-entry-button">
+      <div class="gray-background button inline-block" id="generate-report-button">Generate Report</div>
+    </center>
+  -->
+  </div>
+
+  {% endblock %}
