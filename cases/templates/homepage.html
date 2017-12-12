@@ -7,10 +7,11 @@
           <div class="button" id="generate-report-button">Generate Report</div>
         </div>
         <div class="col-md-2">
-          <form id="upload-form">
+          <form method="post" enctype="multipart/form-data" id="upload-form">
             {% csrf_token %}
-            <input type="file" id="upload-file-button-hidden" accept=".xlsx">
+            <input type="file" id="upload-file-button-hidden" accept=".xlsx" name="myfile">
             <div class="button" id="upload-file-button" type="submit">Upload Excel File...</div>
+
           </form>
         </div>
         <div class="col-md-8">

@@ -86,7 +86,7 @@ def add_entry(request):
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
 
 def add_file(request):
-    print("HERE")
+    return render(request, 'add-file.html', {})
 
 def detail(request, case_id):
     if request.method == 'GET':
