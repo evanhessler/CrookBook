@@ -178,16 +178,21 @@ $(document).ready(function () {
 	// Attributes in detail-entry made editable
 	$('#case-edit').click(function() {
 		$(document).find('#case-input').children('input').each(function() {
-			$(this).attr("readonly", false);
+			$(this).attr("disabled", false);
 		});
 		$(document).find('#case-input').children('select').each(function() {
 			$(this).attr("disabled", false);
+		});
+		$(document).find('#case-input').children('span').each(function() {
+			$(this).children('input').each(function() {
+				$(this).attr("disabled", false);
+			});
 		});
 	});
 
 	$('#binder-edit').click(function() {
 		$(document).find('#binder-input').children('input').each(function() {
-			$(this).attr("readonly", false);
+			$(this).attr("disabled", false);
 		});
 		$(document).find('#binder-input').children('select').each(function() {
 			$(this).attr("disabled", false);
@@ -196,7 +201,7 @@ $(document).ready(function () {
 
 	$('#district-edit').click(function() {
 		$(document).find('#district-input').children('input').each(function() {
-			$(this).attr("readonly", false);
+			$(this).attr("disabled", false);
 		});
 		$(document).find('#district-input').children('select').each(function() {
 			$(this).attr("disabled", false);
@@ -205,7 +210,7 @@ $(document).ready(function () {
 
 	$('#crime-edit').click(function() {
 		$(document).find('#crime-input').children('input').each(function() {
-			$(this).attr("readonly", false);
+			$(this).attr("disabled", false);
 		});
 		$(document).find('#crime-input').children('select').each(function() {
 			$(this).attr("disabled", false);

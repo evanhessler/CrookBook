@@ -28,5 +28,6 @@ class EventForm(ModelForm):
         model = Event
         exclude = ['case']
 
+BinderFormset = formset_factory(BinderForm, extra=20)
 VictimFormset = formset_factory(PersonForm, extra=20)
 SuspectFormset = formset_factory(PersonForm, extra=20)
