@@ -164,6 +164,10 @@ def advanced_search(request):
         print(binder_check_out_date_qualifier)
         print(event_date_occurred_qupalifier)
 
+
+        def getQualifier(qualifier):
+            return request.POST.get(qualifier)
+
         cases = Case.objects.all()
         queryHeading = [];
 
@@ -172,12 +176,12 @@ def advanced_search(request):
         for field in case_form.fields:
             value = case_form[field].value()
             if value not in {'', False, None}:
-                print(field, value)
-                if field == 'date_fully_reviewed':
-                    queryHeading.append(field.replace('_', ' ') + ' is ' + case_date_fully_reviewed_qualifier + ' ' + value)
-                    if case_date_fully_reviewed_qualifier == 'before':
+                if field in {'date_fully_reviewed', 'status_date'}:
+                    qualifier = getQualifier('case_' + field + '_qualifier')
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                    if qualifier == 'before':
                         filterQuery = {field + '__range': ['1900-01-01', value]}
-                    elif case_date_fully_reviewed_qualifier == 'after':
+                    elif qualifier == 'after':
                         filterQuery = {field + '__range': [value, '2500-01-01']}
                     else:
                         filterQuery = {field : value}
