@@ -30,28 +30,44 @@
                 </div>
 
                 <div class="col-xs-8 detail-input" id="case-input">
-                  <input type="text" class="form-control" id="case-dr_nbr" name="case-dr_nbr" value="{{ case_form.dr_nbr.value }}" readonly>
+                  <input type="hidden" class="form-control" id="case-dr_nbr" name="case-dr_nbr" value="{{ case_form.dr_nbr.value }}">
+                  <input type="text" class="form-control" id="case-dr_nbr" name="case-dr_nbr" value="{{ case_form.dr_nbr.value }}" disabled>
                   <input type="text" class="form-control" id="case-court_case_number" name="case-court_case_number" value="{{ case_form.court_case_number.value|default:'' }}" readonly>
                   <input type="date" class="form-control" id="case-date_fully_reviewed" name="case-date_fully_reviewed" value="{{ case_form.date_fully_reviewed.value|default:''|date:'Y-m-d' }}" readonly>
                   <input type="text" class="form-control" id="case-motive" name="case-motive" value="{{ case_form.motive.value|default:'' }}" readonly>
                   <input type="text" class="form-control" id="case-adjudication" name="case-adjudication" value="{{ case_form.adjudication.value|default:'' }}" readonly>
 
                   <select class="form-control" id="case-status" name="case-status" readonly>
-                    <option value="{{ case_form.status.value|default:'' }}" selected="">{{ case_form.status.value|default:"----------------" }}</option>
-                    {% if case_form.status.value != "AA"%}
+                    {% if case_form.status.value == "AA"%}
+                      <option value="AA" selected>Adult Arrest</option>
+                      <option value="AO">Adult Other</option>
+                      <option value="JA">Juvenile Arrest</option>
+                      <option value="JO">Juvenile Other</option>
+                      <option value="IC">Investigation Continued</option>
+                    {% elif case_form.status.value == "AO"%}
                       <option value="AA">Adult Arrest</option>
-                    {% endif %}
-                    {% if case_form.status.value != "AO"%}
-                    <option value="AO">Adult Other</option>
-                    {% endif %}
-                    {% if case_form.status.value != "JA"%}
-                    <option value="JA">Juvenile Arrest</option>
-                    {% endif %}
-                    {% if case_form.status.value != "JO"%}
-                    <option value="JO">Juvenile Other</option>
-                    {% endif %}
-                    {% if case_form.status.value != "IC"%}
-                    <option value="IC">Investigation Continued</option>
+                      <option value="AO" selected>Adult Other</option>
+                      <option value="JA">Juvenile Arrest</option>
+                      <option value="JO">Juvenile Other</option>
+                      <option value="IC">Investigation Continued</option>
+                    {% elif case_form.status.value == "JA"%}
+                      <option value="AA">Adult Arrest</option>
+                      <option value="AO">Adult Other</option>
+                      <option value="JA" selected>Juvenile Arrest</option>
+                      <option value="JO">Juvenile Other</option>
+                      <option value="IC">Investigation Continued</option>
+                    {% elif case_form.status.value == "JO"%}
+                      <option value="AA">Adult Arrest</option>
+                      <option value="AO">Adult Other</option>
+                      <option value="JA">Juvenile Arrest</option>
+                      <option value="JO" selected>Juvenile Other</option>
+                      <option value="IC">Investigation Continued</option>
+                    {% elif case_form.status.value == "IC"%}
+                      <option value="AA">Adult Arrest</option>
+                      <option value="AO">Adult Other</option>
+                      <option value="JA">Juvenile Arrest</option>
+                      <option value="JO">Juvenile Other</option>
+                      <option value="IC" selected>Investigation Continued</option>
                     {% endif %}
                   </select>
 
@@ -76,11 +92,11 @@
           </div>
           <hr width="100%">
 
-          <input type="hidden" name="binder-TOTAL_FORMS" value="{{ binders|length }}" id="id_binder-TOTAL_FORMS" />
-          <input type="hidden" name="binder-INITIAL_FORMS" value="{{ binders|length }}" id="id_binder-INITIAL_FORMS" />
+          <input type="hidden" name="binder-TOTAL_FORMS" value="{{ existing_binders|length }}" id="id_binder-TOTAL_FORMS" />
+          <input type="hidden" name="binder-INITIAL_FORMS" value="{{ existing_binders|length }}" id="id_binder-INITIAL_FORMS" />
           <input type="hidden" name="binder-MIN_NUM_FORMS" value="0" id="id_binder-MIN_NUM_FORMS" />
-          <input type="hidden" name="binder-MAX_NUM_FORMS" value="1000" id="id_victim-MAX_NUM_FORMS" />
-          {% for binder in binders %}
+          <input type="hidden" name="binder-MAX_NUM_FORMS" value="1000" id="id_binder-MAX_NUM_FORMS" />
+          {% for binder in existing_binders %}
             <div class="panel panel-default">
               <div class="panel-heading">
                 Binder Info
@@ -93,8 +109,9 @@
                     <p>Last Check Out Date</p>
                   </div>
                   <div class="col-xs-8 detail-input" id="binder-input">
-                    <input type="text" class="form-control" id="binder-0-master_dr" name="binder-0-master_dr" value="{{ binder.master_dr }}" readonly>
-                    <input type="date" class="form-control" id="binder-0-check_out_date" name="binder-0-check_out_date" value="{{ binder.check_out_date|date:'Y-m-d' }}" readonly>
+                    <input type="hidden" class="form-control" id="id_binder-0-master_dr" name="binder-0-master_dr" value="{{ binder.master_dr }}" >
+                    <input type="text" class="form-control" id="id_binder-0-master_dr" name="binder-0-master_dr" value="{{ binder.master_dr }}" disabled>
+                    <input type="date" class="form-control" id="id_binder-0-check_out_date" name="binder-0-check_out_date" value="{{ binder.check_out_date|date:'Y-m-d' }}" readonly>
                   </div>
                 </div>
               </div>
@@ -125,15 +142,15 @@
           <hr width="100%">
 
 
-          {% for victim in victims %}
+          {% for victim in existing_victims %}
             <div class="panel panel-default">
               <div class="panel-heading">
                 Victim Info
                 <a id="victim-edit">edit</a>
               </div>
               <div class="panel-body">
-                <input type="hidden" name="victim-TOTAL_FORMS" value="0" id="id_victim-TOTAL_FORMS" />
-                <input type="hidden" name="victim-INITIAL_FORMS" value="1" id="id_victim-INITIAL_FORMS" />
+                <input type="hidden" name="victim-TOTAL_FORMS" value="{{ existing_victims|length }}" id="id_victim-TOTAL_FORMS" />
+                <input type="hidden" name="victim-INITIAL_FORMS" value="{{ existing_victims|length }}" id="id_victim-INITIAL_FORMS" />
                 <input type="hidden" name="victim-MIN_NUM_FORMS" value="0" id="id_victim-MIN_NUM_FORMS" />
                 <input type="hidden" name="victim-MAX_NUM_FORMS" value="1000" id="id_victim-MAX_NUM_FORMS" />
                 <div class="row">
@@ -146,11 +163,34 @@
                     <p>Victim Description</p>
                   </div>
                   <div class="col-xs-8 detail-input" id="victim-input">
+                    <input type="hidden" class="form-control" id="id_victim-0-id" name="victim-0-id" value="{{ victim.id }}">
                     <input type="text" class="form-control" id="id_victim-0-first_name" name="victim-0-first_name" value="{{ victim.first_name }}" readonly>
                     <input type="text" class="form-control" id="id_victim-0-last_name" name="victim-0-last_name" value="{{ victim.last_name }}" readonly>
                     <input type="text" class="form-control" id="id_victim-0-age" name="victim-0-age" value="{{ victim.age }}" readonly>
-                    <input type="text" class="form-control" id="id_victim-0-sex" name="victim-0-sex" value="{{ victim.sex }}" readonly>
-                    <input type="text" class="form-control" id="id_victim-0-ethnicity" name="victim-0-ethnicity" value="{{ victim.ethnicity }}" readonly>
+
+                    {% if victim.sex == 'M' %}
+                      <span class="radio-input"><input type="radio" id="victim-0-sex" name="victim-0-sex" value="M" checked readonly><span>Male</span></span>
+                      <span class="radio-input"><input type="radio" id="victim-0-sex" name="victim-0-sex" value="F" readonly><span>Female</span></span>
+                    {% elif victim.sex == 'F' %}
+                      <span class="radio-input"><input type="radio" id="victim-0-sex" name="victim-0-sex" value="M" readonly><span>Male</span></span>
+                      <span class="radio-input"><input type="radio" id="victim-0-sex" name="victim-0-sex" checked value="F" readonly><span>Female</span></span>
+                    {% else %}
+                      <span class="radio-input"><input type="radio" id="victim-0-sex" name="victim-0-sex" value="M" readonly><span>Male</span></span>
+                      <span class="radio-input"><input type="radio" id="victim-0-sex" name="victim-0-sex" value="F" readonly><span>Female</span></span>
+                    {% endif %}
+
+                    <select class="form-control" id="id_suspect-0-ethnicity" name="suspect-0-ethnicity" readonly>
+                      <option value="{{ suspect.ethnicity }}" selected="">{{ suspect.ethnicity }}</option>
+                      <option value="W">White</option>
+                      <option value="H">Hispanic</option>
+                      <option value="B">Black or African American</option>
+                      <option value="A">Asian</option>
+                      <option value="AI">American Indian or Alaska Native</option>
+                      <option value="ME">Middle Eastern</option>
+                      <option value="PI">Pacific Islander</option>
+                      <option value="O">Other</option>
+                    </select>
+
                     <input type="text" class="form-control" id="id_victim-0-description" name="victim-0-description" value="{{ victim.description }}" readonly>
                   </div>
                 </div>
@@ -159,15 +199,15 @@
             <hr width="100%">
           {% endfor %}
 
-          {% for suspect in suspects %}
+          {% for suspect in existing_suspects %}
             <div class="panel panel-default">
               <div class="panel-heading">
                 Suspect Info
                 <a id="suspect-edit">edit</a>
               </div>
               <div class="panel-body">
-                <input type="hidden" name="suspect-TOTAL_FORMS" value="0" id="id_suspect-TOTAL_FORMS" />
-                <input type="hidden" name="suspect-INITIAL_FORMS" value="1" id="id_suspect-INITIAL_FORMS" />
+                <input type="hidden" name="suspect-TOTAL_FORMS" value="{{ existing_suspects|length }}" id="id_suspect-TOTAL_FORMS" />
+                <input type="hidden" name="suspect-INITIAL_FORMS" value="{{ existing_suspects|length }}" id="id_suspect-INITIAL_FORMS" />
                 <input type="hidden" name="suspect-MIN_NUM_FORMS" value="0" id="id_suspect-MIN_NUM_FORMS" />
                 <input type="hidden" name="suspect-MAX_NUM_FORMS" value="1000" id="id_suspect-MAX_NUM_FORMS" />
                 <div class="row">
@@ -180,11 +220,34 @@
                     <p>Suspect Description</p>
                   </div>
                   <div class="col-xs-8 detail-input" id="suspect-input">
+                    <input type="hidden" class="form-control" id="id_suspect-0-id" name="suspect-0-id" value="{{ suspect.id }}">
                     <input type="text" class="form-control" id="id_suspect-0-first_name" name="suspect-0-first_name" value="{{ suspect.first_name }}" readonly>
                     <input type="text" class="form-control" id="id_suspect-0-last_name" name="suspect-0-last_name" value="{{ suspect.last_name }}" readonly>
                     <input type="text" class="form-control" id="id_suspect-0-age" name="suspect-0-age" value="{{ suspect.age }}" readonly>
-                    <input type="text" class="form-control" id="id_suspect-0-sex" name="suspect-0-sex" value="{{ suspect.sex }}" readonly>
-                    <input type="text" class="form-control" id="id_suspect-0-ethnicity" name="suspect-0-ethnicity" value="{{ suspect.ethnicity }}" readonly>
+
+                    {% if suspect.sex == 'M' %}
+                      <span class="radio-input"><input type="radio" id="suspect-0-sex" name="suspect-0-sex" value="F" checked readonly><span>Male</span></span>
+                      <span class="radio-input"><input type="radio" id="suspect-0-sex" name="suspect-0-sex" value="M" readonly><span>Female</span></span>
+                    {% elif suspect.sex == 'F' %}
+                      <span class="radio-input"><input type="radio" id="suspect-0-sex" name="suspect-0-sex" value="M" readonly><span>Male</span></span>
+                      <span class="radio-input"><input type="radio" id="suspect-0-sex" name="suspect-0-sex" checked value="F" readonly><span>Female</span></span>
+                    {% else %}
+                      <span class="radio-input"><input type="radio" id="suspect-0-sex" name="suspect-0-sex" value="M" readonly><span>Male</span></span>
+                      <span class="radio-input"><input type="radio" id="suspect-0-sex" name="suspect-0-sex" value="F" readonly><span>Female</span></span>
+                    {% endif %}
+
+                    <select class="form-control" id="id_suspect-0-ethnicity" name="suspect-0-ethnicity" readonly>
+                      <option value="{{ suspect.ethnicity }}" selected="">{{ suspect.ethnicity }}</option>
+                      <option value="W">White</option>
+                      <option value="H">Hispanic</option>
+                      <option value="B">Black or African American</option>
+                      <option value="A">Asian</option>
+                      <option value="AI">American Indian or Alaska Native</option>
+                      <option value="ME">Middle Eastern</option>
+                      <option value="PI">Pacific Islander</option>
+                      <option value="O">Other</option>
+                    </select>
+
                     <input type="text" class="form-control" id="id_suspect-0-description" name="suspect-0-description" value="{{ suspect.description }}" readonly>
                   </div>
                 </div>

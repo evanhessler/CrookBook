@@ -79,35 +79,38 @@ def add_entry(request):
 def detail(request, case_id):
     case = get_object_or_404(Case, dr_nbr=case_id)
     district = District.objects.get(id=case.district.id)
-    binders = case.binders.all()
-    victims = case.victims.all()
-    suspects = case.suspects.all()
+    binders = case.binders.all().values()
+    victims = case.victims.all().values()
+    suspects = case.suspects.all().values()
     event = case.events.get()
 
     if request.method == 'GET':
         district_form = DistrictForm(prefix='district', instance=district)
-        # binder_formset = BinderFormset(prefix='binder', initial=binders)
+        binder_formset = BinderFormset(prefix='binder', initial=binders)
         case_form = CaseForm(prefix='case', instance=case)
         event_form = EventForm(prefix='event', instance=event)
-        # victim_formset = VictimFormset(prefix='victim', initial=victim_list)
-        # suspect_formset = SuspectFormset(prefix='suspect', initial=suspects)
+        victim_formset = VictimFormset(prefix='victim', initial=victims)
+        suspect_formset = SuspectFormset(prefix='suspect', initial=suspects)
 
         return render(request, 'detail-entry.html', {
             'district_form': district_form,
-            'binders': list(binders),
+            'binder_formset': binder_formset,
+            'existing_binders': list(binders),
             'case_form': case_form,
             'event_form': event_form,
-            'victims': list(victims),
-            'suspects': list(suspects),
+            'victim_formset': victim_formset,
+            'existing_victims': list(victims),
+            'suspect_formset': suspect_formset,
+            'existing_suspects': list(suspects),
         })
 
     elif request.method == 'POST':
         district_form = DistrictForm(request.POST, prefix='district', instance=district)
-        binder_formset = BinderFormset(request.POST, prefix='binder')
+        binder_formset = BinderFormset(request.POST, prefix='binder', initial=binders)
         case_form = CaseForm(request.POST, prefix='case', instance=case)
         event_form = EventForm(request.POST, prefix='event', instance=event)
-        victim_formset = VictimFormset(request.POST, prefix='victim')
-        suspect_formset = SuspectFormset(request.POST, prefix='suspect')
+        victim_formset = VictimFormset(request.POST, prefix='victim', initial=victims)
+        suspect_formset = SuspectFormset(request.POST, prefix='suspect', initial=suspects)
 
         district_valid = district_form.is_valid()
         binders_valid = binder_formset.is_valid()
@@ -129,8 +132,11 @@ def detail(request, case_id):
             event_form.save()
 
             if binders_valid:
-                for binder in binder_formset:
-                    binder = binder.save()
+                binder_formset.save()
+            if victims_valid:
+                victim_formset.save()
+            if suspects_valid:
+                suspect_formset.save()
 
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
 
