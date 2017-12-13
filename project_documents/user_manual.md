@@ -19,11 +19,14 @@ To see all the attributes of a case see the Add Entry section of this manual. Al
 The Features bar contains tabs that link to all of CrookBook's functionalities. The Features bar is a black horizontal bar located at the top of the page. It contains the Home, Advanced Search, Add Entry and About tabs which link to their respective functionalities by clicking on them within the Features bar.
 
 ## Advanced Search
+The Advanced Search functionality will allow you to search through the database for cases based on a specific criteria. The search can take any number of attributes from all five aspects to a case. Each aspect is split into an individual tabular view with its specific form that can be searched. Criteria from two different aspects of a case can be looked up at once (ex. one can lookup cases that are AA with men as suspects). More information about the aspects of a case can be seen at the [Forms](#forms) section below. Attributes with dates can be modified to lookup ON/BEFORE/AFTER a given date with the dropdown selection.
 
 ## Add Entry
 The Add Entry function of CrookBook allows you to add a new murder case entry to the CrookBook database. There are five different aspects of a case, each with their own fill out forms. Once all the necessary forms have been filled you can press the Add Entry button located bottom center of the page to add the Entry to the CrookBook database.
 
 ![Add Entry Example](./images/UI/add_entry_mockup.png)
+
+## Forms
 
 ### Case Info Form
 The Case Info form contains information pertaining to just the case file itself. This includes: DR Number, Date Fully Reviewed, Court Case Number, Status Date, Case Status, Evidence Destroyed, Motive, Notes, Case Adjudication. The DR Number is a required field of the Case Info Form in order for the Entry to be added to the CrookBook database.
