@@ -262,7 +262,9 @@ textarea {
   margin-top: 4px;
   width: 90%;
 }
-
+.red-alert {
+  color: red;
+}
 #details-header {
   display: inline-block;
 }

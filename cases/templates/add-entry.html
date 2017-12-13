@@ -29,12 +29,11 @@
 
         <div class="add-entry-block block-selected" id="case-info-entry">
           <div class="col-sm-12 col-md-6">
-            <label>DR Number</label>
+            <label>DR Number</label> {{ case_form.errors }}
             <input type="text" class="form-control" id="case-dr_nbr" name="case-dr_nbr" required="">
 
             <label>Court Case Number</label>
             <input type="text" class="form-control" id="case-court_case_number" name="case-court_case_number">
-
             <label>Case Status</label>
             <select class="form-control" id="case-status" name="case-status">
               <option value="" selected="">----------------</option>
@@ -63,8 +62,8 @@
             <input type="number" class="form-control" id="case-solvability_factor"> -->
 
             <label>Evidence Destroyed</label>
-            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed"><span>Yes</span></span>
-            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed"><span>No</span></span>
+            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="True"><span>Yes</span></span>
+            <span class="radio-input"><input type="radio" id="case-evidence_destroyed" name="case-evidence_destroyed" value="False"><span>No</span></span>
 
             <label>Notes</label>
             <textarea class="form-control" id="case-notes" name="case-notes"></textarea>
