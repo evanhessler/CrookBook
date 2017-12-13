@@ -123,10 +123,11 @@ textarea {
   margin-bottom: 15px;
 }
 #crookbook-logo {
-  bottom: 25%;
-  margin-left: 45vw;
+  margin-top: 18px;
   position: absolute;
+  margin-left: 43%;
 }
+
 #search-button {
   width: 40%;
   text-align: center;
@@ -164,7 +165,8 @@ textarea {
 .basic-search-input {
   margin-top: 10px;
   text-align: center;
-  width: 100% !important;
+  width: 70% !important;
+  margin-left: 20px;
 }
 .button {
   background: black;
@@ -176,6 +178,7 @@ textarea {
   margin-top: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+  max-width: 200px;
 }
 .container-wide {
   width: 94% !important;
@@ -271,4 +274,8 @@ textarea {
 
 .alert-text:parent {
   margin-top: 25px;
+}
+
+.generate-report-button {
+  max-width: 200px;
 }
