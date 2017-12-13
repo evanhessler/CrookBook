@@ -171,10 +171,20 @@ def advanced_search(request):
 
         for field in case_form.fields:
             value = case_form[field].value()
-            print(field, value)
             if value not in {'', False, None}:
-                queryHeading.append(field.replace('_', ' ') + ' is ' + value)
-                filterQuery = {field : value}
+                print(field, value)
+                if field == 'date_fully_reviewed':
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + case_date_fully_reviewed_qualifier + ' ' + value)
+                    if case_date_fully_reviewed_qualifier == 'before':
+                        filterQuery = {field + '__range': ['1900-01-01', value]}
+                    elif case_date_fully_reviewed_qualifier == 'after':
+                        filterQuery = {field + '__range': [value, '2500-01-01']}
+                    else:
+                        filterQuery = {field : value}
+                else:
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + value)
+                    filterQuery = {field : value}
+
                 cases = cases.filter(**filterQuery)
 
         print("length ", len(cases))
