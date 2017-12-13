@@ -155,16 +155,6 @@ def advanced_search(request):
         victim_formset = VictimFormset(request.POST, prefix='victim')
         suspect_formset = SuspectFormset(request.POST, prefix='suspect')
 
-        case_date_fully_reviewed_qualifier = request.POST.get('case_date_fully_reviewed_qualifier')
-        case_status_date_qualifier = request.POST.get('case_status_date_qualifier')
-        binder_check_out_date_qualifier = request.POST.get('binder_check_out_date_qualifier')
-        event_date_occurred_qupalifier = request.POST.get('event_date_occurred_qualifier')
-        print(case_date_fully_reviewed_qualifier)
-        print(case_status_date_qualifier)
-        print(binder_check_out_date_qualifier)
-        print(event_date_occurred_qupalifier)
-
-
         def getQualifier(qualifier):
             return request.POST.get(qualifier)
 
@@ -228,9 +218,21 @@ def advanced_search(request):
         for field in event_form.fields:
             value = event_form[field].value()
             if value not in {'', False, None, 'M'}:
-                queryHeading.append(field.replace('_', ' ') + ' is ' + value)
-                filterQuery = dict()
-                filterQuery['events__' + field] = value
+                if field in {'date_occurred', 'date_reported'}:
+                    qualifier = getQualifier('event_' + field + '_qualifier')
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                    filterQuery = dict()
+
+                    if qualifier == 'before':
+                        filterQuery = {'events__' + field + '__range': ['1900-01-01', value]}
+                    elif qualifier == 'after':
+                        filterQuery = {'events__' + field + '__range': [value, '2500-01-01']}
+                    else:
+                        filterQuery = {'events__' + field : value}
+                else:
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + value)
+                    filterQuery = {'events__' + field : value}
+
                 cases = cases.filter(**filterQuery)
 
         print("length ", len(cases))
