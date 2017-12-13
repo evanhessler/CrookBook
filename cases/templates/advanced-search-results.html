@@ -3,27 +3,26 @@
   <div class="page-content">
     <div class="container">
       <div class="row alignment">
-        <div class="col-md-2">
-          <div class="button" id="generate-report-button">Generate Report</div>
-        </div>
-        <div class="col-md-2">
-          <form method="post" enctype="multipart/form-data" id="upload-form">
-            {% csrf_token %}
-            <input type="file" id="upload-file-button-hidden" accept=".xlsx" name="myfile">
-            <div class="button" id="upload-file-button" type="submit">Upload Excel File...</div>
-
-          </form>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="basic-search-input form-control inline-block" id="search-val" placeholder="Search Master DR, Victims, Suspects, or Date Occured">
-            <div class="button pull-right inline-block" id="search-button">Search</div>
-        </div>
+        <center>
+          {% if queryHeading is not None %}
+            <div class="col-xs-12">
+                <h2>"{{queryHeading}}."</h2>
+            </div>
+          {% endif %}
+          <div class="col-sm-12 col-md-12">
+            <div class="button generate-report-button" id="generate-report-button-advanced-search">Generate Report</div>
+          </div>
+        </center>
       </div>
     </div>
 
     <div id="database">
       <div class="container container-wide database-table home-table">
         <table class="table table-striped table-hover table-responsive">
+          {% if queryHeading is not None %}
+              <h2 style="display: none;">"{{queryHeading}}."</h2>
+          {% endif %}
+          {% if cases %}
           <thead>
             <tr>
               <th>DR Number</th>
@@ -72,6 +71,11 @@
               </tr>
             {% endfor %}
           </tbody>
+          {% else %}
+            <center>
+              <p>No matching results.</p>
+            </center>
+          {% endif %}
         </table>
       </div>
     </div>

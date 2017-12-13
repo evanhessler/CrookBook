@@ -3,11 +3,11 @@
 {% load static %}
 
 {% block content %}
-<div class="container page-content">
+<div class="container page-content" style="text-align:center;">
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit">Upload</button>
+    <input type="file" name="myfile" style="height:40px; margin:auto;" accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+    <button type="submit" style="margin-top:20px;">Upload</button>
   </form>
 </div>
 
