@@ -53,6 +53,7 @@ def add_entry(request):
         print(victim_formset.errors)
         print(suspect_formset.errors)
 
+
         if not (district_valid and binder_valid and case_valid and event_valid and victims_valid and suspects_valid):
             return render(request, 'add-entry.html', {
             'district_form': district_form,
@@ -62,6 +63,8 @@ def add_entry(request):
             'victim_formset': victim_formset,
             'suspect_formset': suspect_formset,
             'district_form_errors': district_form.errors,
+            'case_form_errors': case_form.errors,
+            'binder_form_errors': binder_form.errors
         })
 
         if district_valid and case_valid:

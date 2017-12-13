@@ -27,9 +27,28 @@
           </center>
         </div>
 
+        {% if district_form_errors or case_form_errors or binder_form_errors%}
+          <center>
+            <p>The following fields are required: </p>
+
+            {% for error in case_form_errors %}
+              <b><span class="alert-text">{{error}},</span></b>
+            {% endfor %}
+
+            {% for error in binder_form_errors %}
+              <b><span class="alert-text">{{error}},</span></b>
+            {% endfor %}
+
+            {% for error in district_form_errors %}
+              <b><span class="alert-text">{{error}},</span></b>
+            {% endfor %}
+
+          </center>
+        {% endif %}
+
         <div class="add-entry-block block-selected" id="case-info-entry">
           <div class="col-sm-12 col-md-6">
-            <label>DR Number</label>
+            <label>DR Number <span class="alert-text">*</span> </label>
             <input type="text" class="form-control" id="case-dr_nbr" name="case-dr_nbr" value="{{ case_form.dr_nbr|default:'' }}">
 
             <label>Court Case Number</label>
@@ -69,12 +88,11 @@
             <label>Notes</label>
             <textarea class="form-control" id="case-notes" name="case-notes">{{ case_form.notes|default:'' }}</textarea>
           </div>
-          {{ case_form }}
         </div>
 
         <div class="add-entry-block row" id="binder-info-entry">
           <div class="col-sm-12 col-md-6">
-            <label>Master DR</label>
+            <label>Master DR <span class="alert-text">*</span> </label>
             <input type="text" class="form-control" id="id_binder-master_dr" name="binder-master_dr" />
           </div>
           <div class="col-sm-12 col-md-6">
@@ -85,13 +103,13 @@
 
         <div class="add-entry-block row" id="district-info-entry">
           <div class="col-sm-12 col-md-6">
-            <label>Division</label>
+            <label>Division <span class="alert-text">*</span> </label>
             <input type="text" class="form-control" id="id_district-division" name="district-division" />
-            <label>Reporting District</label>
+            <label>Reporting District <span class="alert-text">*</span> </label>
             <input type="text" class="form-control" id="id_district-reporting_district" name="district-reporting_district" />
           </div>
           <div class="col-sm-12 col-md-6">
-            <label>Bureau</label>
+            <label>Bureau <span class="alert-text">*</span> </label>
             <input type="text" class="form-control" id="id_district-bureau" name="district-bureau" />
           </div>
         </div>
@@ -208,8 +226,6 @@
             <input type="date" class="form-control" id="event-date_occurred" name="event-date_occurred">
           </div>
         </div>
-
-        {{ district_form_errors }}
 
         <center class="button-container" id="add-entry-button">
           <input class="button inline-block" type="submit" value="Add Entry" />

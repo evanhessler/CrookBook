@@ -263,3 +263,12 @@ textarea {
 #details-header {
   display: inline-block;
 }
+
+.alert-text {
+  font-size: 15px;
+  color: red;
+}
+
+.alert-text:parent {
+  margin-top: 25px;
+}
