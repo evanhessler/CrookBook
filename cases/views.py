@@ -130,7 +130,6 @@ def detail(request, case_id):
 
 def advanced_search(request):
     if request.method == 'GET':
-
         district_form = DistrictForm(prefix='district')
         binder_form = BinderForm(prefix='binder')
         case_form = CaseForm(prefix='case')
@@ -138,8 +137,6 @@ def advanced_search(request):
         victim_formset = VictimFormset(prefix='victim')
         suspect_formset = SuspectFormset(prefix='suspect')
 
-        # print(victim_formset)
-        # print(suspect_formset)
 
         return render(request, 'advanced-search.html', {
             'district_form': district_form,
@@ -149,6 +146,7 @@ def advanced_search(request):
             'victim_formset': victim_formset,
             'suspect_formset': suspect_formset,
         })
+
     elif request.method == 'POST':
         district_form = DistrictForm(request.POST, prefix='district')
         binder_form = BinderForm(request.POST, prefix='binder')
@@ -156,6 +154,15 @@ def advanced_search(request):
         event_form = EventForm(request.POST, prefix='event')
         victim_formset = VictimFormset(request.POST, prefix='victim')
         suspect_formset = SuspectFormset(request.POST, prefix='suspect')
+
+        case_date_fully_reviewed_qualifier = request.POST.get('case_date_fully_reviewed_qualifier')
+        case_status_date_qualifier = request.POST.get('case_status_date_qualifier')
+        binder_check_out_date_qualifier = request.POST.get('binder_check_out_date_qualifier')
+        event_date_occurred_qupalifier = request.POST.get('event_date_occurred_qualifier')
+        print(case_date_fully_reviewed_qualifier)
+        print(case_status_date_qualifier)
+        print(binder_check_out_date_qualifier)
+        print(event_date_occurred_qupalifier)
 
         cases = Case.objects.all()
         queryHeading = [];
@@ -228,7 +235,7 @@ def advanced_search(request):
             queryHeading = "Cases where " + ' and '.join(queryHeading)
         else:
             queryHeading = None
-        
+
         print("final length ", len(cases), queryHeading)
 
         return render(request, 'advanced-search-results.html', {
