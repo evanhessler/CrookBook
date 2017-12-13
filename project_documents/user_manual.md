@@ -21,7 +21,7 @@ The Features bar contains tabs that link to all of CrookBook's functionalities. 
 ## Advanced Search
 The Advanced Search functionality will allow you to search through the database for cases based on a specific criteria. The search can take any number of attributes from all five aspects to a case. Each aspect is split into an individual tabular view with its specific form that can be searched. Criteria from two different aspects of a case can be looked up at once (ex. one can lookup cases that are AA with men as suspects). More information about the aspects of a case can be seen at the [Forms](#forms) section below. Attributes with dates can be modified to lookup ON/BEFORE/AFTER a given date with the dropdown selection.
 
-![Adv Search Example](./images/UI/adv_search_mockup.png)
+![Advanced Example](./images/UI/adv_search_mockup.png)
 
 ## Add Entry
 The Add Entry function of CrookBook allows you to add a new murder case entry to the CrookBook database. There are five different aspects of a case, each with their own fill out forms. Once all the necessary forms have been filled you can press the Add Entry button located bottom center of the page to add the Entry to the CrookBook database.
