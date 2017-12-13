@@ -196,9 +196,21 @@ def advanced_search(request):
         for field in binder_form.fields:
             value = binder_form[field].value()
             if value not in {'', False, None}:
-                queryHeading.append('binders ' + field.replace('_', ' ') + ' is ' + value)
-                filterQuery = dict()
-                filterQuery['binders__' + field] = value
+                if field in {'check_out_date'}:
+                    qualifier = getQualifier('binder_' + field + '_qualifier')
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                    filterQuery = dict()
+
+                    if qualifier == 'before':
+                        filterQuery = {'binders__' + field + '__range': ['1900-01-01', value]}
+                    elif qualifier == 'after':
+                        filterQuery = {'binders__' + field + '__range': [value, '2500-01-01']}
+                    else:
+                        filterQuery = {'binders__' + field : value}
+                else:
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + value)
+                    filterQuery = {'binders__' + field : value}
+
                 cases = cases.filter(**filterQuery)
 
         print("length ", len(cases))
