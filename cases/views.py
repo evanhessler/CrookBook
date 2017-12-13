@@ -237,25 +237,61 @@ def advanced_search(request):
 
         print("length ", len(cases))
 
+        victimIndex = 0
         for victim_form in victim_formset.forms:
             for field in victim_form.fields:
                 value = victim_form[field].value()
                 if value not in {'', False, None}:
-                    queryHeading.append('victim ' + field.replace('_', ' ') + ' is ' + value)
-                    filterQuery = dict()
-                    filterQuery['victims__' + field] = value
+                    if field == 'age':
+                        print("HERE ", field, value)
+                        qualifier = getQualifier('victim-' + str(victimIndex) + '-age_qualifier')
+                        queryHeading.append('victim ' + field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                        filterQuery = dict()
+
+                        if qualifier == 'younger than':
+                            filterQuery['victims__age__lte'] = value
+                        elif qualifier == 'older than':
+                            filterQuery['victims__age__gte'] = value
+                        else:
+                            filterQuery['victims__' + field] = value
+
+                    else:
+                        queryHeading.append('victim ' + field.replace('_', ' ') + ' is ' + value)
+                        filterQuery = dict()
+                        filterQuery['victims__' + field] = value
+
                     cases = cases.filter(**filterQuery)
+
+            victimIndex += 1;
 
         print("length ", len(cases))
 
+        suspectIndex = 0
         for suspect_form in suspect_formset.forms:
             for field in suspect_form.fields:
                 value = suspect_form[field].value()
                 if value not in {'', False, None}:
-                    queryHeading.append('suspect ' + field.replace('_', ' ') + ' is ' + value)
-                    filterQuery = dict()
-                    filterQuery['suspects__' + field] = value
+                    if field == 'age':
+                        print("HERE ", field, value)
+                        qualifier = getQualifier('suspect-' + str(suspectIndex) + '-age_qualifier')
+                        queryHeading.append('suspect ' + field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                        filterQuery = dict()
+
+                        if qualifier == 'younger than':
+                            filterQuery['suspects__age__lte'] = value
+                        elif qualifier == 'older than':
+                            filterQuery['suspects__age__gte'] = value
+                        else:
+                            filterQuery['suspects__' + field] = value
+
+                    else:
+                        queryHeading.append('suspect ' + field.replace('_', ' ') + ' is ' + value)
+                        filterQuery = dict()
+                        filterQuery['suspects__' + field] = value
+
                     cases = cases.filter(**filterQuery)
+
+            suspectIndex += 1;
 
         print(len(queryHeading))
 

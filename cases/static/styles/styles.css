@@ -277,3 +277,8 @@ textarea {
   width: 84% !important;
   display: inline-block !important;
 }
+
+.input-medium {
+  width: 49.9% !important;
+  display: inline-block !important;
+}

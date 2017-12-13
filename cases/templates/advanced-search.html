@@ -124,7 +124,12 @@
               <input type="text" class="form-control" id="id_victim-0-first_name" name="victim-0-first_name">
 
               <label>Age</label>
-              <input type="number" class="form-control" id="id_victim-0-age" name="victim-0-age">
+              <select class="input-short" id="victim-0-age_qualifier" name="victim-0-age_qualifier">
+                <option selected value="exactly">Exactly</option>
+                <option value="younger than">Younger Than</option>
+                <option value="older than">Older Than</option>
+              </select>
+              <input type="number" class="form-control input-long" id="id_victim-0-age" name="victim-0-age">
 
               <label>Ethnicity</label>
               <select class="form-control" id="id_victim-0-ethnicity" name="victim-0-ethnicity">
@@ -168,7 +173,12 @@
               <input type="text" class="form-control" id="id_ suspect-0-first_name" name="suspect-0-first_name">
 
               <label>Age</label>
-              <input type="number" class="form-control" id="id_ suspect-0-age" name="suspect-0-age">
+              <select class="input-short" id="suspect-0-age_qualifier" name="suspect-0-age_qualifier">
+                <option selected value="exactly">Exactly</option>
+                <option value="younger than">Younger Than</option>
+                <option value="older than">Older Than</option>
+              </select>
+              <input type="number" class="form-control input-long" id="id_ suspect-0-age" name="suspect-0-age">
 
               <label>Ethnicity</label>
               <select class="form-control" id="id_  suspect-0-ethnicity" name="suspect-0-ethnicity">
