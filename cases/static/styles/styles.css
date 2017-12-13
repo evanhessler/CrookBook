@@ -267,6 +267,30 @@ textarea {
   display: inline-block;
 }
 
+.alert-text {
+  font-size: 15px;
+  color: red;
+}
+
+.alert-text:parent {
+  margin-top: 25px;
+}
+
 .generate-report-button {
   max-width: 200px;
+}
+
+.input-short {
+  width: 15%;
+  display: inline-block !important;
+}
+
+.input-long {
+  width: 84% !important;
+  display: inline-block !important;
+}
+
+.input-medium {
+  width: 49.9% !important;
+  display: inline-block !important;
 }

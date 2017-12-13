@@ -22,9 +22,10 @@
           {% if queryHeading is not None %}
               <h2 style="display: none;">"{{queryHeading}}."</h2>
           {% endif %}
+          {% if cases %}
           <thead>
             <tr>
-              <th>MASTER DR</th>
+              <th>DR Number</th>
               <th>VICTIMS</th>
               <th>SUSPECTS</th>
               <th>DATE OCCURED</th>
@@ -70,6 +71,11 @@
               </tr>
             {% endfor %}
           </tbody>
+          {% else %}
+            <center>
+              <p>No matching results.</p>
+            </center>
+          {% endif %}
         </table>
       </div>
     </div>

@@ -21,7 +21,7 @@ def add_entry(request):
         return render(request, 'add-entry.html', {
             'district_form': district_form,
             'binder_form': binder_form,
-            'case_form': case_form,
+            'case_form': {},
             'event_form': event_form,
             'victim_formset': victim_formset,
             'suspect_formset': suspect_formset,
@@ -48,6 +48,20 @@ def add_entry(request):
         print(event_form.errors)
         print(victim_formset.errors)
         print(suspect_formset.errors)
+
+
+        if not (district_valid and binder_valid and case_valid and event_valid and victims_valid and suspects_valid):
+            return render(request, 'add-entry.html', {
+            'district_form': district_form,
+            'binder_form': binder_form,
+            'case_form': case_form.cleaned_data,
+            'event_form': event_form,
+            'victim_formset': victim_formset,
+            'suspect_formset': suspect_formset,
+            'district_form_errors': district_form.errors,
+            'case_form_errors': case_form.errors,
+            'binder_form_errors': binder_form.errors
+        })
 
         if district_valid and case_valid:
             district = district_form.save()
@@ -142,7 +156,6 @@ def detail(request, case_id):
 
 def advanced_search(request):
     if request.method == 'GET':
-
         district_form = DistrictForm(prefix='district')
         binder_form = BinderForm(prefix='binder')
         case_form = CaseForm(prefix='case')
@@ -150,8 +163,6 @@ def advanced_search(request):
         victim_formset = VictimFormset(prefix='victim')
         suspect_formset = SuspectFormset(prefix='suspect')
 
-        # print(victim_formset)
-        # print(suspect_formset)
 
         return render(request, 'advanced-search.html', {
             'district_form': district_form,
@@ -161,6 +172,7 @@ def advanced_search(request):
             'victim_formset': victim_formset,
             'suspect_formset': suspect_formset,
         })
+
     elif request.method == 'POST':
         district_form = DistrictForm(request.POST, prefix='district')
         binder_form = BinderForm(request.POST, prefix='binder')
@@ -168,6 +180,9 @@ def advanced_search(request):
         event_form = EventForm(request.POST, prefix='event')
         victim_formset = VictimFormset(request.POST, prefix='victim')
         suspect_formset = SuspectFormset(request.POST, prefix='suspect')
+
+        def getQualifier(qualifier):
+            return request.POST.get(qualifier)
 
         cases = Case.objects.all()
         queryHeading = [];
@@ -177,12 +192,19 @@ def advanced_search(request):
         for field in case_form.fields:
             value = case_form[field].value()
             if value not in {'', False, None}:
-                if isinstance(value, bool):
-                    value2 = "true" if value else "false"
-                    queryHeading.append(field.replace('_', ' ') + ' is ' + value2)
+                if field in {'date_fully_reviewed', 'status_date'}:
+                    qualifier = getQualifier('case_' + field + '_qualifier')
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                    if qualifier == 'before':
+                        filterQuery = {field + '__range': ['1900-01-01', value]}
+                    elif qualifier == 'after':
+                        filterQuery = {field + '__range': [value, '2500-01-01']}
+                    else:
+                        filterQuery = {field : value}
                 else:
                     queryHeading.append(field.replace('_', ' ') + ' is ' + value)
-                filterQuery = {field : value}
+                    filterQuery = {field : value}
+
                 cases = cases.filter(**filterQuery)
 
         print("length ", len(cases))
@@ -190,9 +212,21 @@ def advanced_search(request):
         for field in binder_form.fields:
             value = binder_form[field].value()
             if value not in {'', False, None}:
-                queryHeading.append('binders ' + field.replace('_', ' ') + ' is ' + value)
-                filterQuery = dict()
-                filterQuery['binders__' + field] = value
+                if field in {'check_out_date'}:
+                    qualifier = getQualifier('binder_' + field + '_qualifier')
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                    filterQuery = dict()
+
+                    if qualifier == 'before':
+                        filterQuery = {'binders__' + field + '__range': ['1900-01-01', value]}
+                    elif qualifier == 'after':
+                        filterQuery = {'binders__' + field + '__range': [value, '2500-01-01']}
+                    else:
+                        filterQuery = {'binders__' + field : value}
+                else:
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + value)
+                    filterQuery = {'binders__' + field : value}
+
                 cases = cases.filter(**filterQuery)
 
         print("length ", len(cases))
@@ -210,32 +244,80 @@ def advanced_search(request):
         for field in event_form.fields:
             value = event_form[field].value()
             if value not in {'', False, None, 'M'}:
-                queryHeading.append(field.replace('_', ' ') + ' is ' + value)
-                filterQuery = dict()
-                filterQuery['events__' + field] = value
+                if field in {'date_occurred', 'date_reported'}:
+                    qualifier = getQualifier('event_' + field + '_qualifier')
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                    filterQuery = dict()
+
+                    if qualifier == 'before':
+                        filterQuery = {'events__' + field + '__range': ['1900-01-01', value]}
+                    elif qualifier == 'after':
+                        filterQuery = {'events__' + field + '__range': [value, '2500-01-01']}
+                    else:
+                        filterQuery = {'events__' + field : value}
+                else:
+                    queryHeading.append(field.replace('_', ' ') + ' is ' + value)
+                    filterQuery = {'events__' + field : value}
+
                 cases = cases.filter(**filterQuery)
 
         print("length ", len(cases))
 
+        victimIndex = 0
         for victim_form in victim_formset.forms:
             for field in victim_form.fields:
                 value = victim_form[field].value()
                 if value not in {'', False, None}:
-                    queryHeading.append('victim ' + field.replace('_', ' ') + ' is ' + value)
-                    filterQuery = dict()
-                    filterQuery['victims__' + field] = value
+                    if field == 'age':
+                        print("HERE ", field, value)
+                        qualifier = getQualifier('victim-' + str(victimIndex) + '-age_qualifier')
+                        queryHeading.append('victim ' + field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                        filterQuery = dict()
+
+                        if qualifier == 'younger than':
+                            filterQuery['victims__age__lte'] = value
+                        elif qualifier == 'older than':
+                            filterQuery['victims__age__gte'] = value
+                        else:
+                            filterQuery['victims__' + field] = value
+
+                    else:
+                        queryHeading.append('victim ' + field.replace('_', ' ') + ' is ' + value)
+                        filterQuery = dict()
+                        filterQuery['victims__' + field] = value
+
                     cases = cases.filter(**filterQuery)
+
+            victimIndex += 1;
 
         print("length ", len(cases))
 
+        suspectIndex = 0
         for suspect_form in suspect_formset.forms:
             for field in suspect_form.fields:
                 value = suspect_form[field].value()
                 if value not in {'', False, None}:
-                    queryHeading.append('suspect ' + field.replace('_', ' ') + ' is ' + value)
-                    filterQuery = dict()
-                    filterQuery['suspects__' + field] = value
+                    if field == 'age':
+                        print("HERE ", field, value)
+                        qualifier = getQualifier('suspect-' + str(suspectIndex) + '-age_qualifier')
+                        queryHeading.append('suspect ' + field.replace('_', ' ') + ' is ' + qualifier + ' ' + value)
+                        filterQuery = dict()
+
+                        if qualifier == 'younger than':
+                            filterQuery['suspects__age__lte'] = value
+                        elif qualifier == 'older than':
+                            filterQuery['suspects__age__gte'] = value
+                        else:
+                            filterQuery['suspects__' + field] = value
+
+                    else:
+                        queryHeading.append('suspect ' + field.replace('_', ' ') + ' is ' + value)
+                        filterQuery = dict()
+                        filterQuery['suspects__' + field] = value
+
                     cases = cases.filter(**filterQuery)
+
+            suspectIndex += 1;
 
         print(len(queryHeading))
 
