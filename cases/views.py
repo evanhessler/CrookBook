@@ -78,7 +78,7 @@ def add_entry(request):
 
 def detail(request, case_id):
     case = get_object_or_404(Case, dr_nbr=case_id)
-    district = case.district
+    district = District.objects.get(id=case.district.id)
     binders = case.binders.all()
     victims = case.victims.all()
     suspects = case.suspects.all()
@@ -102,70 +102,36 @@ def detail(request, case_id):
         })
 
     elif request.method == 'POST':
-        print(request.POST)
-        district_form = DistrictForm(request.POST, prefix='district')
-        binder_form = BinderForm(request.POST, prefix='binder')
+        district_form = DistrictForm(request.POST, prefix='district', instance=district)
+        binder_formset = BinderFormset(request.POST, prefix='binder')
         case_form = CaseForm(request.POST, prefix='case', instance=case)
         event_form = EventForm(request.POST, prefix='event', instance=event)
         victim_formset = VictimFormset(request.POST, prefix='victim')
         suspect_formset = SuspectFormset(request.POST, prefix='suspect')
 
         district_valid = district_form.is_valid()
-        binder_valid = binder_form.is_valid()
+        binders_valid = binder_formset.is_valid()
         case_valid = case_form.is_valid()
         event_valid = event_form.is_valid()
         victims_valid = victim_formset.is_valid()
         suspects_valid = suspect_formset.is_valid()
 
         print(district_form.errors)
-        print(binder_form.errors)
+        print(binder_formset.errors)
         print(case_form.errors)
         print(event_form.errors)
         print(victim_formset.errors)
         print(suspect_formset.errors)
 
         if district_valid and case_valid:
-            print(case_form)
             case_form.save()
+            district_form.save()
+            event_form.save()
 
-            # print(case_form)
-            #
-            # case.update(
-            #     dr_nbr = case_form.get('dr_nbr'),
-            #     date_fully_reviewed = case_form.get('date_fully_reviewed'),
-            #     motive = case_form.get('motive'),
-            #     adjudication = case_form.get('adjudication'),
-            #     evidence_destroyed = case_form.get('evidence_destroyed'),
-            #     status = case_form.get('status'),
-            #     status_date = case_form.get('status_date'),
-            #     court_case_number = case_form.get('court_case_number'),
-            #     notes = case_form.get('notes'),
-            # )
+            if binders_valid:
+                for binder in binder_formset:
+                    binder = binder.save()
 
-            # district = district_form.save()
-            # case = case_form.save(commit=False)
-            # binder = binder_form.save()
-            # event = event_form.save(commit=False)
-            #
-            # case.district = district
-            #
-            # # Need to save case before adding ManyToMany relationships
-            # case.save()
-            #
-            # if binder_valid:
-            #     case.binders.add(binder)
-            # if victims_valid:
-            #     for victim in victim_formset:
-            #         victim = victim.save()
-            #         case.victims.add(victim)
-            # if suspects_valid:
-            #     for suspect in suspect_formset:
-            #         suspect = suspect.save()
-            #         case.suspects.add(suspect)
-            # if event_valid:
-            #     event.case = case
-            #     event.save()
-            #
             return HttpResponseRedirect('/detail/' + case.dr_nbr)
 
 def advanced_search(request):
