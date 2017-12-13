@@ -124,12 +124,7 @@
               <input type="text" class="form-control" id="id_victim-0-first_name" name="victim-0-first_name">
 
               <label>Age</label>
-              <select class="input-short">
-                <option selected value="exactly">Exactly</option>
-                <option value="before">Younger Than</option>
-                <option value="after">Older Than</option>
-              </select>
-              <input type="number" class="form-control input-long" id="id_victim-0-age" name="victim-0-age">
+              <input type="number" class="form-control" id="id_victim-0-age" name="victim-0-age">
 
               <label>Ethnicity</label>
               <select class="form-control" id="id_victim-0-ethnicity" name="victim-0-ethnicity">
@@ -173,12 +168,7 @@
               <input type="text" class="form-control" id="id_ suspect-0-first_name" name="suspect-0-first_name">
 
               <label>Age</label>
-              <select class="input-short">
-                <option selected value="exactly">Exactly</option>
-                <option value="before">Younger Than</option>
-                <option value="after">Older Than</option>
-              </select>
-              <input type="number" class="form-control input-long" id="id_ suspect-0-age" name="suspect-0-age">
+              <input type="number" class="form-control" id="id_ suspect-0-age" name="suspect-0-age">
 
               <label>Ethnicity</label>
               <select class="form-control" id="id_  suspect-0-ethnicity" name="suspect-0-ethnicity">
@@ -244,21 +234,6 @@
             <input type="date" class="form-control input-long" id="event-date_occurred" name="event-date_occurred">
           </div>
         </div>
-
-        {% if form.errors %}
-          {% for field in form %}
-              {% for error in field.errors %}
-                  <div class="alert alert-danger">
-                      <strong>{{ error|escape }}</strong>
-                  </div>
-              {% endfor %}
-          {% endfor %}
-          {% for error in form.non_field_errors %}
-              <div class="alert alert-danger">
-                  <strong>{{ error|escape }}</strong>
-              </div>
-          {% endfor %}
-      {% endif %}
 
         <center class="button-container" id="add-entry-button">
           <input class="button inline-block" type="submit" value="Search" />
