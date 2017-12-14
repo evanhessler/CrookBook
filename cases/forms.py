@@ -1,4 +1,4 @@
-from django.forms import ModelForm, formset_factory
+from django.forms import ModelForm, formset_factory, modelformset_factory
 
 
 from .models import District, Binder, Person, Case, Event
@@ -28,5 +28,6 @@ class EventForm(ModelForm):
         model = Event
         exclude = ['case']
 
-VictimFormset = formset_factory(PersonForm, extra=20)
-SuspectFormset = formset_factory(PersonForm, extra=20)
+BinderFormset = modelformset_factory(Binder, form=BinderForm, extra=20)
+VictimFormset = modelformset_factory(Person, form=PersonForm, extra=20)
+SuspectFormset = modelformset_factory(Person, form=PersonForm, extra=20)

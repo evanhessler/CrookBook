@@ -183,6 +183,11 @@ $(document).ready(function () {
 		$(document).find('#case-input').children('select').each(function() {
 			$(this).attr("disabled", false);
 		});
+		$(document).find('#case-input').children('span').each(function() {
+			$(this).children('input').each(function() {
+				$(this).attr("disabled", false);
+			});
+		});
 	});
 
 	$('#binder-edit').click(function() {
