@@ -5,6 +5,9 @@ body {
 td, p {
   font-family: sans-serif;
 }
+tr {
+  cursor: pointer;
+}
 input {
   border: none;
   padding: 10px;

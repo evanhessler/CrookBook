@@ -141,7 +141,10 @@
           </div>
           <hr width="100%">
 
-
+          <input type="hidden" name="victim-TOTAL_FORMS" value="{{ existing_victims|length }}" id="id_victim-TOTAL_FORMS" />
+          <input type="hidden" name="victim-INITIAL_FORMS" value="{{ existing_victims|length }}" id="id_victim-INITIAL_FORMS" />
+          <input type="hidden" name="victim-MIN_NUM_FORMS" value="0" id="id_victim-MIN_NUM_FORMS" />
+          <input type="hidden" name="victim-MAX_NUM_FORMS" value="1000" id="id_victim-MAX_NUM_FORMS" />
           {% for victim in existing_victims %}
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -149,10 +152,6 @@
                 <a id="victim-edit">edit</a>
               </div>
               <div class="panel-body">
-                <input type="hidden" name="victim-TOTAL_FORMS" value="{{ existing_victims|length }}" id="id_victim-TOTAL_FORMS" />
-                <input type="hidden" name="victim-INITIAL_FORMS" value="{{ existing_victims|length }}" id="id_victim-INITIAL_FORMS" />
-                <input type="hidden" name="victim-MIN_NUM_FORMS" value="0" id="id_victim-MIN_NUM_FORMS" />
-                <input type="hidden" name="victim-MAX_NUM_FORMS" value="1000" id="id_victim-MAX_NUM_FORMS" />
                 <div class="row">
                   <div class="col-xs-4">
                     <p>Victim First Name</p>
@@ -199,6 +198,10 @@
             <hr width="100%">
           {% endfor %}
 
+          <input type="hidden" name="suspect-TOTAL_FORMS" value="{{ existing_suspects|length }}" id="id_suspect-TOTAL_FORMS" />
+          <input type="hidden" name="suspect-INITIAL_FORMS" value="{{ existing_suspects|length }}" id="id_suspect-INITIAL_FORMS" />
+          <input type="hidden" name="suspect-MIN_NUM_FORMS" value="0" id="id_suspect-MIN_NUM_FORMS" />
+          <input type="hidden" name="suspect-MAX_NUM_FORMS" value="1000" id="id_suspect-MAX_NUM_FORMS" />
           {% for suspect in existing_suspects %}
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -206,10 +209,6 @@
                 <a id="suspect-edit">edit</a>
               </div>
               <div class="panel-body">
-                <input type="hidden" name="suspect-TOTAL_FORMS" value="{{ existing_suspects|length }}" id="id_suspect-TOTAL_FORMS" />
-                <input type="hidden" name="suspect-INITIAL_FORMS" value="{{ existing_suspects|length }}" id="id_suspect-INITIAL_FORMS" />
-                <input type="hidden" name="suspect-MIN_NUM_FORMS" value="0" id="id_suspect-MIN_NUM_FORMS" />
-                <input type="hidden" name="suspect-MAX_NUM_FORMS" value="1000" id="id_suspect-MAX_NUM_FORMS" />
                 <div class="row">
                   <div class="col-xs-4">
                     <p>Suspect First Name</p>
