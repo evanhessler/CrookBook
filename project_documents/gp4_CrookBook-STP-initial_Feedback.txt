@@ -1,0 +1,13 @@
+Hi, CrookBook team ----
+
+Hmmm....
+
+You have captured the idea of the test plan pretty well.
+
+You have automated tests for all this, right?
+
+You have 10% out of 10% for this document, which is an A-plus.
+
+Nice work!
+
+Nothing to fix for this one.  I like the way you have presented the various
